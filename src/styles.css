@@ -1,0 +1,246 @@
+:root {
+  --cream: #ffe4c4;
+  --green: #228b22;
+  --red: #c60000;
+  --ink: #201710;
+  --soft-ink: #5d4532;
+  --paper: #fff5e8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: "Montera", "Montserrat", "Segoe UI", sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.phone-stage {
+  min-height: 100svh;
+  padding: 14px;
+  background:
+    radial-gradient(circle at top left, rgba(198, 0, 0, 0.12), transparent 34%),
+    linear-gradient(180deg, #fff0d9 0%, var(--cream) 48%, #f8d8b1 100%);
+}
+
+.invitation-card {
+  position: relative;
+  display: grid;
+  min-height: calc(100svh - 28px);
+  overflow: hidden;
+  border: 1px solid rgba(34, 139, 34, 0.35);
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: 0 18px 38px rgba(73, 38, 7, 0.18);
+  isolation: isolate;
+}
+
+.invitation-card::before,
+.invitation-card::after {
+  position: absolute;
+  z-index: 1;
+  width: 118px;
+  height: 118px;
+  border: 1px solid rgba(198, 0, 0, 0.28);
+  content: "";
+  pointer-events: none;
+}
+
+.invitation-card::before {
+  top: 14px;
+  left: 14px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.invitation-card::after {
+  right: 14px;
+  bottom: 14px;
+  border-top: 0;
+  border-left: 0;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-photo::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 245, 232, 0.9) 0%, rgba(255, 245, 232, 0.26) 35%, rgba(255, 228, 196, 0.2) 62%, rgba(32, 23, 16, 0.6) 100%),
+    radial-gradient(circle at center, transparent 42%, rgba(255, 245, 232, 0.74) 88%);
+  content: "";
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  filter: saturate(0.96) contrast(1.02);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  align-self: start;
+  padding: clamp(30px, 8svh, 54px) 22px 0;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+h1 {
+  max-width: 10ch;
+  margin: 0 auto;
+  color: var(--red);
+  font-family: "1FTV VIP Scartoon", "Cooper Black", Georgia, serif;
+  font-size: clamp(2.35rem, 15vw, 4.1rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-wrap: balance;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.7);
+}
+
+.note {
+  max-width: 22ch;
+  margin: 16px auto 0;
+  color: var(--soft-ink);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: clamp(1.04rem, 4.8vw, 1.32rem);
+  line-height: 1.2;
+}
+
+.date {
+  width: fit-content;
+  margin: 14px auto 0;
+  padding: 8px 13px;
+  border: 1px solid rgba(34, 139, 34, 0.45);
+  color: var(--green);
+  background: rgba(255, 245, 232, 0.78);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: clamp(1.2rem, 5.4vw, 1.52rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.couple-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-self: end;
+  align-items: end;
+  padding: 0 18px clamp(28px, 7svh, 46px);
+  color: #fff8ef;
+  text-align: center;
+}
+
+.person {
+  min-width: 0;
+  padding: 10px 6px 8px;
+  border-top: 1px solid rgba(255, 228, 196, 0.76);
+}
+
+.role {
+  margin: 0 0 5px;
+  color: #ffe4c4;
+  font-size: clamp(0.61rem, 2.8vw, 0.76rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.12em;
+}
+
+.name {
+  margin: 0;
+  color: #ffffff;
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: clamp(1.08rem, 5.1vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.42);
+}
+
+.ampersand {
+  color: #ffe4c4;
+  font-family: "1FTV VIP Scartoon", Georgia, serif;
+  font-size: clamp(1.7rem, 8vw, 2.4rem);
+  font-weight: 900;
+  line-height: 0.9;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.desktop-warning {
+  display: none;
+}
+
+@media (min-width: 721px) {
+  .phone-stage {
+    display: none;
+  }
+
+  .desktop-warning {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 32px;
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .desktop-warning > div {
+    max-width: 420px;
+    padding: 28px;
+    border: 1px solid rgba(34, 139, 34, 0.25);
+    background: rgba(255, 245, 232, 0.82);
+  }
+
+  .warning-kicker {
+    margin: 0 0 12px;
+    color: var(--green);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  .desktop-warning h2 {
+    margin: 0;
+    color: var(--red);
+    font-family: "1FTV VIP Scartoon", Georgia, serif;
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+
+  .desktop-warning p:last-child {
+    margin: 14px 0 0;
+    color: var(--soft-ink);
+    line-height: 1.5;
+  }
+}
+
