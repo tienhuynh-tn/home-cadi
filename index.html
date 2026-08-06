@@ -20,7 +20,20 @@
       <section class="phone-stage" aria-label="CADI'S WEDDING">
         <article class="invitation-card">
           <div class="hero-photo" aria-label="Hoang Duy va Ngoc Thao">
-            <img src="%BASE_URL%assets/cover.jpg" alt="Hoang Duy va Ngoc Thao" />
+            <img
+              src="%BASE_URL%assets/cover-720.jpg"
+              srcset="
+                %BASE_URL%assets/cover-480.jpg 480w,
+                %BASE_URL%assets/cover-720.jpg 720w,
+                %BASE_URL%assets/cover-1080.jpg 1080w
+              "
+              sizes="100vw"
+              width="1366"
+              height="2048"
+              fetchpriority="high"
+              decoding="async"
+              alt="Hoang Duy va Ngoc Thao"
+            />
           </div>
 
           <div class="hero-copy">
