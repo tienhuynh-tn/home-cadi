@@ -114,38 +114,41 @@ img {
 }
 
 h1 {
-  max-width: 10ch;
   margin: 0 auto;
   color: var(--red);
   font-family: "1FTV VIP Scartoon", "Cooper Black", Georgia, serif;
-  font-size: clamp(2.35rem, 15vw, 4.1rem);
+  font-size: clamp(1.9rem, 10.8vw, 3rem);
   font-weight: 900;
-  line-height: 0.9;
+  line-height: 1.12;
   letter-spacing: 0;
-  text-wrap: balance;
   text-shadow: 0 2px 0 rgba(255, 255, 255, 0.7);
 }
 
+h1 span {
+  display: block;
+  white-space: nowrap;
+}
+
 .note {
-  max-width: 22ch;
+  max-width: min(100%, 34ch);
   margin: 16px auto 0;
-  color: var(--soft-ink);
+  color: #3f2c1d;
   font-family: "1FTV VIP Palisade", Georgia, serif;
-  font-size: clamp(1.04rem, 4.8vw, 1.32rem);
+  font-size: clamp(0.78rem, 3.45vw, 1rem);
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .date {
-  width: fit-content;
-  margin: 14px auto 0;
-  padding: 8px 13px;
-  border: 1px solid rgba(34, 139, 34, 0.45);
-  color: var(--green);
-  background: rgba(255, 245, 232, 0.78);
-  font-family: "1FTV VIP Palisade", Georgia, serif;
-  font-size: clamp(1.2rem, 5.4vw, 1.52rem);
-  font-weight: 700;
+  grid-column: 1 / -1;
+  margin: 0 0 2px;
+  color: #ffe4c4;
+  font-family: inherit;
+  font-size: clamp(0.78rem, 3.4vw, 0.95rem);
+  font-weight: 400;
   line-height: 1;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.36);
 }
 
 .couple-grid {
@@ -162,9 +165,18 @@ h1 {
 }
 
 .person {
+  position: relative;
   min-width: 0;
   padding: 10px 6px 8px;
+}
+
+.person::before {
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
   border-top: 1px solid rgba(255, 228, 196, 0.76);
+  content: "";
 }
 
 .role {
@@ -243,4 +255,3 @@ h1 {
     line-height: 1.5;
   }
 }
-
