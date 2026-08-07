@@ -374,7 +374,7 @@ const getValidatedWish = (formData) => {
   }
 
   if (!name || !message) {
-    throw new Error("Vui lòng nhập tên và lời chúc.");
+    throw new Error("Bạn nhập tên và lời chúc giúp tụi mình nha.");
   }
 
   if (name.length > NAME_LIMIT) {
