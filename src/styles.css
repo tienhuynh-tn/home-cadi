@@ -271,7 +271,7 @@ h1 span {
 
 .story-frame path {
   fill: none;
-  stroke: var(--green);
+  stroke: url("#story-frame-gradient");
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3.6;
