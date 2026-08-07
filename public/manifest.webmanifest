@@ -1,0 +1,10 @@
+{
+  "name": "CADI'S WEDDING",
+  "short_name": "CADI'S WEDDING",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffe4c4",
+  "theme_color": "#ffe4c4"
+}

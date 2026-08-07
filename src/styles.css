@@ -702,7 +702,7 @@ h1 span {
   }
 }
 
-@media (min-width: 721px) {
+@media (orientation: landscape), (min-width: 721px) {
   .phone-stage {
     display: none;
   }
