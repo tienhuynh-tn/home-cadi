@@ -30,6 +30,7 @@ const weddingSong = document.querySelector("#wedding-song");
 const musicToggle = document.querySelector("#music-toggle");
 let revealObserver;
 let songWasStarted = false;
+let songWasPausedByUser = false;
 let currentWishIndex = 0;
 let wishRotationTimer;
 
@@ -114,7 +115,7 @@ const setMusicToggleState = () => {
 };
 
 const playWeddingSong = async () => {
-  if (!weddingSong) {
+  if (!weddingSong || songWasPausedByUser) {
     return false;
   }
 
@@ -135,28 +136,68 @@ const setupWeddingSong = () => {
   }
 
   weddingSong.loop = true;
+  weddingSong.muted = false;
+  weddingSong.volume = 1;
+  weddingSong.load();
   setMusicToggleState();
   playWeddingSong();
 
-  const startAfterGesture = (event) => {
-    if (event.target instanceof Element && event.target.closest("#music-toggle")) {
-      return;
-    }
+  const gestureEvents = [
+    "pointerdown",
+    "pointermove",
+    "pointerup",
+    "touchstart",
+    "touchmove",
+    "touchend",
+    "mousedown",
+    "wheel",
+    "scroll",
+    "click",
+    "keydown",
+  ];
 
-    if (!songWasStarted) {
-      playWeddingSong();
+  const stopGestureAutoplay = () => {
+    gestureEvents.forEach((eventName) => {
+      document.removeEventListener(eventName, startAfterGesture, true);
+      window.removeEventListener(eventName, startAfterGesture, true);
+    });
+  };
+
+  const retryAutoplay = () => {
+    if (!songWasStarted && !songWasPausedByUser) {
+      playWeddingSong().then((didStart) => {
+        if (didStart) {
+          stopGestureAutoplay();
+        }
+      });
     }
   };
 
-  window.addEventListener("pointerdown", startAfterGesture, { once: true });
-  window.addEventListener("keydown", startAfterGesture, { once: true });
+  const startAfterGesture = () => {
+    retryAutoplay();
+  };
+
+  weddingSong.addEventListener("loadeddata", retryAutoplay, { once: true });
+  weddingSong.addEventListener("canplay", retryAutoplay, { once: true });
+  window.addEventListener("pageshow", retryAutoplay);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      retryAutoplay();
+    }
+  });
+  gestureEvents.forEach((eventName) => {
+    document.addEventListener(eventName, startAfterGesture, true);
+    window.addEventListener(eventName, startAfterGesture, true);
+  });
 
   musicToggle.addEventListener("click", async () => {
     if (weddingSong.paused) {
+      songWasPausedByUser = false;
       await playWeddingSong();
       return;
     }
 
+    songWasPausedByUser = true;
     weddingSong.pause();
     setMusicToggleState();
   });
