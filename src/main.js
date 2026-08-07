@@ -2,8 +2,8 @@ import "./styles.css";
 import { createClient } from "@supabase/supabase-js";
 
 const WISH_LIMIT = 30;
-const NAME_LIMIT = 60;
-const MESSAGE_LIMIT = 500;
+const NAME_LIMIT = 24;
+const MESSAGE_LIMIT = 240;
 const WISH_ROTATION_MS = 5000;
 const STORY_START_TIME = new Date("2006-09-05T00:00:00+07:00").getTime();
 const SECOND_IN_MS = 1000;
