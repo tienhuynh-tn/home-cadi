@@ -432,4 +432,4 @@ setupScrollReveal();
 setupWeddingSong();
 updateStoryTimer();
 window.setInterval(updateStoryTimer, SECOND_IN_MS);
-loadWishes();
+loadWishes({ announce: false });

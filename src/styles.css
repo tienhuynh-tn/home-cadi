@@ -818,6 +818,7 @@ h1 span {
 }
 
 .wish-submit {
+  margin-bottom: 12px;
   min-height: 44px;
   border: 1px solid rgba(198, 0, 0, 0.86);
   border-radius: 0;
