@@ -575,8 +575,8 @@ h1 span {
 }
 
 .signature-elements-intro .signature-icon-bottom-right {
-  right: 14px;
-  bottom: 32px;
+  right: 4px;
+  bottom: 18px;
 }
 
 .signature-elements-story .signature-icon-bottom-left {
@@ -720,8 +720,8 @@ h1 span {
 }
 
 .signature-elements-wishes .signature-icon-middle-right {
-  top: 55%;
-  right: 8px;
+  top: 58%;
+  right: 0;
 }
 
 .signature-elements-wishes .signature-icon-bottom-left {
