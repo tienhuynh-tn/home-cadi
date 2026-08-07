@@ -161,6 +161,7 @@ h1 span {
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.06em;
+  white-space: nowrap;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.36);
 }
 
@@ -471,7 +472,9 @@ h1 span {
 }
 
 .speech-bubble-groom {
+  width: min(100%, 34ch);
   justify-self: start;
+  white-space: nowrap;
 }
 
 .speech-bubble-groom::after {

@@ -123,11 +123,12 @@ const formatWishDate = (dateValue) => {
     return "";
   }
 
-  return new Intl.DateTimeFormat("vi-VN", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  }).format(new Date(dateValue));
+  const date = new Date(dateValue);
+  const day = padTime(date.getDate());
+  const month = padTime(date.getMonth() + 1);
+  const year = date.getFullYear();
+
+  return `${day}.${month}.${year}`;
 };
 
 const renderWishes = (wishes) => {
