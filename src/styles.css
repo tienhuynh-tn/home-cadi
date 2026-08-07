@@ -29,6 +29,13 @@ img {
   max-width: 100%;
 }
 
+.signature-symbols {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .reveal-ready .scroll-reveal {
   opacity: 0;
   translate: 0 18px;
@@ -227,9 +234,11 @@ h1 span {
 }
 
 .story-intro {
+  position: relative;
   margin-top: 0;
   padding: 34px 6px 8px;
   background: transparent;
+  overflow: hidden;
 }
 
 .story-intro-title {
@@ -465,11 +474,111 @@ h1 span {
 }
 
 .story-section {
+  position: relative;
   margin-top: 12px;
   padding: 30px 18px 28px;
   background:
     radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.42), transparent 34%),
     linear-gradient(180deg, rgba(255, 245, 232, 0.32), rgba(255, 245, 232, 0.08));
+  overflow: hidden;
+}
+
+.story-intro > :not(.signature-elements),
+.story-section > :not(.signature-elements),
+.wishes-section > :not(.signature-elements) {
+  position: relative;
+  z-index: 1;
+}
+
+.signature-elements {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.signature-icon {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  color: rgba(198, 0, 0, 0.34);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3.2;
+  opacity: 0.86;
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.28));
+}
+
+.signature-camera,
+.signature-film {
+  color: rgba(32, 23, 16, 0.3);
+}
+
+.signature-book,
+.signature-pencil {
+  color: rgba(34, 139, 34, 0.34);
+}
+
+.signature-cola {
+  color: rgba(198, 0, 0, 0.38);
+}
+
+.signature-icon-top-left {
+  top: 24px;
+  left: 14px;
+  transform: rotate(-9deg);
+}
+
+.signature-icon-top-right {
+  top: 20px;
+  right: 13px;
+  transform: rotate(10deg);
+}
+
+.signature-icon-middle-left {
+  top: 48%;
+  left: 6px;
+  transform: rotate(-18deg);
+}
+
+.signature-icon-middle-right {
+  top: 45%;
+  right: 6px;
+  transform: rotate(9deg);
+}
+
+.signature-icon-bottom-left {
+  bottom: 20px;
+  left: 8px;
+  transform: rotate(8deg);
+}
+
+.signature-icon-bottom-right {
+  right: 10px;
+  bottom: 18px;
+  transform: rotate(-8deg);
+}
+
+.signature-elements-intro .signature-icon-top-left {
+  top: 72px;
+  left: 16px;
+}
+
+.signature-elements-intro .signature-icon-top-right {
+  top: 72px;
+  right: 16px;
+}
+
+.signature-elements-intro .signature-icon-bottom-right {
+  right: 14px;
+  bottom: 32px;
+}
+
+.signature-elements-story .signature-icon-bottom-left {
+  bottom: 82px;
 }
 
 .story-heading {
@@ -599,11 +708,22 @@ h1 span {
 }
 
 .wishes-section {
+  position: relative;
   margin-top: 12px;
   padding: 32px 18px 28px;
   background:
     radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.42), transparent 34%),
     linear-gradient(180deg, rgba(255, 245, 232, 0.2), rgba(255, 245, 232, 0.34));
+  overflow: hidden;
+}
+
+.signature-elements-wishes .signature-icon-middle-right {
+  top: 55%;
+  right: 8px;
+}
+
+.signature-elements-wishes .signature-icon-bottom-left {
+  bottom: 54px;
 }
 
 .wishes-heading {
