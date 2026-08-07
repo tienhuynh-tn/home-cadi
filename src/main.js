@@ -4,6 +4,11 @@ import { createClient } from "@supabase/supabase-js";
 const WISH_LIMIT = 30;
 const NAME_LIMIT = 60;
 const MESSAGE_LIMIT = 500;
+const STORY_START_TIME = new Date("2006-09-05T00:00:00+07:00").getTime();
+const SECOND_IN_MS = 1000;
+const MINUTE_IN_MS = 60 * SECOND_IN_MS;
+const HOUR_IN_MS = 60 * MINUTE_IN_MS;
+const DAY_IN_MS = 24 * HOUR_IN_MS;
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -16,6 +21,29 @@ const wishForm = document.querySelector("#wish-form");
 const wishesList = document.querySelector("#wishes-list");
 const wishStatus = document.querySelector("#wish-status");
 const wishSubmit = document.querySelector(".wish-submit");
+const storyDays = document.querySelector("#story-days");
+const storyHours = document.querySelector("#story-hours");
+const storyMinutes = document.querySelector("#story-minutes");
+const storySeconds = document.querySelector("#story-seconds");
+
+const padTime = (value) => String(value).padStart(2, "0");
+
+const updateStoryTimer = () => {
+  if (!storyDays || !storyHours || !storyMinutes || !storySeconds) {
+    return;
+  }
+
+  const elapsed = Math.max(0, Date.now() - STORY_START_TIME);
+  const days = Math.floor(elapsed / DAY_IN_MS);
+  const hours = Math.floor((elapsed % DAY_IN_MS) / HOUR_IN_MS);
+  const minutes = Math.floor((elapsed % HOUR_IN_MS) / MINUTE_IN_MS);
+  const seconds = Math.floor((elapsed % MINUTE_IN_MS) / SECOND_IN_MS);
+
+  storyDays.textContent = String(days);
+  storyHours.textContent = padTime(hours);
+  storyMinutes.textContent = padTime(minutes);
+  storySeconds.textContent = padTime(seconds);
+};
 
 const setStatus = (message, tone = "") => {
   if (!wishStatus) {
@@ -194,4 +222,6 @@ wishForm?.addEventListener("submit", async (event) => {
   setStatus("Cảm ơn bạn đã gửi lời chúc!", "success");
 });
 
+updateStoryTimer();
+window.setInterval(updateStoryTimer, SECOND_IN_MS);
 loadWishes();
