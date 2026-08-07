@@ -5,6 +5,39 @@ const WISH_LIMIT = 30;
 const NAME_LIMIT = 24;
 const MESSAGE_LIMIT = 240;
 const WISH_ROTATION_MS = 5000;
+const SENSITIVE_WORDS = new Set([
+  "asshole",
+  "bastard",
+  "bitch",
+  "buoi",
+  "cunt",
+  "dick",
+  "dit",
+  "fuck",
+  "fucker",
+  "fucking",
+  "lon",
+  "nude",
+  "porn",
+  "pussy",
+  "sex",
+  "shit",
+  "slut",
+  "whore",
+  "xxx",
+]);
+const SENSITIVE_PHRASES = [
+  "cho chet",
+  "con me may",
+  "dcm",
+  "dit me",
+  "dm",
+  "dmm",
+  "do khon",
+  "du ma",
+  "mat day",
+  "oc cho",
+];
 const STORY_START_TIME = new Date("2006-09-05T00:00:00+07:00").getTime();
 const SECOND_IN_MS = 1000;
 const MINUTE_IN_MS = 60 * SECOND_IN_MS;
@@ -241,6 +274,35 @@ const formatWishDate = (dateValue) => {
   return `${day}.${month}.${year}`;
 };
 
+const normalizeWishText = (value) =>
+  value
+    .toLowerCase()
+    .replaceAll("đ", "d")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+const hasSensitiveContent = (...values) => {
+  const normalizedText = normalizeWishText(values.join(" "));
+  if (!normalizedText) {
+    return false;
+  }
+
+  const paddedText = ` ${normalizedText} `;
+  const hasSensitivePhrase = SENSITIVE_PHRASES.some((phrase) =>
+    paddedText.includes(` ${phrase} `),
+  );
+
+  if (hasSensitivePhrase) {
+    return true;
+  }
+
+  return normalizedText
+    .split(" ")
+    .some((word) => SENSITIVE_WORDS.has(word));
+};
+
 const stopWishRotation = () => {
   window.clearInterval(wishRotationTimer);
   wishRotationTimer = undefined;
@@ -383,6 +445,10 @@ const getValidatedWish = (formData) => {
 
   if (message.length > MESSAGE_LIMIT) {
     throw new Error(`Lời chúc không vượt quá ${MESSAGE_LIMIT} ký tự.`);
+  }
+
+  if (hasSensitiveContent(name, message)) {
+    throw new Error("Nội dung có từ chưa phù hợp, bạn chỉnh lại giúp tụi mình nha.");
   }
 
   return { name, message };
