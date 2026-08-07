@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 const WISH_LIMIT = 30;
 const NAME_LIMIT = 60;
 const MESSAGE_LIMIT = 500;
+const WISH_ROTATION_MS = 5000;
 const STORY_START_TIME = new Date("2006-09-05T00:00:00+07:00").getTime();
 const SECOND_IN_MS = 1000;
 const MINUTE_IN_MS = 60 * SECOND_IN_MS;
@@ -29,6 +30,8 @@ const weddingSong = document.querySelector("#wedding-song");
 const musicToggle = document.querySelector("#music-toggle");
 let revealObserver;
 let songWasStarted = false;
+let currentWishIndex = 0;
+let wishRotationTimer;
 
 const padTime = (value) => String(value).padStart(2, "0");
 
@@ -197,16 +200,56 @@ const formatWishDate = (dateValue) => {
   return `${day}.${month}.${year}`;
 };
 
+const stopWishRotation = () => {
+  window.clearInterval(wishRotationTimer);
+  wishRotationTimer = undefined;
+};
+
+const setActiveWish = (nextIndex) => {
+  if (!wishesList) {
+    return;
+  }
+
+  const wishCards = Array.from(wishesList.querySelectorAll(".wish-card"));
+  if (!wishCards.length) {
+    currentWishIndex = 0;
+    return;
+  }
+
+  currentWishIndex = (nextIndex + wishCards.length) % wishCards.length;
+
+  wishCards.forEach((card, index) => {
+    const isActive = index === currentWishIndex;
+    card.classList.toggle("is-active", isActive);
+    card.hidden = !isActive;
+  });
+};
+
+const startWishRotation = () => {
+  stopWishRotation();
+
+  const wishCount = wishesList?.querySelectorAll(".wish-card").length ?? 0;
+  if (wishCount <= 1) {
+    return;
+  }
+
+  wishRotationTimer = window.setInterval(() => {
+    setActiveWish(currentWishIndex + 1);
+  }, WISH_ROTATION_MS);
+};
+
 const renderWishes = (wishes) => {
   if (!wishesList) {
     return;
   }
 
+  stopWishRotation();
+  currentWishIndex = 0;
   wishesList.replaceChildren();
 
   if (!wishes.length) {
     const emptyItem = document.createElement("li");
-    emptyItem.className = "wish-card scroll-reveal";
+    emptyItem.className = "wish-card wish-card-empty";
 
     const message = document.createElement("p");
     message.className = "wish-message";
@@ -214,13 +257,13 @@ const renderWishes = (wishes) => {
 
     emptyItem.append(message);
     wishesList.append(emptyItem);
-    observeRevealElement(emptyItem);
+    setActiveWish(0);
     return;
   }
 
   wishes.forEach((wish) => {
     const item = document.createElement("li");
-    item.className = "wish-card scroll-reveal";
+    item.className = "wish-card";
 
     const message = document.createElement("p");
     message.className = "wish-message";
@@ -242,8 +285,10 @@ const renderWishes = (wishes) => {
 
     item.append(message, meta);
     wishesList.append(item);
-    observeRevealElement(item);
   });
+
+  setActiveWish(0);
+  startWishRotation();
 };
 
 const loadWishes = async ({ announce = true } = {}) => {

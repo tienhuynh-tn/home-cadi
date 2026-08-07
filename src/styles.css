@@ -836,50 +836,108 @@ h1 span {
 }
 
 .wishes-list-wrap {
-  margin-top: 28px;
-}
-
-.wishes-list-wrap h3 {
-  margin: 0 0 14px;
-  color: var(--ink);
-  font-size: 0.95rem;
-  letter-spacing: 0;
-  text-align: center;
+  margin-top: 20px;
 }
 
 .wishes-list {
   display: grid;
-  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+.wishes-carousel {
+  display: grid;
+  min-height: 164px;
+  align-items: stretch;
+}
+
 .wish-card {
-  padding: 13px 14px;
-  border-left: 3px solid rgba(198, 0, 0, 0.72);
-  background: rgba(255, 255, 255, 0.58);
+  position: relative;
+  display: grid;
+  min-height: 148px;
+  align-content: center;
+  margin: 10px 10px 0;
+  padding: 28px 22px 20px;
+  border: 1px solid rgba(198, 0, 0, 0.12);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 248, 239, 0.68), rgba(255, 228, 196, 0.42)),
+    rgba(255, 255, 255, 0.24);
+  color: var(--ink);
+  box-shadow: 0 8px 18px rgba(93, 69, 50, 0.08);
+}
+
+.wish-card[hidden] {
+  display: none;
+}
+
+.wish-card.is-active {
+  animation: wish-card-in 420ms ease both;
 }
 
 .wish-card p {
+  position: relative;
+  z-index: 1;
   margin: 0;
 }
 
+.wish-message::before,
+.wish-message::after {
+  position: absolute;
+  color: rgba(198, 0, 0, 0.34);
+  font-family: Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.wish-message::before {
+  top: -20px;
+  left: -10px;
+  content: "“";
+}
+
+.wish-message::after {
+  right: -8px;
+  bottom: -28px;
+  content: "”";
+}
+
 .wish-message {
+  position: relative;
+  z-index: 1;
   color: var(--ink);
-  font-size: 0.92rem;
+  font-size: 0.94rem;
+  font-weight: 800;
   line-height: 1.5;
+  text-align: center;
 }
 
 .wish-meta {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   align-items: center;
+  justify-content: center;
   margin-top: 10px;
-  color: var(--soft-ink);
+  color: rgba(34, 139, 34, 0.82);
   font-size: 0.72rem;
   font-weight: 700;
+}
+
+@keyframes wish-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .music-toggle {
@@ -918,6 +976,10 @@ h1 span {
     opacity: 1;
     translate: 0 0;
     transition: none;
+  }
+
+  .wish-card.is-active {
+    animation: none;
   }
 }
 
