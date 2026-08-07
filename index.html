@@ -58,6 +58,55 @@
             </div>
           </div>
         </article>
+
+        <section class="wishes-section" aria-labelledby="wishes-title">
+          <div class="wishes-heading">
+            <p class="wishes-kicker">LỜI CHÚC</p>
+            <h2 id="wishes-title">Gửi lời chúc đến cô dâu chú rể</h2>
+          </div>
+
+          <form class="wish-form" id="wish-form">
+            <div class="field">
+              <label for="wish-name">Tên của bạn</label>
+              <input
+                id="wish-name"
+                name="name"
+                type="text"
+                maxlength="60"
+                autocomplete="name"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="wish-message">Lời chúc</label>
+              <textarea
+                id="wish-message"
+                name="message"
+                maxlength="500"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+
+            <input
+              class="wish-extra"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+
+            <p class="wish-status" id="wish-status" role="status"></p>
+
+            <button class="wish-submit" type="submit">Gửi lời chúc</button>
+          </form>
+
+          <div class="wishes-list-wrap">
+            <h3>Những lời chúc yêu thương</h3>
+            <ul class="wishes-list" id="wishes-list"></ul>
+          </div>
+        </section>
       </section>
 
       <section class="desktop-warning" aria-label="Thong bao thiet bi">
