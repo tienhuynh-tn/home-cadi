@@ -497,6 +497,7 @@ h1 span {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  visibility: visible;
 }
 
 .signature-icon {
