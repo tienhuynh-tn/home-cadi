@@ -25,8 +25,59 @@ const storyDays = document.querySelector("#story-days");
 const storyHours = document.querySelector("#story-hours");
 const storyMinutes = document.querySelector("#story-minutes");
 const storySeconds = document.querySelector("#story-seconds");
+let revealObserver;
 
 const padTime = (value) => String(value).padStart(2, "0");
+
+const showRevealElement = (element) => {
+  element.classList.add("is-visible");
+};
+
+const observeRevealElement = (element) => {
+  if (!revealObserver) {
+    showRevealElement(element);
+    return;
+  }
+
+  revealObserver.observe(element);
+};
+
+const setupScrollReveal = () => {
+  const revealElements = document.querySelectorAll(".scroll-reveal");
+
+  if (!revealElements.length) {
+    return;
+  }
+
+  document.documentElement.classList.add("reveal-ready");
+
+  if (
+    !("IntersectionObserver" in window) ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    revealElements.forEach(showRevealElement);
+    return;
+  }
+
+  revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        showRevealElement(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -8% 0px",
+      threshold: 0.12,
+    },
+  );
+
+  revealElements.forEach(observeRevealElement);
+};
 
 const updateStoryTimer = () => {
   if (!storyDays || !storyHours || !storyMinutes || !storySeconds) {
@@ -88,7 +139,7 @@ const renderWishes = (wishes) => {
 
   if (!wishes.length) {
     const emptyItem = document.createElement("li");
-    emptyItem.className = "wish-card";
+    emptyItem.className = "wish-card scroll-reveal";
 
     const message = document.createElement("p");
     message.className = "wish-message";
@@ -96,12 +147,13 @@ const renderWishes = (wishes) => {
 
     emptyItem.append(message);
     wishesList.append(emptyItem);
+    observeRevealElement(emptyItem);
     return;
   }
 
   wishes.forEach((wish) => {
     const item = document.createElement("li");
-    item.className = "wish-card";
+    item.className = "wish-card scroll-reveal";
 
     const message = document.createElement("p");
     message.className = "wish-message";
@@ -123,6 +175,7 @@ const renderWishes = (wishes) => {
 
     item.append(message, meta);
     wishesList.append(item);
+    observeRevealElement(item);
   });
 };
 
@@ -222,6 +275,7 @@ wishForm?.addEventListener("submit", async (event) => {
   setStatus("Cảm ơn bạn đã gửi lời chúc!", "success");
 });
 
+setupScrollReveal();
 updateStoryTimer();
 window.setInterval(updateStoryTimer, SECOND_IN_MS);
 loadWishes();
