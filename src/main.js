@@ -25,7 +25,10 @@ const storyDays = document.querySelector("#story-days");
 const storyHours = document.querySelector("#story-hours");
 const storyMinutes = document.querySelector("#story-minutes");
 const storySeconds = document.querySelector("#story-seconds");
+const weddingSong = document.querySelector("#wedding-song");
+const musicToggle = document.querySelector("#music-toggle");
 let revealObserver;
+let songWasStarted = false;
 
 const padTime = (value) => String(value).padStart(2, "0");
 
@@ -94,6 +97,69 @@ const updateStoryTimer = () => {
   storyHours.textContent = padTime(hours);
   storyMinutes.textContent = padTime(minutes);
   storySeconds.textContent = padTime(seconds);
+};
+
+const setMusicToggleState = () => {
+  if (!musicToggle || !weddingSong) {
+    return;
+  }
+
+  const isPlaying = !weddingSong.paused;
+  musicToggle.classList.toggle("is-playing", isPlaying);
+  musicToggle.setAttribute("aria-label", isPlaying ? "Tắt nhạc" : "Bật nhạc");
+  musicToggle.setAttribute("aria-pressed", String(isPlaying));
+};
+
+const playWeddingSong = async () => {
+  if (!weddingSong) {
+    return false;
+  }
+
+  try {
+    await weddingSong.play();
+    songWasStarted = true;
+    setMusicToggleState();
+    return true;
+  } catch {
+    setMusicToggleState();
+    return false;
+  }
+};
+
+const setupWeddingSong = () => {
+  if (!weddingSong || !musicToggle) {
+    return;
+  }
+
+  weddingSong.loop = true;
+  setMusicToggleState();
+  playWeddingSong();
+
+  const startAfterGesture = (event) => {
+    if (event.target instanceof Element && event.target.closest("#music-toggle")) {
+      return;
+    }
+
+    if (!songWasStarted) {
+      playWeddingSong();
+    }
+  };
+
+  window.addEventListener("pointerdown", startAfterGesture, { once: true });
+  window.addEventListener("keydown", startAfterGesture, { once: true });
+
+  musicToggle.addEventListener("click", async () => {
+    if (weddingSong.paused) {
+      await playWeddingSong();
+      return;
+    }
+
+    weddingSong.pause();
+    setMusicToggleState();
+  });
+
+  weddingSong.addEventListener("play", setMusicToggleState);
+  weddingSong.addEventListener("pause", setMusicToggleState);
 };
 
 const setStatus = (message, tone = "") => {
@@ -277,6 +343,7 @@ wishForm?.addEventListener("submit", async (event) => {
 });
 
 setupScrollReveal();
+setupWeddingSong();
 updateStoryTimer();
 window.setInterval(updateStoryTimer, SECOND_IN_MS);
 loadWishes();
