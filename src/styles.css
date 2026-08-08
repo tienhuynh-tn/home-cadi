@@ -406,14 +406,10 @@ h1 span {
   filter: drop-shadow(0 5px 0 rgba(32, 23, 16, 0.86));
 }
 
-.kid-photo-bride {
-  justify-self: end;
-  margin-right: -12px;
-}
-
-.kid-photo-groom {
-  justify-self: start;
-  margin-left: -12px;
+.kid-photo-couple {
+  grid-column: 1 / -1;
+  justify-self: center;
+  filter: none;
 }
 
 .kid-label {
@@ -445,15 +441,15 @@ h1 span {
   filter: drop-shadow(0 2px 3px rgba(255, 255, 255, 0.34));
 }
 
-.bride-label {
-  top: 5px;
-  left: 15%;
+.groom-label {
+  top: 14px;
+  left: 20%;
   transform: rotate(-8deg);
 }
 
-.groom-label {
-  top: 5px;
-  right: 15%;
+.bride-label {
+  top: 23px;
+  right: 12%;
   transform: rotate(7deg);
 }
 
