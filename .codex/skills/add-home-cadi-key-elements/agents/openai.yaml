@@ -1,0 +1,4 @@
+interface:
+  display_name: "Add Home Cadi Key Elements"
+  short_description: "Add restrained signature icons to Home Cadi pages."
+  default_prompt: "Add key elements to this Home Cadi page."
