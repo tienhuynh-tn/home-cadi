@@ -484,6 +484,7 @@ h1 span {
 .story-section > :not(.signature-elements),
 .film-template-section > :not(.signature-elements),
 .family-presence-section > :not(.signature-elements),
+.mountain-section > :not(.signature-elements),
 .wishes-section > :not(.signature-elements) {
   position: relative;
   z-index: 1;
@@ -1181,6 +1182,75 @@ h1 span {
   text-transform: uppercase;
 }
 
+.mountain-section {
+  position: relative;
+  display: grid;
+  gap: clamp(18px, 3.8svh, 26px);
+  margin: 12px -14px 10px;
+  padding: clamp(30px, 5svh, 42px) 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(255, 255, 255, 0.38), transparent 34%),
+    radial-gradient(circle at 82% 88%, rgba(34, 139, 34, 0.09), transparent 32%),
+    linear-gradient(180deg, rgba(255, 245, 232, 0.22), rgba(255, 245, 232, 0.1));
+}
+
+.mountain-copy {
+  max-width: 30ch;
+  margin: 0 auto;
+  color: rgba(32, 23, 16, 0.82);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: clamp(0.86rem, 3.8vw, 1.02rem);
+  font-weight: 900;
+  line-height: 1.42;
+  text-align: center;
+}
+
+.mountain-copy-bottom {
+  color: rgba(93, 69, 50, 0.86);
+}
+
+.mountain-gallery {
+  display: grid;
+  gap: 12px;
+}
+
+.mountain-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 1px solid rgba(93, 69, 50, 0.16);
+  box-shadow: 0 12px 22px rgba(93, 69, 50, 0.1);
+}
+
+.reveal-ready .mountain-section .mountain-copy,
+.reveal-ready .mountain-section .mountain-image {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 620ms ease,
+    transform 620ms ease;
+}
+
+.reveal-ready .mountain-section.is-visible .mountain-copy,
+.reveal-ready .mountain-section.is-visible .mountain-image {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-ready .mountain-section.is-visible .mountain-image:first-child {
+  transition-delay: 80ms;
+}
+
+.reveal-ready .mountain-section.is-visible .mountain-image:last-child {
+  transition-delay: 150ms;
+}
+
+.reveal-ready .mountain-section.is-visible .mountain-copy-bottom {
+  transition-delay: 220ms;
+}
+
 .wishes-section {
   position: relative;
   margin-top: 12px;
@@ -1477,7 +1547,11 @@ h1 span {
   .reveal-ready .family-presence-section .family-presence-title,
   .reveal-ready .family-presence-section.is-visible .family-group,
   .reveal-ready .family-presence-section.is-visible .family-presence-groups,
-  .reveal-ready .family-presence-section.is-visible .family-presence-title {
+  .reveal-ready .family-presence-section.is-visible .family-presence-title,
+  .reveal-ready .mountain-section .mountain-copy,
+  .reveal-ready .mountain-section .mountain-image,
+  .reveal-ready .mountain-section.is-visible .mountain-copy,
+  .reveal-ready .mountain-section.is-visible .mountain-image {
     opacity: 1;
     transition: none;
   }
@@ -1487,7 +1561,11 @@ h1 span {
   .reveal-ready .family-presence-section .family-presence-title,
   .reveal-ready .family-presence-section.is-visible .family-group,
   .reveal-ready .family-presence-section.is-visible .family-presence-groups,
-  .reveal-ready .family-presence-section.is-visible .family-presence-title {
+  .reveal-ready .family-presence-section.is-visible .family-presence-title,
+  .reveal-ready .mountain-section .mountain-copy,
+  .reveal-ready .mountain-section .mountain-image,
+  .reveal-ready .mountain-section.is-visible .mountain-copy,
+  .reveal-ready .mountain-section.is-visible .mountain-image {
     transform: translateY(0);
   }
 
