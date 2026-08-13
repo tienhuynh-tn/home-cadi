@@ -483,6 +483,7 @@ h1 span {
 .story-intro > :not(.signature-elements),
 .story-section > :not(.signature-elements),
 .film-template-section > :not(.signature-elements),
+.family-presence-section > :not(.signature-elements),
 .wishes-section > :not(.signature-elements) {
   position: relative;
   z-index: 1;
@@ -904,6 +905,197 @@ h1 span {
   letter-spacing: 0.06em;
 }
 
+.family-presence-section {
+  position: relative;
+  display: grid;
+  min-height: min(58svh, 500px);
+  margin: 8px -14px 10px;
+  padding: clamp(22px, 4svh, 34px) 20px clamp(22px, 4svh, 34px);
+  overflow: hidden;
+  background: transparent;
+  isolation: isolate;
+}
+
+.family-presence-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 26% 16%, rgba(34, 139, 34, 0.1), transparent 28%),
+    radial-gradient(circle at 76% 82%, rgba(198, 0, 0, 0.08), transparent 30%),
+    repeating-linear-gradient(
+      -6deg,
+      rgba(93, 69, 50, 0.032) 0,
+      rgba(93, 69, 50, 0.032) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  content: "";
+  opacity: 0.52;
+  pointer-events: none;
+}
+
+.signature-elements-family-presence {
+  z-index: 0;
+}
+
+.family-key-icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.48;
+}
+
+.family-key-icon-book {
+  top: 34px;
+  left: 18px;
+  transform: rotate(-10deg);
+}
+
+.family-key-icon-pencil {
+  top: 50%;
+  right: -16px;
+  transform: rotate(14deg);
+}
+
+.family-key-icon-camera {
+  right: 22px;
+  bottom: 36px;
+  transform: rotate(-8deg);
+}
+
+.family-presence-copy {
+  display: grid;
+  min-height: 100%;
+  align-content: center;
+  gap: clamp(20px, 3.6svh, 28px);
+  text-align: center;
+}
+
+.family-presence-title {
+  margin: 0;
+  color: var(--green);
+  font-size: clamp(0.66rem, 2.8vw, 0.78rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.family-presence-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 4vw, 20px);
+  align-items: start;
+}
+
+.family-group {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  gap: clamp(12px, 2.2svh, 15px);
+}
+
+.family-group h2 {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.family-group h2 span:first-child {
+  color: rgba(32, 23, 16, 0.76);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: clamp(0.76rem, 3.35vw, 0.96rem);
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.family-group h2 span:last-child {
+  color: var(--red);
+  font-family: "1FTV VIP Scartoon", Georgia, serif;
+  font-size: clamp(1.46rem, 6.6vw, 1.92rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.family-list {
+  display: grid;
+  gap: clamp(11px, 2.1svh, 14px);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.family-row {
+  display: grid;
+  gap: 5px;
+  justify-items: center;
+  min-width: 0;
+}
+
+.family-row dt {
+  color: rgba(34, 139, 34, 0.86);
+  font-size: clamp(0.58rem, 2.45vw, 0.7rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.family-group-groom .family-row dt {
+  justify-self: start;
+  text-align: left;
+}
+
+.family-group-groom .family-row dd {
+  justify-self: start;
+  text-align: left;
+}
+
+.family-group-bride .family-row dt {
+  justify-self: end;
+  text-align: right;
+}
+
+.family-group-bride .family-row dd {
+  justify-self: end;
+  text-align: right;
+}
+
+.family-row dd {
+  max-width: 100%;
+  margin: 0;
+  color: var(--ink);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: clamp(0.72rem, 3.55vw, 1rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.reveal-ready .family-presence-section .family-group,
+.reveal-ready .family-presence-section .family-presence-groups,
+.reveal-ready .family-presence-section .family-presence-title {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 620ms ease,
+    transform 620ms ease;
+}
+
+.reveal-ready .family-presence-section.is-visible .family-group,
+.reveal-ready .family-presence-section.is-visible .family-presence-groups,
+.reveal-ready .family-presence-section.is-visible .family-presence-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-ready .family-presence-section.is-visible .family-presence-groups {
+  transition-delay: 80ms;
+}
+
+.reveal-ready .family-presence-section.is-visible .family-group-bride {
+  transition-delay: 150ms;
+}
+
 @media (max-width: 360px) {
   .film-template-copy {
     padding-left: 126px;
@@ -925,6 +1117,29 @@ h1 span {
   .film-template-details span:nth-child(2) {
     font-size: clamp(0.62rem, 2.45vw, 0.76rem);
     letter-spacing: 0.04em;
+  }
+
+  .family-presence-section {
+    min-height: min(60svh, 460px);
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .family-presence-copy {
+    align-content: center;
+    gap: 18px;
+  }
+
+  .family-presence-groups {
+    gap: 12px;
+  }
+
+  .family-list {
+    gap: 11px;
+  }
+
+  .family-row dd {
+    font-size: clamp(0.66rem, 3.35vw, 0.84rem);
   }
 }
 
@@ -1256,9 +1471,24 @@ h1 span {
   .reveal-ready .film-template-section .film-strip,
   .reveal-ready .film-template-section .film-template-copy > *,
   .reveal-ready .film-template-section.is-visible .film-strip,
-  .reveal-ready .film-template-section.is-visible .film-template-copy > * {
+  .reveal-ready .film-template-section.is-visible .film-template-copy > *,
+  .reveal-ready .family-presence-section .family-group,
+  .reveal-ready .family-presence-section .family-presence-groups,
+  .reveal-ready .family-presence-section .family-presence-title,
+  .reveal-ready .family-presence-section.is-visible .family-group,
+  .reveal-ready .family-presence-section.is-visible .family-presence-groups,
+  .reveal-ready .family-presence-section.is-visible .family-presence-title {
     opacity: 1;
     transition: none;
+  }
+
+  .reveal-ready .family-presence-section .family-group,
+  .reveal-ready .family-presence-section .family-presence-groups,
+  .reveal-ready .family-presence-section .family-presence-title,
+  .reveal-ready .family-presence-section.is-visible .family-group,
+  .reveal-ready .family-presence-section.is-visible .family-presence-groups,
+  .reveal-ready .family-presence-section.is-visible .family-presence-title {
+    transform: translateY(0);
   }
 
   .reveal-ready .film-template-section .film-strip,
