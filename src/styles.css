@@ -1246,15 +1246,15 @@ h1 span {
 
 .love-timer {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 5px;
   margin-top: 20px;
 }
 
 .timer-item {
   display: grid;
   min-width: 0;
-  min-height: 70px;
+  min-height: 62px;
   align-content: center;
   justify-items: center;
   border-top: 1px solid rgba(198, 0, 0, 0.32);
@@ -1266,7 +1266,7 @@ h1 span {
   max-width: 100%;
   color: var(--red);
   font-family: "1FTV VIP Scartoon", Georgia, serif;
-  font-size: clamp(1.05rem, 5.2vw, 1.55rem);
+  font-size: clamp(0.86rem, 4.1vw, 1.26rem);
   font-weight: 900;
   line-height: 1;
   letter-spacing: 0;
@@ -1276,7 +1276,7 @@ h1 span {
 .timer-label {
   margin-top: 6px;
   color: var(--soft-ink);
-  font-size: clamp(0.62rem, 2.8vw, 0.72rem);
+  font-size: clamp(0.54rem, 2.35vw, 0.66rem);
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;

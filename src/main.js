@@ -38,7 +38,7 @@ const SENSITIVE_PHRASES = [
   "mat day",
   "oc cho",
 ];
-const STORY_START_TIME = new Date("2006-09-05T00:00:00+07:00").getTime();
+const STORY_START_DATE = new Date("2006-09-05T00:00:00+07:00");
 const SECOND_IN_MS = 1000;
 const MINUTE_IN_MS = 60 * SECOND_IN_MS;
 const HOUR_IN_MS = 60 * MINUTE_IN_MS;
@@ -55,6 +55,8 @@ const wishForm = document.querySelector("#wish-form");
 const wishesList = document.querySelector("#wishes-list");
 const wishStatus = document.querySelector("#wish-status");
 const wishSubmit = document.querySelector(".wish-submit");
+const storyYears = document.querySelector("#story-years");
+const storyMonths = document.querySelector("#story-months");
 const storyDays = document.querySelector("#story-days");
 const storyHours = document.querySelector("#story-hours");
 const storyMinutes = document.querySelector("#story-minutes");
@@ -120,16 +122,43 @@ const setupScrollReveal = () => {
 };
 
 const updateStoryTimer = () => {
-  if (!storyDays || !storyHours || !storyMinutes || !storySeconds) {
+  if (!storyYears || !storyMonths || !storyDays || !storyHours || !storyMinutes || !storySeconds) {
     return;
   }
 
-  const elapsed = Math.max(0, Date.now() - STORY_START_TIME);
+  const now = new Date();
+  const anniversary = new Date(STORY_START_DATE);
+  let years = now.getFullYear() - STORY_START_DATE.getFullYear();
+
+  anniversary.setFullYear(STORY_START_DATE.getFullYear() + years);
+
+  if (anniversary > now) {
+    years -= 1;
+    anniversary.setFullYear(STORY_START_DATE.getFullYear() + years);
+  }
+
+  let months = now.getMonth() - anniversary.getMonth();
+  const monthMarker = new Date(anniversary);
+
+  if (months < 0) {
+    months += 12;
+  }
+
+  monthMarker.setMonth(anniversary.getMonth() + months);
+
+  if (monthMarker > now) {
+    months -= 1;
+    monthMarker.setMonth(monthMarker.getMonth() - 1);
+  }
+
+  const elapsed = Math.max(0, now.getTime() - monthMarker.getTime());
   const days = Math.floor(elapsed / DAY_IN_MS);
   const hours = Math.floor((elapsed % DAY_IN_MS) / HOUR_IN_MS);
   const minutes = Math.floor((elapsed % HOUR_IN_MS) / MINUTE_IN_MS);
   const seconds = Math.floor((elapsed % MINUTE_IN_MS) / SECOND_IN_MS);
 
+  storyYears.textContent = String(years);
+  storyMonths.textContent = String(months);
   storyDays.textContent = String(days);
   storyHours.textContent = padTime(hours);
   storyMinutes.textContent = padTime(minutes);
