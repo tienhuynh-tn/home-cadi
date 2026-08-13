@@ -485,6 +485,7 @@ h1 span {
 .film-template-section > :not(.signature-elements),
 .family-presence-section > :not(.signature-elements),
 .mountain-section > :not(.signature-elements),
+.rsvp-section > :not(.signature-elements),
 .wishes-section > :not(.signature-elements) {
   position: relative;
   z-index: 1;
@@ -1251,6 +1252,97 @@ h1 span {
   transition-delay: 220ms;
 }
 
+.rsvp-section {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  margin: 12px -14px 10px;
+  padding: clamp(30px, 5svh, 42px) 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 84% 16%, rgba(255, 255, 255, 0.42), transparent 34%),
+    radial-gradient(circle at 14% 88%, rgba(198, 0, 0, 0.07), transparent 30%),
+    linear-gradient(180deg, rgba(255, 245, 232, 0.14), rgba(255, 245, 232, 0.32));
+}
+
+.rsvp-copy {
+  display: grid;
+  gap: 14px;
+  max-width: 32ch;
+  margin: 0 auto;
+  color: rgba(32, 23, 16, 0.84);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: clamp(0.84rem, 3.6vw, 0.98rem);
+  font-weight: 900;
+  line-height: 1.44;
+  text-align: center;
+}
+
+.rsvp-copy h2 {
+  margin: 0;
+  color: var(--red);
+  font-family: "1FTV VIP Scartoon", Georgia, serif;
+  font-size: clamp(1.6rem, 7.4vw, 2.1rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.rsvp-copy p {
+  margin: 0;
+}
+
+.rsvp-copy .rsvp-confirmation-note {
+  font-size: clamp(0.72rem, 3.05vw, 0.84rem);
+}
+
+.rsvp-confirmation-note span {
+  display: block;
+  white-space: nowrap;
+}
+
+.rsvp-events {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  color: rgba(93, 69, 50, 0.9);
+  list-style: none;
+}
+
+.rsvp-form-wrap {
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid rgba(93, 69, 50, 0.16);
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: 0 12px 22px rgba(93, 69, 50, 0.1);
+}
+
+.rsvp-form-frame {
+  display: block;
+  width: 100%;
+  height: min(68svh, 520px);
+  border: 0;
+}
+
+.reveal-ready .rsvp-section .rsvp-copy,
+.reveal-ready .rsvp-section .rsvp-form-wrap {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 620ms ease,
+    transform 620ms ease;
+}
+
+.reveal-ready .rsvp-section.is-visible .rsvp-copy,
+.reveal-ready .rsvp-section.is-visible .rsvp-form-wrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-ready .rsvp-section.is-visible .rsvp-form-wrap {
+  transition-delay: 120ms;
+}
+
 .wishes-section {
   position: relative;
   margin-top: 12px;
@@ -1551,7 +1643,11 @@ h1 span {
   .reveal-ready .mountain-section .mountain-copy,
   .reveal-ready .mountain-section .mountain-image,
   .reveal-ready .mountain-section.is-visible .mountain-copy,
-  .reveal-ready .mountain-section.is-visible .mountain-image {
+  .reveal-ready .mountain-section.is-visible .mountain-image,
+  .reveal-ready .rsvp-section .rsvp-copy,
+  .reveal-ready .rsvp-section .rsvp-form-wrap,
+  .reveal-ready .rsvp-section.is-visible .rsvp-copy,
+  .reveal-ready .rsvp-section.is-visible .rsvp-form-wrap {
     opacity: 1;
     transition: none;
   }
@@ -1565,7 +1661,11 @@ h1 span {
   .reveal-ready .mountain-section .mountain-copy,
   .reveal-ready .mountain-section .mountain-image,
   .reveal-ready .mountain-section.is-visible .mountain-copy,
-  .reveal-ready .mountain-section.is-visible .mountain-image {
+  .reveal-ready .mountain-section.is-visible .mountain-image,
+  .reveal-ready .rsvp-section .rsvp-copy,
+  .reveal-ready .rsvp-section .rsvp-form-wrap,
+  .reveal-ready .rsvp-section.is-visible .rsvp-copy,
+  .reveal-ready .rsvp-section.is-visible .rsvp-form-wrap {
     transform: translateY(0);
   }
 
