@@ -1,0 +1,4 @@
+interface:
+  display_name: "Home Cadi Maintenance"
+  short_description: "Maintain the Home Cadi wedding site"
+  default_prompt: "Use $maintain-home-cadi to update the Home Cadi wedding website safely."
