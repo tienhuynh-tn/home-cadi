@@ -1511,16 +1511,27 @@ h1 span {
   display: grid;
   min-height: 100%;
   align-content: center;
-  gap: clamp(20px, 3.6svh, 28px);
+  gap: clamp(12px, 2.4svh, 18px);
   text-align: center;
+}
+
+.family-presence-intro,
+.family-presence-title {
+  color: var(--green);
+  font-size: clamp(0.58rem, 2.55vw, 0.78rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.family-presence-intro {
+  max-width: 100%;
+  margin: 0 auto -2px;
 }
 
 .family-presence-title {
   margin: 0;
-  color: var(--green);
-  font-size: clamp(0.66rem, 2.8vw, 0.78rem);
-  font-weight: 800;
-  letter-spacing: 0.14em;
 }
 
 .family-presence-groups {
