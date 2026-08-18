@@ -1626,9 +1626,121 @@ h1 span {
   white-space: nowrap;
 }
 
+.vu-quy-timeline-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(82px, 25vw, 102px);
+  align-items: stretch;
+  width: calc(100% + 16px);
+  margin-top: clamp(2px, 1svh, 8px);
+  margin-right: -8px;
+  margin-left: -8px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(255, 253, 248, 0.9), rgba(255, 253, 248, 0.68)),
+    repeating-linear-gradient(0deg, rgba(93, 69, 50, 0.035) 0 1px, transparent 1px 13px);
+  border: 1px solid rgba(93, 69, 50, 0.12);
+  box-shadow: 0 12px 24px rgba(32, 23, 16, 0.1);
+}
+
+.vu-quy-timeline {
+  position: relative;
+  min-width: 0;
+  padding: clamp(16px, 3.8vw, 20px) clamp(8px, 2.2vw, 12px) clamp(16px, 3.8vw, 20px) clamp(16px, 4.2vw, 20px);
+  text-align: left;
+}
+
+.vu-quy-timeline::before {
+  position: absolute;
+  top: clamp(16px, 4vw, 20px);
+  left: 0;
+  width: 3px;
+  height: 38px;
+  background: linear-gradient(180deg, var(--red), rgba(34, 139, 34, 0.78));
+  content: "";
+}
+
+.vu-quy-timeline-title {
+  margin: 0 0 12px;
+  color: var(--red);
+  font-family: "1FTV VIP Scartoon", Georgia, serif;
+  font-size: clamp(1.08rem, 5vw, 1.42rem);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.vu-quy-timeline-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vu-quy-timeline-list li {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 7px 0;
+  border-top: 1px solid rgba(93, 69, 50, 0.1);
+}
+
+.vu-quy-timeline-list li:first-child {
+  border-top: 0;
+}
+
+.vu-quy-timeline-list span {
+  color: rgba(32, 23, 16, 0.82);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: clamp(0.7rem, 2.95vw, 0.86rem);
+  font-weight: 900;
+  line-height: 1.18;
+  white-space: nowrap;
+}
+
+.vu-quy-timeline-list time {
+  color: var(--red);
+  font-size: clamp(0.7rem, 2.95vw, 0.86rem);
+  font-weight: 900;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.vu-quy-bride-photo {
+  position: relative;
+  align-self: stretch;
+  min-height: 100%;
+  margin: 0 -16px 0 0;
+  overflow: hidden;
+  border-left: 1px solid rgba(93, 69, 50, 0.16);
+}
+
+.vu-quy-bride-photo::before {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  z-index: 1;
+  width: 46px;
+  height: 14px;
+  background: rgba(213, 199, 171, 0.62);
+  content: "";
+  transform: translateX(-50%) rotate(2deg);
+}
+
+.vu-quy-bride-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 34%;
+}
+
 .reveal-ready .family-presence-section .family-group,
 .reveal-ready .family-presence-section .family-presence-groups,
-.reveal-ready .family-presence-section .family-presence-title {
+.reveal-ready .family-presence-section .family-presence-title,
+.reveal-ready .family-presence-section .vu-quy-bride-photo,
+.reveal-ready .family-presence-section .vu-quy-timeline-wrap {
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -1638,7 +1750,9 @@ h1 span {
 
 .reveal-ready .family-presence-section.is-visible .family-group,
 .reveal-ready .family-presence-section.is-visible .family-presence-groups,
-.reveal-ready .family-presence-section.is-visible .family-presence-title {
+.reveal-ready .family-presence-section.is-visible .family-presence-title,
+.reveal-ready .family-presence-section.is-visible .vu-quy-bride-photo,
+.reveal-ready .family-presence-section.is-visible .vu-quy-timeline-wrap {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1649,6 +1763,14 @@ h1 span {
 
 .reveal-ready .family-presence-section.is-visible .family-group-bride {
   transition-delay: 150ms;
+}
+
+.reveal-ready .family-presence-section.is-visible .vu-quy-timeline-wrap {
+  transition-delay: 220ms;
+}
+
+.reveal-ready .family-presence-section.is-visible .vu-quy-bride-photo {
+  transition-delay: 280ms;
 }
 
 @media (max-width: 360px) {
@@ -1715,6 +1837,31 @@ h1 span {
 
   .family-row dd {
     font-size: clamp(0.66rem, 3.35vw, 0.84rem);
+  }
+
+  .vu-quy-timeline-wrap {
+    grid-template-columns: minmax(0, 1fr) 72px;
+    width: calc(100% + 20px);
+    margin-right: -10px;
+    margin-left: -10px;
+  }
+
+  .vu-quy-timeline {
+    padding-right: 6px;
+    padding-left: 14px;
+  }
+
+  .vu-quy-timeline-title {
+    font-size: clamp(0.96rem, 4.5vw, 1.12rem);
+  }
+
+  .vu-quy-timeline-list li {
+    padding: 5px 0;
+  }
+
+  .vu-quy-timeline-list time,
+  .vu-quy-timeline-list span {
+    font-size: clamp(0.62rem, 2.78vw, 0.72rem);
   }
 }
 
@@ -2373,9 +2520,13 @@ h1 span {
   .reveal-ready .family-presence-section .family-group,
   .reveal-ready .family-presence-section .family-presence-groups,
   .reveal-ready .family-presence-section .family-presence-title,
+  .reveal-ready .family-presence-section .vu-quy-bride-photo,
+  .reveal-ready .family-presence-section .vu-quy-timeline-wrap,
   .reveal-ready .family-presence-section.is-visible .family-group,
   .reveal-ready .family-presence-section.is-visible .family-presence-groups,
   .reveal-ready .family-presence-section.is-visible .family-presence-title,
+  .reveal-ready .family-presence-section.is-visible .vu-quy-bride-photo,
+  .reveal-ready .family-presence-section.is-visible .vu-quy-timeline-wrap,
   .reveal-ready .mountain-section .mountain-note,
   .reveal-ready .mountain-section .mountain-photo,
   .reveal-ready .mountain-section .mountain-copy,
@@ -2395,9 +2546,13 @@ h1 span {
   .reveal-ready .family-presence-section .family-group,
   .reveal-ready .family-presence-section .family-presence-groups,
   .reveal-ready .family-presence-section .family-presence-title,
+  .reveal-ready .family-presence-section .vu-quy-bride-photo,
+  .reveal-ready .family-presence-section .vu-quy-timeline-wrap,
   .reveal-ready .family-presence-section.is-visible .family-group,
   .reveal-ready .family-presence-section.is-visible .family-presence-groups,
   .reveal-ready .family-presence-section.is-visible .family-presence-title,
+  .reveal-ready .family-presence-section.is-visible .vu-quy-bride-photo,
+  .reveal-ready .family-presence-section.is-visible .vu-quy-timeline-wrap,
   .reveal-ready .primary-school-section .primary-school-story,
   .reveal-ready .primary-school-section.is-visible .primary-school-story,
   .reveal-ready .secondary-school-section .secondary-school-story,
