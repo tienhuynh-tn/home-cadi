@@ -1758,6 +1758,40 @@ h1 span {
     linear-gradient(180deg, rgba(250, 249, 245, 0.9), rgba(255, 245, 232, 0.32));
 }
 
+.signature-elements-mountain {
+  z-index: 0;
+}
+
+.mountain-key-icon {
+  width: 26px;
+  height: 26px;
+  opacity: 0.48;
+}
+
+.mountain-key-icon-book {
+  top: 38%;
+  right: 4px;
+  transform: rotate(10deg);
+}
+
+.mountain-key-icon-pencil {
+  bottom: 3%;
+  left: 16px;
+  transform: rotate(-18deg);
+}
+
+.mountain-key-icon-camera {
+  top: 44%;
+  left: 4px;
+  transform: rotate(-8deg);
+}
+
+.mountain-key-icon-cola {
+  right: 16px;
+  bottom: 3%;
+  transform: rotate(12deg);
+}
+
 .mountain-collage {
   position: relative;
   display: grid;
