@@ -1507,6 +1507,18 @@ h1 span {
   transform: rotate(-8deg);
 }
 
+.family-key-icon-film {
+  bottom: 32%;
+  left: -14px;
+  transform: rotate(-12deg);
+}
+
+.family-key-icon-cola {
+  top: 24%;
+  right: 14px;
+  transform: rotate(12deg);
+}
+
 .family-presence-copy {
   display: grid;
   min-height: 100%;
@@ -1626,10 +1638,10 @@ h1 span {
   white-space: nowrap;
 }
 
-.vu-quy-timeline-wrap {
+.wedding-timeline-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(82px, 25vw, 102px);
+  grid-template-columns: minmax(0, 1fr) clamp(92px, 28vw, 112px);
   align-items: stretch;
   width: calc(100% + 16px);
   margin-top: clamp(2px, 1svh, 8px);
@@ -1643,14 +1655,22 @@ h1 span {
   box-shadow: 0 12px 24px rgba(32, 23, 16, 0.1);
 }
 
-.vu-quy-timeline {
+.wedding-timeline-card-groom {
+  grid-template-columns: clamp(92px, 28vw, 112px) minmax(0, 1fr);
+}
+
+.wedding-timeline-card + .wedding-timeline-card {
+  margin-top: calc(-1 * clamp(12px, 2.4svh, 18px));
+}
+
+.wedding-timeline-copy {
   position: relative;
   min-width: 0;
   padding: clamp(16px, 3.8vw, 20px) clamp(8px, 2.2vw, 12px) clamp(16px, 3.8vw, 20px) clamp(16px, 4.2vw, 20px);
   text-align: left;
 }
 
-.vu-quy-timeline::before {
+.wedding-timeline-copy::before {
   position: absolute;
   top: clamp(16px, 4vw, 20px);
   left: 0;
@@ -1660,7 +1680,7 @@ h1 span {
   content: "";
 }
 
-.vu-quy-timeline-title {
+.wedding-timeline-title {
   margin: 0 0 12px;
   color: var(--red);
   font-family: "1FTV VIP Scartoon", Georgia, serif;
@@ -1669,7 +1689,7 @@ h1 span {
   line-height: 1.05;
 }
 
-.vu-quy-timeline-list {
+.wedding-timeline-list {
   display: grid;
   gap: 0;
   margin: 0;
@@ -1677,20 +1697,15 @@ h1 span {
   list-style: none;
 }
 
-.vu-quy-timeline-list li {
+.wedding-timeline-list li {
   position: relative;
   display: grid;
   gap: 2px;
   min-width: 0;
-  padding: 7px 0;
-  border-top: 1px solid rgba(93, 69, 50, 0.1);
+  padding: 7px 0 7px 12px;
 }
 
-.vu-quy-timeline-list li:first-child {
-  border-top: 0;
-}
-
-.vu-quy-timeline-list span {
+.wedding-timeline-list span {
   color: rgba(32, 23, 16, 0.82);
   font-family: "1FTV VIP Palisade", Georgia, serif;
   font-size: clamp(0.7rem, 2.95vw, 0.86rem);
@@ -1699,7 +1714,8 @@ h1 span {
   white-space: nowrap;
 }
 
-.vu-quy-timeline-list time {
+.wedding-timeline-list time {
+  position: relative;
   color: var(--red);
   font-size: clamp(0.7rem, 2.95vw, 0.86rem);
   font-weight: 900;
@@ -1707,7 +1723,18 @@ h1 span {
   white-space: nowrap;
 }
 
-.vu-quy-bride-photo {
+.wedding-timeline-list time::before {
+  position: absolute;
+  top: 0.4em;
+  left: -12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--green);
+  content: "";
+}
+
+.wedding-timeline-photo {
   position: relative;
   align-self: stretch;
   min-height: 100%;
@@ -1716,7 +1743,13 @@ h1 span {
   border-left: 1px solid rgba(93, 69, 50, 0.16);
 }
 
-.vu-quy-bride-photo::before {
+.wedding-timeline-card-groom .wedding-timeline-photo {
+  margin: 0 0 0 -16px;
+  border-right: 1px solid rgba(93, 69, 50, 0.16);
+  border-left: 0;
+}
+
+.wedding-timeline-photo::before {
   position: absolute;
   top: 10px;
   left: 50%;
@@ -1728,7 +1761,7 @@ h1 span {
   transform: translateX(-50%) rotate(2deg);
 }
 
-.vu-quy-bride-photo img {
+.wedding-timeline-photo img {
   display: block;
   width: 100%;
   height: 100%;
@@ -1736,11 +1769,15 @@ h1 span {
   object-position: 50% 34%;
 }
 
+.wedding-timeline-card-groom .wedding-timeline-photo img {
+  object-position: 52% 28%;
+}
+
 .reveal-ready .family-presence-section .family-group,
 .reveal-ready .family-presence-section .family-presence-groups,
 .reveal-ready .family-presence-section .family-presence-title,
-.reveal-ready .family-presence-section .vu-quy-bride-photo,
-.reveal-ready .family-presence-section .vu-quy-timeline-wrap {
+.reveal-ready .family-presence-section .wedding-timeline-card,
+.reveal-ready .family-presence-section .wedding-timeline-photo {
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -1751,8 +1788,8 @@ h1 span {
 .reveal-ready .family-presence-section.is-visible .family-group,
 .reveal-ready .family-presence-section.is-visible .family-presence-groups,
 .reveal-ready .family-presence-section.is-visible .family-presence-title,
-.reveal-ready .family-presence-section.is-visible .vu-quy-bride-photo,
-.reveal-ready .family-presence-section.is-visible .vu-quy-timeline-wrap {
+.reveal-ready .family-presence-section.is-visible .wedding-timeline-card,
+.reveal-ready .family-presence-section.is-visible .wedding-timeline-photo {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1765,11 +1802,11 @@ h1 span {
   transition-delay: 150ms;
 }
 
-.reveal-ready .family-presence-section.is-visible .vu-quy-timeline-wrap {
+.reveal-ready .family-presence-section.is-visible .wedding-timeline-card {
   transition-delay: 220ms;
 }
 
-.reveal-ready .family-presence-section.is-visible .vu-quy-bride-photo {
+.reveal-ready .family-presence-section.is-visible .wedding-timeline-photo {
   transition-delay: 280ms;
 }
 
@@ -1839,28 +1876,32 @@ h1 span {
     font-size: clamp(0.66rem, 3.35vw, 0.84rem);
   }
 
-  .vu-quy-timeline-wrap {
-    grid-template-columns: minmax(0, 1fr) 72px;
+  .wedding-timeline-card {
+    grid-template-columns: minmax(0, 1fr) 80px;
     width: calc(100% + 20px);
     margin-right: -10px;
     margin-left: -10px;
   }
 
-  .vu-quy-timeline {
+  .wedding-timeline-card-groom {
+    grid-template-columns: 80px minmax(0, 1fr);
+  }
+
+  .wedding-timeline-copy {
     padding-right: 6px;
     padding-left: 14px;
   }
 
-  .vu-quy-timeline-title {
+  .wedding-timeline-title {
     font-size: clamp(0.96rem, 4.5vw, 1.12rem);
   }
 
-  .vu-quy-timeline-list li {
-    padding: 5px 0;
+  .wedding-timeline-list li {
+    padding: 5px 0 5px 10px;
   }
 
-  .vu-quy-timeline-list time,
-  .vu-quy-timeline-list span {
+  .wedding-timeline-list time,
+  .wedding-timeline-list span {
     font-size: clamp(0.62rem, 2.78vw, 0.72rem);
   }
 }
@@ -2520,13 +2561,13 @@ h1 span {
   .reveal-ready .family-presence-section .family-group,
   .reveal-ready .family-presence-section .family-presence-groups,
   .reveal-ready .family-presence-section .family-presence-title,
-  .reveal-ready .family-presence-section .vu-quy-bride-photo,
-  .reveal-ready .family-presence-section .vu-quy-timeline-wrap,
+  .reveal-ready .family-presence-section .wedding-timeline-card,
+  .reveal-ready .family-presence-section .wedding-timeline-photo,
   .reveal-ready .family-presence-section.is-visible .family-group,
   .reveal-ready .family-presence-section.is-visible .family-presence-groups,
   .reveal-ready .family-presence-section.is-visible .family-presence-title,
-  .reveal-ready .family-presence-section.is-visible .vu-quy-bride-photo,
-  .reveal-ready .family-presence-section.is-visible .vu-quy-timeline-wrap,
+  .reveal-ready .family-presence-section.is-visible .wedding-timeline-card,
+  .reveal-ready .family-presence-section.is-visible .wedding-timeline-photo,
   .reveal-ready .mountain-section .mountain-note,
   .reveal-ready .mountain-section .mountain-photo,
   .reveal-ready .mountain-section .mountain-copy,
@@ -2546,13 +2587,13 @@ h1 span {
   .reveal-ready .family-presence-section .family-group,
   .reveal-ready .family-presence-section .family-presence-groups,
   .reveal-ready .family-presence-section .family-presence-title,
-  .reveal-ready .family-presence-section .vu-quy-bride-photo,
-  .reveal-ready .family-presence-section .vu-quy-timeline-wrap,
+  .reveal-ready .family-presence-section .wedding-timeline-card,
+  .reveal-ready .family-presence-section .wedding-timeline-photo,
   .reveal-ready .family-presence-section.is-visible .family-group,
   .reveal-ready .family-presence-section.is-visible .family-presence-groups,
   .reveal-ready .family-presence-section.is-visible .family-presence-title,
-  .reveal-ready .family-presence-section.is-visible .vu-quy-bride-photo,
-  .reveal-ready .family-presence-section.is-visible .vu-quy-timeline-wrap,
+  .reveal-ready .family-presence-section.is-visible .wedding-timeline-card,
+  .reveal-ready .family-presence-section.is-visible .wedding-timeline-photo,
   .reveal-ready .primary-school-section .primary-school-story,
   .reveal-ready .primary-school-section.is-visible .primary-school-story,
   .reveal-ready .secondary-school-section .secondary-school-story,
