@@ -473,16 +473,29 @@ h1 span {
 .story-section {
   position: relative;
   margin-top: 12px;
-  padding: 30px 18px 28px;
+  padding: 20px 18px 16px;
   background:
-    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.42), transparent 34%),
-    linear-gradient(180deg, rgba(255, 245, 232, 0.32), rgba(255, 245, 232, 0.08));
-  overflow: hidden;
+    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.36), transparent 34%),
+    linear-gradient(180deg, rgba(255, 245, 232, 0.32), rgba(255, 248, 239, 0.18));
+  overflow: visible;
+}
+
+.story-section::after,
+.primary-school-section::after {
+  position: absolute;
+  left: 50%;
+  bottom: -18px;
+  z-index: 2;
+  width: 1px;
+  height: 42px;
+  border-left: 1px dashed rgba(198, 0, 0, 0.28);
+  content: "";
 }
 
 .story-intro > :not(.signature-elements),
 .story-section > :not(.signature-elements),
 .primary-school-section > :not(.signature-elements),
+.secondary-school-section > :not(.signature-elements),
 .film-template-section > :not(.signature-elements),
 .appreciation-section > :not(.signature-elements),
 .family-presence-section > :not(.signature-elements),
@@ -601,11 +614,12 @@ h1 span {
 }
 
 .story-heading {
+  position: relative;
   text-align: center;
 }
 
 .story-kicker {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   color: var(--green);
   font-size: 0.68rem;
   font-weight: 800;
@@ -616,7 +630,7 @@ h1 span {
   margin: 0;
   color: var(--red);
   font-family: "1FTV VIP Scartoon", Georgia, serif;
-  font-size: clamp(1.58rem, 7.2vw, 2.08rem);
+  font-size: clamp(1.5rem, 6.6vw, 1.92rem);
   line-height: 1.05;
   letter-spacing: 0;
 }
@@ -624,16 +638,16 @@ h1 span {
 .comic-panel {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 7px;
   justify-items: center;
-  margin-top: 22px;
+  margin-top: 14px;
 }
 
 .speech-bubble {
   position: relative;
   width: min(100%, 28ch);
   margin: 0;
-  padding: 12px 14px;
+  padding: 9px 12px;
   border: 1px solid rgba(93, 69, 50, 0.26);
   background: rgba(255, 255, 255, 0.72);
   color: var(--ink);
@@ -683,38 +697,39 @@ h1 span {
 }
 
 .chibi-couple {
-  width: min(88%, 280px);
+  width: min(74%, 216px);
   height: auto;
   object-fit: contain;
 }
 
 .story-bridge {
-  width: min(100%, 30ch);
-  margin: 20px auto 0;
+  width: max-content;
+  max-width: calc(100vw - 36px);
+  margin: 10px auto 0;
   color: rgba(32, 23, 16, 0.72);
   font-family: "1FTV VIP Palisade", Georgia, serif;
-  font-size: 0.88rem;
+  font-size: clamp(0.78rem, 3.55vw, 0.88rem);
   font-weight: 900;
   line-height: 1.38;
   text-align: center;
+  white-space: nowrap;
 }
 
 .primary-school-section {
   position: relative;
   display: grid;
-  min-height: min(88svh, 640px);
   margin-top: 0;
-  padding: 32px 16px 44px;
+  padding: 28px 16px 34px;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   background:
-    radial-gradient(circle at 82% 16%, rgba(34, 139, 34, 0.12), transparent 30%),
-    linear-gradient(180deg, rgba(255, 245, 232, 0.08), rgba(255, 248, 239, 0.24) 36%, rgba(255, 245, 232, 0.08));
+    radial-gradient(circle at 82% 16%, rgba(34, 139, 34, 0.1), transparent 30%),
+    linear-gradient(180deg, rgba(255, 248, 239, 0.18), rgba(255, 248, 239, 0.24) 42%, rgba(255, 248, 239, 0.18));
 }
 
 .primary-school-story {
   display: grid;
-  gap: 14px;
+  gap: 12px;
   width: min(100%, 340px);
   margin: 0 auto;
 }
@@ -722,7 +737,7 @@ h1 span {
 .primary-school-place {
   display: grid;
   gap: 5px;
-  width: calc(100% + 32px);
+  width: 100%;
   margin: 0 auto 2px;
   color: rgba(32, 23, 16, 0.82);
   font-family: "1FTV VIP Palisade", Georgia, serif;
@@ -740,7 +755,7 @@ h1 span {
   display: block;
   color: rgba(198, 0, 0, 0.78);
   font-family: "Montera", "Montserrat", "Segoe UI", sans-serif;
-  font-size: clamp(0.98rem, 4.1vw, 1.08rem);
+  font-size: clamp(0.88rem, 3.72vw, 1.02rem);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 1.16;
@@ -778,6 +793,135 @@ h1 span {
 }
 
 .reveal-ready .primary-school-section.is-visible .primary-school-story {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.secondary-school-section {
+  position: relative;
+  display: grid;
+  margin-top: 0;
+  padding: 28px 10px 34px;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 48% 12%, rgba(198, 0, 0, 0.1), transparent 10%),
+    linear-gradient(180deg, rgba(255, 248, 239, 0.18), rgba(255, 245, 232, 0.46) 42%, rgba(255, 248, 239, 0.16));
+}
+
+.secondary-school-story {
+  position: relative;
+  display: grid;
+  align-content: start;
+  width: min(100%, 348px);
+  margin: 0 auto;
+  padding: 28px 16px 20px;
+  background:
+    linear-gradient(rgba(255, 252, 244, 0.76), rgba(255, 252, 244, 0.76)),
+    repeating-linear-gradient(112deg, rgba(93, 69, 50, 0.045) 0 1px, transparent 1px 12px);
+  border: 1px solid rgba(93, 69, 50, 0.12);
+  box-shadow: 0 12px 30px rgba(32, 23, 16, 0.11);
+}
+
+.secondary-school-kicker {
+  width: max-content;
+  margin: 0 auto 20px;
+  padding: 4px 9px;
+  background: rgba(198, 0, 0, 0.1);
+  color: var(--green);
+  font-size: 0.52rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.secondary-school-moment {
+  display: grid;
+  gap: 12px;
+}
+
+.secondary-school-photo-wrap {
+  position: relative;
+  margin: 0;
+  padding: 7px;
+  background: rgba(198, 0, 0, 0.34);
+  transform: rotate(-1.2deg);
+}
+
+.secondary-school-photo-wrap::before {
+  position: absolute;
+  inset: 4px;
+  z-index: 0;
+  border: 2px solid rgba(198, 0, 0, 0.46);
+  content: "";
+  transform: rotate(1.6deg);
+  pointer-events: none;
+}
+
+.secondary-school-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: 38% center;
+  filter: saturate(0.78) contrast(0.98);
+}
+
+.secondary-school-note {
+  display: grid;
+  gap: 9px;
+  width: min(100%, 31ch);
+  margin: 0 0 0 auto;
+  color: rgba(32, 23, 16, 0.82);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  text-align: right;
+}
+
+.secondary-school-note p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1.44;
+}
+
+.secondary-school-meta {
+  display: grid;
+  gap: 4px;
+  align-self: end;
+  margin: 28px 0 0;
+  color: rgba(32, 23, 16, 0.84);
+  font-size: 0.66rem;
+  line-height: 1.34;
+}
+
+.secondary-school-meta div {
+  display: flex;
+  gap: 6px;
+}
+
+.secondary-school-meta dt {
+  min-width: 68px;
+  font-weight: 900;
+}
+
+.secondary-school-meta dd {
+  margin: 0;
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.reveal-ready .secondary-school-section .secondary-school-story {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.reveal-ready .secondary-school-section.is-visible .secondary-school-story {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1358,13 +1502,13 @@ h1 span {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 5px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .timer-item {
   display: grid;
   min-width: 0;
-  min-height: 62px;
+  min-height: 56px;
   align-content: center;
   justify-items: center;
   border-top: 1px solid rgba(198, 0, 0, 0.32);
@@ -1845,6 +1989,8 @@ h1 span {
   .reveal-ready .film-template-section.is-visible .film-template-copy > *,
   .reveal-ready .primary-school-section .primary-school-story,
   .reveal-ready .primary-school-section.is-visible .primary-school-story,
+  .reveal-ready .secondary-school-section .secondary-school-story,
+  .reveal-ready .secondary-school-section.is-visible .secondary-school-story,
   .reveal-ready .appreciation-section .appreciation-copy > *,
   .reveal-ready .appreciation-section.is-visible .appreciation-copy > *,
   .reveal-ready .family-presence-section .family-group,
@@ -1873,6 +2019,8 @@ h1 span {
   .reveal-ready .family-presence-section.is-visible .family-presence-title,
   .reveal-ready .primary-school-section .primary-school-story,
   .reveal-ready .primary-school-section.is-visible .primary-school-story,
+  .reveal-ready .secondary-school-section .secondary-school-story,
+  .reveal-ready .secondary-school-section.is-visible .secondary-school-story,
   .reveal-ready .appreciation-section .appreciation-copy > *,
   .reveal-ready .appreciation-section.is-visible .appreciation-copy > *,
   .reveal-ready .mountain-section .mountain-copy,
