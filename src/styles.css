@@ -1343,42 +1343,46 @@ h1 span {
 .appreciation-section {
   position: relative;
   margin: 12px -14px 10px;
-  padding: clamp(30px, 5svh, 42px) 10px;
+  padding: clamp(30px, 5.4svh, 44px) 6px clamp(28px, 5svh, 42px);
   overflow: hidden;
   background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.42), transparent 34%),
-    radial-gradient(circle at 82% 92%, rgba(198, 0, 0, 0.06), transparent 32%),
-    linear-gradient(180deg, rgba(255, 245, 232, 0.28), rgba(255, 245, 232, 0.12));
+    radial-gradient(circle at 26% 10%, rgba(255, 255, 255, 0.32), transparent 40%),
+    linear-gradient(180deg, rgba(255, 245, 232, 0.18), rgba(255, 245, 232, 0.06));
 }
 
 .appreciation-copy {
+  position: relative;
   display: grid;
-  gap: 12px;
+  gap: 13px;
+  width: min(100%, 358px);
   margin: 0 auto;
-  padding: clamp(20px, 4.5svh, 30px) 12px;
-  color: rgba(32, 23, 16, 0.84);
+  padding: clamp(24px, 4.4svh, 34px) 15px clamp(22px, 3.8svh, 30px);
+  color: rgba(55, 39, 28, 0.88);
   font-family: "1FTV VIP Palisade", Georgia, serif;
-  font-size: clamp(0.78rem, 3.35vw, 0.9rem);
+  font-size: clamp(0.8rem, 3.22vw, 0.94rem);
+  font-style: italic;
   font-weight: 900;
-  line-height: 1.5;
+  line-height: 1.58;
   text-align: justify;
   text-align-last: left;
-  background: rgba(255, 252, 245, 0.56);
-  border: 1px solid rgba(93, 69, 50, 0.12);
-  box-shadow: 0 14px 28px rgba(93, 69, 50, 0.08);
+  background:
+    linear-gradient(rgba(255, 253, 248, 0.5), rgba(255, 253, 248, 0.38)),
+    linear-gradient(180deg, rgba(255, 245, 232, 0.34), rgba(255, 245, 232, 0.12));
+  box-shadow: 0 18px 38px rgba(93, 69, 50, 0.045);
 }
 
 .appreciation-copy h2 {
   display: grid;
-  gap: 3px;
-  margin: 0 0 6px;
-  color: var(--red);
+  gap: 1px;
+  justify-self: stretch;
+  margin: 0 0 clamp(12px, 2.6svh, 18px);
+  color: inherit;
   font-family: "1FTV VIP Scartoon", Georgia, serif;
-  font-size: clamp(1.35rem, 6.4vw, 1.86rem);
-  line-height: 1.08;
+  font-size: clamp(1.24rem, 5.4vw, 1.6rem);
+  line-height: 1.12;
   letter-spacing: 0;
-  text-align: center;
-  text-align-last: center;
+  text-align: left;
+  text-align-last: left;
 }
 
 .appreciation-copy h2 span {
@@ -1386,13 +1390,19 @@ h1 span {
 }
 
 .appreciation-copy h2 span:first-child {
-  color: rgba(93, 69, 50, 0.78);
-  font-size: 0.62em;
+  margin: 0 0 2px;
+  font-size: 0.58em;
 }
 
 .appreciation-copy h2 span:nth-child(2) {
-  font-size: 0.8em;
+  font-size: 0.72em;
   white-space: nowrap;
+}
+
+.appreciation-copy h2 span:last-child {
+  font-size: 0.68em;
+  text-align: right;
+  text-align-last: right;
 }
 
 .appreciation-copy p {
@@ -1400,9 +1410,10 @@ h1 span {
   hyphens: auto;
 }
 
-.appreciation-copy p:first-of-type,
-.appreciation-copy p:last-of-type {
-  color: rgba(93, 69, 50, 0.9);
+.appreciation-copy p:first-of-type {
+  margin-top: 4px;
+  text-align: left;
+  text-align-last: left;
 }
 
 .reveal-ready .appreciation-section .appreciation-copy > * {
