@@ -482,6 +482,7 @@ h1 span {
 
 .story-intro > :not(.signature-elements),
 .story-section > :not(.signature-elements),
+.primary-school-section > :not(.signature-elements),
 .film-template-section > :not(.signature-elements),
 .appreciation-section > :not(.signature-elements),
 .family-presence-section > :not(.signature-elements),
@@ -584,6 +585,21 @@ h1 span {
   bottom: 82px;
 }
 
+.signature-elements-primary-school .signature-icon-top-left {
+  top: 38px;
+  left: 16px;
+}
+
+.signature-elements-primary-school .signature-icon-middle-right {
+  top: 54%;
+  right: 8px;
+}
+
+.signature-elements-primary-school .signature-icon-bottom-left {
+  bottom: 30px;
+  left: 14px;
+}
+
 .story-heading {
   text-align: center;
 }
@@ -670,6 +686,100 @@ h1 span {
   width: min(88%, 280px);
   height: auto;
   object-fit: contain;
+}
+
+.story-bridge {
+  width: min(100%, 30ch);
+  margin: 20px auto 0;
+  color: rgba(32, 23, 16, 0.72);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: 0.88rem;
+  font-weight: 900;
+  line-height: 1.38;
+  text-align: center;
+}
+
+.primary-school-section {
+  position: relative;
+  display: grid;
+  min-height: min(88svh, 640px);
+  margin-top: 0;
+  padding: 32px 16px 44px;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 16%, rgba(34, 139, 34, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(255, 245, 232, 0.08), rgba(255, 248, 239, 0.24) 36%, rgba(255, 245, 232, 0.08));
+}
+
+.primary-school-story {
+  display: grid;
+  gap: 14px;
+  width: min(100%, 340px);
+  margin: 0 auto;
+}
+
+.primary-school-place {
+  display: grid;
+  gap: 5px;
+  width: calc(100% + 32px);
+  margin: 0 auto 2px;
+  color: rgba(32, 23, 16, 0.82);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.primary-school-place span {
+  color: rgba(34, 139, 34, 0.78);
+  font-size: 0.92rem;
+}
+
+.primary-school-place strong {
+  display: block;
+  color: rgba(198, 0, 0, 0.78);
+  font-family: "Montera", "Montserrat", "Segoe UI", sans-serif;
+  font-size: clamp(0.98rem, 4.1vw, 1.08rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.16;
+  white-space: nowrap;
+}
+
+.primary-school-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid rgba(93, 69, 50, 0.22);
+  box-shadow: 0 12px 28px rgba(32, 23, 16, 0.14);
+}
+
+.primary-school-caption {
+  width: min(100%, 31ch);
+  margin: 0 auto;
+  color: rgba(32, 23, 16, 0.84);
+  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-size: 0.94rem;
+  font-weight: 900;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.reveal-ready .primary-school-section .primary-school-story {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.reveal-ready .primary-school-section.is-visible .primary-school-story {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .film-template-section {
@@ -1733,6 +1843,8 @@ h1 span {
   .reveal-ready .film-template-section .film-template-copy > *,
   .reveal-ready .film-template-section.is-visible .film-strip,
   .reveal-ready .film-template-section.is-visible .film-template-copy > *,
+  .reveal-ready .primary-school-section .primary-school-story,
+  .reveal-ready .primary-school-section.is-visible .primary-school-story,
   .reveal-ready .appreciation-section .appreciation-copy > *,
   .reveal-ready .appreciation-section.is-visible .appreciation-copy > *,
   .reveal-ready .family-presence-section .family-group,
@@ -1759,6 +1871,8 @@ h1 span {
   .reveal-ready .family-presence-section.is-visible .family-group,
   .reveal-ready .family-presence-section.is-visible .family-presence-groups,
   .reveal-ready .family-presence-section.is-visible .family-presence-title,
+  .reveal-ready .primary-school-section .primary-school-story,
+  .reveal-ready .primary-school-section.is-visible .primary-school-story,
   .reveal-ready .appreciation-section .appreciation-copy > *,
   .reveal-ready .appreciation-section.is-visible .appreciation-copy > *,
   .reveal-ready .mountain-section .mountain-copy,
