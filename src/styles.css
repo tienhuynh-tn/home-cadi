@@ -1529,17 +1529,17 @@ h1 span {
 
 .family-presence-intro,
 .family-presence-title {
-  color: var(--green);
-  font-size: clamp(0.58rem, 2.55vw, 0.78rem);
+  color: var(--ink);
+  font-size: clamp(0.62rem, 2.85vw, 0.9rem);
   font-weight: 800;
   letter-spacing: 0.06em;
-  line-height: 1.25;
+  line-height: 1.08;
   white-space: nowrap;
 }
 
 .family-presence-intro {
   max-width: 100%;
-  margin: 0 auto -2px;
+  margin: 0 auto calc(-1 * clamp(8px, 1.8svh, 12px));
 }
 
 .family-presence-title {
@@ -1570,7 +1570,7 @@ h1 span {
 .family-group h2 span:first-child {
   color: rgba(32, 23, 16, 0.76);
   font-family: "1FTV VIP Palisade", Georgia, serif;
-  font-size: clamp(0.76rem, 3.35vw, 0.96rem);
+  font-size: clamp(0.62rem, 2.75vw, 0.78rem);
   font-weight: 900;
   line-height: 1.15;
 }
