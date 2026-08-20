@@ -5,6 +5,22 @@
   --ink: #201710;
   --soft-ink: #5d4532;
   --paper: #fff5e8;
+  --page-white: #ffffff;
+  --page-cream: rgba(255, 248, 239, 0.76);
+  --page-sage: rgba(34, 139, 34, 0.07);
+  --page-blush: rgba(198, 0, 0, 0.055);
+  --soft-page-bg:
+    linear-gradient(180deg, #ffffff 0%, #ffffff 15svh, #f8faf4 28svh, #fff9f1 46svh, #fffdf8 64svh, #f7faf4 82svh, #fff8ef 100%);
+  --soft-section-bg:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.66), transparent 34%),
+    radial-gradient(circle at 84% 82%, var(--page-sage), transparent 32%),
+    radial-gradient(circle at 72% 8%, var(--page-blush), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.54), var(--page-cream));
+  --soft-section-bg-alt:
+    radial-gradient(circle at 82% 14%, rgba(255, 255, 255, 0.58), transparent 34%),
+    radial-gradient(circle at 18% 86%, var(--page-blush), transparent 32%),
+    radial-gradient(circle at 72% 72%, var(--page-sage), transparent 30%),
+    linear-gradient(180deg, rgba(255, 253, 248, 0.68), rgba(248, 250, 244, 0.58));
 }
 
 @font-face {
@@ -52,7 +68,7 @@ body,
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--cream);
+  background: var(--page-white);
   font-family: "Montera", "Montserrat", "Segoe UI", sans-serif;
 }
 
@@ -88,8 +104,7 @@ img {
   max-width: 100vw;
   min-height: 100svh;
   padding: 0 14px 30px;
-  background:
-    linear-gradient(180deg, #fff1dc 0%, var(--cream) 28%, #fff4e5 54%, #f8d8b1 78%, #ffe8cd 100%);
+  background: var(--soft-page-bg);
   isolation: isolate;
 }
 
@@ -98,13 +113,13 @@ img {
   inset: -80px -46px;
   z-index: 0;
   background:
-    radial-gradient(circle at 18% 9%, rgba(198, 0, 0, 0.18), transparent 28%),
-    radial-gradient(circle at 82% 30%, rgba(34, 139, 34, 0.14), transparent 26%),
-    radial-gradient(circle at 18% 57%, rgba(198, 0, 0, 0.12), transparent 30%),
-    radial-gradient(circle at 88% 82%, rgba(34, 139, 34, 0.12), transparent 32%);
+    radial-gradient(circle at 18% 14%, rgba(198, 0, 0, 0.055), transparent 26%),
+    radial-gradient(circle at 84% 32%, rgba(34, 139, 34, 0.07), transparent 28%),
+    radial-gradient(circle at 16% 62%, rgba(198, 0, 0, 0.045), transparent 34%),
+    radial-gradient(circle at 88% 84%, rgba(34, 139, 34, 0.06), transparent 34%);
   content: "";
-  filter: blur(24px);
-  opacity: 0.82;
+  filter: blur(34px);
+  opacity: 0.68;
   pointer-events: none;
 }
 
@@ -121,7 +136,7 @@ img {
   min-height: 100svh;
   margin: 0 -14px;
   overflow: hidden;
-  background: transparent;
+  background: #ffffff;
   isolation: isolate;
 }
 
@@ -291,10 +306,24 @@ img {
 
 .story-intro {
   position: relative;
-  margin-top: 0;
-  padding: 34px 6px 8px;
-  background: transparent;
+  margin: 0 -14px;
+  padding: 34px 20px 8px;
+  background: var(--soft-section-bg);
   overflow: hidden;
+}
+
+.story-intro,
+.story-section,
+.primary-school-section,
+.secondary-school-section,
+.memory-section,
+.film-template-section,
+.appreciation-section,
+.family-presence-section,
+.mountain-section,
+.rsvp-section,
+.wishes-section {
+  backdrop-filter: blur(5px);
 }
 
 .story-intro-title {
@@ -529,9 +558,7 @@ img {
   position: relative;
   margin-top: 12px;
   padding: 20px 18px 16px;
-  background:
-    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.36), transparent 34%),
-    linear-gradient(180deg, rgba(255, 245, 232, 0.32), rgba(255, 248, 239, 0.18));
+  background: var(--soft-section-bg-alt);
   overflow: visible;
 }
 
@@ -647,6 +674,23 @@ img {
 .signature-elements-intro .signature-icon-bottom-right {
   right: 4px;
   bottom: 18px;
+}
+
+.signature-elements-intro .signature-camera {
+  color: rgba(32, 23, 16, 0.48);
+}
+
+.signature-elements-intro .signature-book {
+  color: rgba(34, 102, 34, 0.52);
+}
+
+.signature-elements-intro .signature-cola {
+  color: rgba(158, 26, 26, 0.56);
+}
+
+.signature-elements-intro .signature-icon {
+  opacity: 0.94;
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.48));
 }
 
 .signature-elements-story .signature-icon-bottom-left {
@@ -777,9 +821,7 @@ img {
   padding: 28px 16px 34px;
   align-items: center;
   overflow: visible;
-  background:
-    radial-gradient(circle at 82% 16%, rgba(34, 139, 34, 0.1), transparent 30%),
-    linear-gradient(180deg, rgba(255, 248, 239, 0.18), rgba(255, 248, 239, 0.24) 42%, rgba(255, 248, 239, 0.18));
+  background: var(--soft-section-bg);
 }
 
 .primary-school-story {
@@ -859,9 +901,7 @@ img {
   padding: 28px 10px 34px;
   align-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 48% 12%, rgba(198, 0, 0, 0.1), transparent 10%),
-    linear-gradient(180deg, rgba(255, 248, 239, 0.18), rgba(255, 245, 232, 0.46) 42%, rgba(255, 248, 239, 0.16));
+  background: var(--soft-section-bg-alt);
 }
 
 .secondary-school-story {
@@ -986,10 +1026,7 @@ img {
   margin: 12px -14px 10px;
   padding: clamp(24px, 4.2svh, 36px) 10px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.46), transparent 34%),
-    radial-gradient(circle at 86% 82%, rgba(34, 139, 34, 0.08), transparent 30%),
-    linear-gradient(180deg, rgba(255, 248, 239, 0.22), rgba(255, 245, 232, 0.42));
+  background: var(--soft-section-bg);
 }
 
 .memory-sheet {
@@ -1168,7 +1205,7 @@ img {
   min-height: 0;
   margin: 18px -14px 10px;
   overflow: hidden;
-  background: transparent;
+  background: var(--soft-section-bg-alt);
   isolation: isolate;
 }
 
@@ -1400,9 +1437,7 @@ img {
   margin: 12px -14px 10px;
   padding: clamp(30px, 5.4svh, 44px) 6px clamp(28px, 5svh, 42px);
   overflow: hidden;
-  background:
-    radial-gradient(circle at 26% 10%, rgba(255, 255, 255, 0.32), transparent 40%),
-    linear-gradient(180deg, rgba(255, 245, 232, 0.18), rgba(255, 245, 232, 0.06));
+  background: var(--soft-section-bg);
 }
 
 .appreciation-copy {
@@ -1511,7 +1546,7 @@ img {
   margin: 8px -14px 10px;
   padding: clamp(22px, 4svh, 34px) 20px clamp(22px, 4svh, 34px);
   overflow: hidden;
-  background: transparent;
+  background: var(--soft-section-bg-alt);
   isolation: isolate;
 }
 
@@ -1520,12 +1555,12 @@ img {
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(circle at 26% 16%, rgba(34, 139, 34, 0.1), transparent 28%),
-    radial-gradient(circle at 76% 82%, rgba(198, 0, 0, 0.08), transparent 30%),
+    radial-gradient(circle at 26% 16%, rgba(34, 139, 34, 0.055), transparent 28%),
+    radial-gradient(circle at 76% 82%, rgba(198, 0, 0, 0.045), transparent 30%),
     repeating-linear-gradient(
       -6deg,
-      rgba(93, 69, 50, 0.032) 0,
-      rgba(93, 69, 50, 0.032) 1px,
+      rgba(93, 69, 50, 0.018) 0,
+      rgba(93, 69, 50, 0.018) 1px,
       transparent 1px,
       transparent 14px
     );
@@ -2045,11 +2080,9 @@ img {
   padding: clamp(22px, 4.5svh, 34px) 14px clamp(28px, 5svh, 40px);
   overflow: hidden;
   background:
-    linear-gradient(108deg, transparent 0 49%, rgba(93, 69, 50, 0.12) 49.2% 49.8%, transparent 50%),
-    linear-gradient(73deg, transparent 0 57%, rgba(93, 69, 50, 0.1) 57.2% 57.7%, transparent 58%),
-    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.58), transparent 28%),
-    radial-gradient(circle at 82% 84%, rgba(34, 139, 34, 0.08), transparent 30%),
-    linear-gradient(180deg, rgba(250, 249, 245, 0.9), rgba(255, 245, 232, 0.32));
+    linear-gradient(108deg, transparent 0 49%, rgba(93, 69, 50, 0.055) 49.2% 49.8%, transparent 50%),
+    linear-gradient(73deg, transparent 0 57%, rgba(93, 69, 50, 0.045) 57.2% 57.7%, transparent 58%),
+    var(--soft-section-bg);
 }
 
 .signature-elements-mountain {
@@ -2270,10 +2303,7 @@ img {
   margin: 12px -14px 10px;
   padding: clamp(30px, 5svh, 42px) 18px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 84% 16%, rgba(255, 255, 255, 0.42), transparent 34%),
-    radial-gradient(circle at 14% 88%, rgba(198, 0, 0, 0.07), transparent 30%),
-    linear-gradient(180deg, rgba(255, 245, 232, 0.14), rgba(255, 245, 232, 0.32));
+  background: var(--soft-section-bg-alt);
 }
 
 .rsvp-copy {
@@ -2358,9 +2388,7 @@ img {
   position: relative;
   margin-top: 12px;
   padding: 32px 18px 28px;
-  background:
-    radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.42), transparent 34%),
-    linear-gradient(180deg, rgba(255, 245, 232, 0.2), rgba(255, 245, 232, 0.34));
+  background: var(--soft-section-bg);
   overflow: hidden;
 }
 
