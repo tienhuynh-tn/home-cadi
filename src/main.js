@@ -63,6 +63,7 @@ const storyMinutes = document.querySelector("#story-minutes");
 const storySeconds = document.querySelector("#story-seconds");
 const weddingSong = document.querySelector("#wedding-song");
 const musicToggle = document.querySelector("#music-toggle");
+const heroTitle = document.querySelector(".hero-title");
 let revealObserver;
 let songWasStarted = false;
 let songWasPausedByUser = false;
@@ -82,6 +83,57 @@ const observeRevealElement = (element) => {
   }
 
   revealObserver.observe(element);
+};
+
+const setupHandwritingTitle = () => {
+  if (!heroTitle || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const lines = Array.from(heroTitle.querySelectorAll("span"));
+  const titleText = lines.map((line) => line.textContent.trim()).join(" ");
+  heroTitle.setAttribute("aria-label", titleText);
+
+  lines.forEach((line, lineIndex) => {
+    const characters = Array.from(line.textContent);
+    line.setAttribute("aria-hidden", "true");
+    line.textContent = "";
+
+    characters.forEach((character, characterIndex) => {
+      const characterElement = document.createElement("span");
+      characterElement.className = "handwriting-character";
+      characterElement.style.setProperty("--char-delay", `${lineIndex * 1900 + characterIndex * 220}ms`);
+      characterElement.textContent = character === " " ? "\u00a0" : character;
+      line.append(characterElement);
+    });
+  });
+
+  const startWriting = () => {
+    heroTitle.classList.add("is-writing");
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    window.requestAnimationFrame(startWriting);
+    return;
+  }
+
+  const titleObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        startWriting();
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.45,
+    },
+  );
+
+  titleObserver.observe(heroTitle);
 };
 
 const setupScrollReveal = () => {
@@ -523,6 +575,7 @@ wishForm?.addEventListener("submit", async (event) => {
   setStatus("Cảm ơn bạn đã gửi lời chúc!", "success");
 });
 
+setupHandwritingTitle();
 setupScrollReveal();
 setupWeddingSong();
 updateStoryTimer();
