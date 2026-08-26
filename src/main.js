@@ -64,6 +64,7 @@ const storySeconds = document.querySelector("#story-seconds");
 const weddingSong = document.querySelector("#wedding-song");
 const musicToggle = document.querySelector("#music-toggle");
 const heroTitle = document.querySelector(".hero-title");
+const letterEnvelope = document.querySelector("[data-letter-envelope]");
 let revealObserver;
 let songWasStarted = false;
 let songWasPausedByUser = false;
@@ -171,6 +172,25 @@ const setupScrollReveal = () => {
   );
 
   revealElements.forEach(observeRevealElement);
+};
+
+const setupLetterEnvelope = () => {
+  if (!letterEnvelope) {
+    return;
+  }
+
+  const envelopeButton = letterEnvelope.querySelector(".appreciation-envelope-button");
+  if (!envelopeButton) {
+    return;
+  }
+
+  letterEnvelope.classList.add("is-ready");
+
+  envelopeButton.addEventListener("click", () => {
+    letterEnvelope.classList.add("is-open");
+    letterEnvelope.closest(".appreciation-section")?.classList.add("is-letter-open");
+    envelopeButton.setAttribute("aria-expanded", "true");
+  });
 };
 
 const updateStoryTimer = () => {
@@ -577,6 +597,7 @@ wishForm?.addEventListener("submit", async (event) => {
 
 setupHandwritingTitle();
 setupScrollReveal();
+setupLetterEnvelope();
 setupWeddingSong();
 updateStoryTimer();
 window.setInterval(updateStoryTimer, SECOND_IN_MS);
