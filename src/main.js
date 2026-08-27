@@ -5,6 +5,8 @@ const WISH_LIMIT = 30;
 const NAME_LIMIT = 24;
 const MESSAGE_LIMIT = 240;
 const WISH_ROTATION_MS = 5000;
+const TITLE_CHARACTER_DELAY_MS = 145;
+const TITLE_LINE_DELAY_MS = 650;
 const SENSITIVE_WORDS = new Set([
   "asshole",
   "bastard",
@@ -73,6 +75,14 @@ let wishRotationTimer;
 
 const padTime = (value) => String(value).padStart(2, "0");
 
+const splitGraphemes = (text) => {
+  if ("Segmenter" in Intl) {
+    return Array.from(new Intl.Segmenter("vi", { granularity: "grapheme" }).segment(text), ({ segment }) => segment);
+  }
+
+  return Array.from(text);
+};
+
 const showRevealElement = (element) => {
   element.classList.add("is-visible");
 };
@@ -94,23 +104,82 @@ const setupHandwritingTitle = () => {
   const lines = Array.from(heroTitle.querySelectorAll("span"));
   const titleText = lines.map((line) => line.textContent.trim()).join(" ");
   heroTitle.setAttribute("aria-label", titleText);
+  const animatedLines = lines.map((line) => {
+    const text = line.textContent.trim();
+    const characters = splitGraphemes(text);
+    const reserveElement = document.createElement("span");
+    const liveElement = document.createElement("span");
+    const maskElement = document.createElement("span");
+    const liveTextElement = document.createElement("span");
+    const measureElement = document.createElement("span");
 
-  lines.forEach((line, lineIndex) => {
-    const characters = Array.from(line.textContent);
+    reserveElement.className = "handwriting-reserve";
+    reserveElement.textContent = text;
+    liveElement.className = "handwriting-live";
+    maskElement.className = "handwriting-mask";
+    liveTextElement.className = "handwriting-live-text";
+    liveTextElement.textContent = text;
+    measureElement.className = "handwriting-measure";
+    maskElement.append(liveTextElement);
+    liveElement.append(maskElement);
+
     line.setAttribute("aria-hidden", "true");
     line.textContent = "";
+    line.append(reserveElement, liveElement, measureElement);
 
-    characters.forEach((character, characterIndex) => {
-      const characterElement = document.createElement("span");
-      characterElement.className = "handwriting-character";
-      characterElement.style.setProperty("--char-delay", `${lineIndex * 1900 + characterIndex * 220}ms`);
-      characterElement.textContent = character === " " ? "\u00a0" : character;
-      line.append(characterElement);
-    });
+    return {
+      characters,
+      maskElement,
+      measureElement,
+      widths: [],
+    };
   });
 
+  const measureLine = (line) => {
+    const fontSize = Number.parseFloat(window.getComputedStyle(line.measureElement).fontSize);
+    const overhangBuffer = Math.ceil(fontSize * 0.42);
+
+    line.widths = line.characters.map((_, characterIndex) => {
+      line.measureElement.textContent = line.characters.slice(0, characterIndex + 1).join("");
+      return Math.ceil(line.measureElement.getBoundingClientRect().width) + overhangBuffer;
+    });
+
+    line.measureElement.textContent = "";
+  };
+
+  const typeLine = (lineIndex) => {
+    const line = animatedLines[lineIndex];
+
+    if (!line) {
+      return;
+    }
+
+    measureLine(line);
+    line.characters.forEach((_, characterIndex) => {
+      window.setTimeout(() => {
+        line.maskElement.style.width = `${line.widths[characterIndex]}px`;
+
+        if (characterIndex === line.characters.length - 1) {
+          window.setTimeout(() => typeLine(lineIndex + 1), TITLE_LINE_DELAY_MS);
+        }
+      }, characterIndex * TITLE_CHARACTER_DELAY_MS);
+    });
+  };
+
   const startWriting = () => {
+    if (heroTitle.classList.contains("is-writing")) {
+      return;
+    }
+
     heroTitle.classList.add("is-writing");
+    const beginTyping = () => typeLine(0);
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(beginTyping, beginTyping);
+      return;
+    }
+
+    beginTyping();
   };
 
   if (!("IntersectionObserver" in window)) {
