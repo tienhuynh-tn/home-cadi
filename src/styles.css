@@ -10,17 +10,19 @@
   --page-sage: rgba(34, 139, 34, 0.07);
   --page-blush: rgba(198, 0, 0, 0.055);
   --soft-page-bg:
-    linear-gradient(180deg, #ffffff 0%, #ffffff 15svh, #f8faf4 28svh, #fff9f1 46svh, #fffdf8 64svh, #f7faf4 82svh, #fff8ef 100%);
-  --soft-section-bg:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.66), transparent 34%),
-    radial-gradient(circle at 84% 82%, var(--page-sage), transparent 32%),
-    radial-gradient(circle at 72% 8%, var(--page-blush), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.54), var(--page-cream));
-  --soft-section-bg-alt:
-    radial-gradient(circle at 82% 14%, rgba(255, 255, 255, 0.58), transparent 34%),
-    radial-gradient(circle at 18% 86%, var(--page-blush), transparent 32%),
-    radial-gradient(circle at 72% 72%, var(--page-sage), transparent 30%),
-    linear-gradient(180deg, rgba(255, 253, 248, 0.68), rgba(248, 250, 244, 0.58));
+    linear-gradient(
+      180deg,
+      #ffffff 0,
+      #ffffff 112svh,
+      #fff9f1 190svh,
+      #f8faf4 320svh,
+      #fffdf8 470svh,
+      #f7faf4 620svh,
+      #fff8ef 760svh,
+      #ffffff 100%
+    );
+  --soft-section-bg: transparent;
+  --soft-section-bg-alt: transparent;
 }
 
 @font-face {
@@ -157,18 +159,8 @@ img {
 }
 
 .phone-stage::before {
-  position: absolute;
-  inset: -80px -46px;
-  z-index: 0;
-  background:
-    radial-gradient(circle at 18% 14%, rgba(198, 0, 0, 0.055), transparent 26%),
-    radial-gradient(circle at 84% 32%, rgba(34, 139, 34, 0.07), transparent 28%),
-    radial-gradient(circle at 16% 62%, rgba(198, 0, 0, 0.045), transparent 34%),
-    radial-gradient(circle at 88% 84%, rgba(34, 139, 34, 0.06), transparent 34%);
+  display: none;
   content: "";
-  filter: blur(34px);
-  opacity: 0.68;
-  pointer-events: none;
 }
 
 .phone-stage > * {

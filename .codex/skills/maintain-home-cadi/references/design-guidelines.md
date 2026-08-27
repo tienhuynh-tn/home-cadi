@@ -20,6 +20,7 @@ Styling preferences:
 - Keep the quote as plain text; do not add a background unless requested.
 - Keep date styling normal-weight and visually aligned with the lower role labels.
 - Keep lower divider lines short and subtle.
+- Keep top-level page boundaries visually seamless: use one continuous `.phone-stage` background from top to end, keep the cover white, and avoid giving new page sections their own contrasting edge background. Decorative tint or texture can live inside a page body, but it should not create a visible color break at the top/bottom boundary.
 - Prefer small localized CSS changes over redesigning the page.
 
 Avoid:
