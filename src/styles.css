@@ -105,6 +105,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "1FTV VIP ERGISA BOLD";
+  src: url("/assets/fonts/1FTV-VIP-Ergisa-Regular.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -408,11 +416,13 @@ img {
   max-width: min(100%, 25ch);
   margin: 0 auto 14px;
   color: rgba(198, 0, 0, 0.78);
-  font-family: "1FTV VIP Scartoon", "Cooper Black", Georgia, serif;
+  font-family: "1FTV VIP ERGISA BOLD", "1FTV VIP Ergisa", Georgia, serif;
   font-size: 1.12rem;
   font-weight: 900;
   line-height: 1.24;
   letter-spacing: 0;
+  -webkit-text-stroke: 0.3px currentColor;
+  paint-order: stroke fill;
   text-align: center;
 }
 
@@ -620,10 +630,12 @@ img {
   justify-items: center;
   margin: 0;
   color: rgba(198, 0, 0, 0.72);
-  font-family: "1FTV VIP Palisade", Georgia, serif;
+  font-family: "1FTV VIP ERGISA BOLD", "1FTV VIP Ergisa", Georgia, serif;
   font-size: 0.72rem;
   font-weight: 900;
   line-height: 1;
+  -webkit-text-stroke: 0.22px currentColor;
+  paint-order: stroke fill;
 }
 
 .kid-label svg {
@@ -679,15 +691,33 @@ img {
 }
 
 .story-section::after,
-.primary-school-section::after {
+.primary-school-section::after,
+.secondary-school-section::after {
   position: absolute;
-  left: 50%;
-  bottom: -18px;
-  z-index: 2;
-  width: 1px;
-  height: 42px;
-  border-left: 1px dashed rgba(198, 0, 0, 0.28);
+  bottom: -44px;
+  z-index: 0;
+  width: min(74vw, 270px);
+  height: 92px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   content: "";
+  pointer-events: none;
+}
+
+.story-section::after {
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 270 92' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M135 2 C135 24 80 24 69 45 C57 68 102 70 112 90' fill='none' stroke='%23c60000' stroke-opacity='0.28' stroke-width='1.8' stroke-linecap='round' stroke-dasharray='5 6'/%3E%3C/svg%3E");
+}
+
+.primary-school-section::after {
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 270 92' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M112 2 C126 20 201 20 207 43 C214 67 145 70 135 90' fill='none' stroke='%23c60000' stroke-opacity='0.28' stroke-width='1.8' stroke-linecap='round' stroke-dasharray='5 6'/%3E%3C/svg%3E");
+}
+
+.secondary-school-section::after {
+  right: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 270 92' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M135 2 C126 21 70 21 62 44 C54 68 111 70 80 90' fill='none' stroke='%23c60000' stroke-opacity='0.28' stroke-width='1.8' stroke-linecap='round' stroke-dasharray='5 6'/%3E%3C/svg%3E");
 }
 
 .story-intro > :not(.signature-elements),
@@ -1017,7 +1047,7 @@ img {
   margin-top: 0;
   padding: 28px 10px 34px;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   background: var(--soft-section-bg-alt);
 }
 
