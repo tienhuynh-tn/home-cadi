@@ -22,6 +22,7 @@ Styling preferences:
 - Keep lower divider lines short and subtle.
 - Keep top-level page boundaries visually seamless: use one continuous `.phone-stage` background from top to end, keep the cover white, and avoid giving new page sections their own contrasting edge background. Decorative tint or texture can live inside a page body, but it should not create a visible color break at the top/bottom boundary.
 - Prefer small localized CSS changes over redesigning the page.
+- For new pages, add `.scroll-reveal` to the section and use the existing reveal system. Start from the shared slow/smooth timing, then add a restrained page-specific recipe only when the section has a clear visual identity: stagger child content to match reading order, let photos/cards settle with subtle translate/scale/rotation, preserve `prefers-reduced-motion`, and avoid adding internet-loaded animation libraries unless explicitly requested.
 
 Avoid:
 - Loud hero effects, large cards, decorative orbs, heavy overlays, or marketing-page sections.

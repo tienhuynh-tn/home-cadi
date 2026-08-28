@@ -142,12 +142,19 @@ img {
   overflow: hidden;
 }
 
+:root {
+  --reveal-duration: 920ms;
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-offset: 24px;
+}
+
 .reveal-ready .scroll-reveal {
   opacity: 0;
-  translate: 0 18px;
+  translate: 0 var(--reveal-offset);
   transition:
-    opacity 520ms ease,
-    translate 520ms ease;
+    opacity var(--reveal-duration) var(--reveal-ease),
+    translate var(--reveal-duration) var(--reveal-ease);
+  will-change: opacity, translate;
 }
 
 .reveal-ready .scroll-reveal.is-visible {
@@ -331,6 +338,15 @@ img {
   letter-spacing: 0.08em;
   white-space: nowrap;
   text-shadow: none;
+}
+
+.reveal-ready .hero-copy {
+  --reveal-offset: 18px;
+}
+
+.reveal-ready .couple-grid {
+  --reveal-offset: 28px;
+  transition-delay: 180ms;
 }
 
 .couple-grid {
@@ -680,6 +696,144 @@ img {
 
 .story-intro-copy p {
   margin: 0;
+}
+
+.reveal-ready .story-intro .story-intro-title,
+.reveal-ready .story-intro .story-paper,
+.reveal-ready .story-intro .love-mark-center,
+.reveal-ready .story-intro .kid-label,
+.reveal-ready .story-intro .kid-photo,
+.reveal-ready .story-intro .story-intro-copy,
+.reveal-ready .story-section .story-heading,
+.reveal-ready .story-section .speech-bubble,
+.reveal-ready .story-section .chibi-couple,
+.reveal-ready .story-section .timer-item,
+.reveal-ready .story-section .story-bridge {
+  opacity: 0;
+  translate: 0 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
+}
+
+.reveal-ready .story-intro.is-visible .story-intro-title,
+.reveal-ready .story-intro.is-visible .story-paper,
+.reveal-ready .story-intro.is-visible .love-mark-center,
+.reveal-ready .story-intro.is-visible .kid-photo,
+.reveal-ready .story-intro.is-visible .story-intro-copy,
+.reveal-ready .story-section.is-visible .story-heading,
+.reveal-ready .story-section.is-visible .speech-bubble,
+.reveal-ready .story-section.is-visible .chibi-couple,
+.reveal-ready .story-section.is-visible .timer-item,
+.reveal-ready .story-section.is-visible .story-bridge {
+  opacity: 1;
+  translate: 0 0;
+  transform: translateY(0);
+}
+
+.reveal-ready .story-intro .story-paper {
+  transform: translateY(22px) scale(0.985);
+}
+
+.reveal-ready .story-intro.is-visible .story-paper {
+  transform: translateY(0) scale(1);
+  transition-delay: 130ms;
+}
+
+.reveal-ready .story-intro .groom-label {
+  transform: translateY(16px) rotate(-8deg);
+}
+
+.reveal-ready .story-intro.is-visible .groom-label {
+  opacity: 1;
+  transform: translateY(0) rotate(-8deg);
+}
+
+.reveal-ready .story-intro .bride-label {
+  transform: translateY(16px) rotate(7deg);
+}
+
+.reveal-ready .story-intro.is-visible .bride-label {
+  opacity: 1;
+  transform: translateY(0) rotate(7deg);
+}
+
+.reveal-ready .story-intro.is-visible .love-mark-center {
+  transition-delay: 220ms;
+}
+
+.reveal-ready .story-intro.is-visible .groom-label {
+  transition-delay: 280ms;
+}
+
+.reveal-ready .story-intro.is-visible .bride-label {
+  transition-delay: 340ms;
+}
+
+.reveal-ready .story-intro.is-visible .kid-photo {
+  transition-delay: 390ms;
+}
+
+.reveal-ready .story-intro.is-visible .story-intro-copy {
+  transition-delay: 470ms;
+}
+
+.reveal-ready .story-section .speech-bubble-groom {
+  transform: translate(-10px, 16px);
+}
+
+.reveal-ready .story-section .speech-bubble-bride {
+  transform: translate(10px, 16px);
+}
+
+.reveal-ready .story-section .chibi-couple {
+  transform: translateY(20px) scale(0.98);
+}
+
+.reveal-ready .story-section.is-visible .speech-bubble,
+.reveal-ready .story-section.is-visible .chibi-couple {
+  transform: translate(0, 0) scale(1);
+}
+
+.reveal-ready .story-section.is-visible .speech-bubble-groom {
+  transition-delay: 120ms;
+}
+
+.reveal-ready .story-section.is-visible .chibi-couple {
+  transition-delay: 220ms;
+}
+
+.reveal-ready .story-section.is-visible .speech-bubble-bride {
+  transition-delay: 320ms;
+}
+
+.reveal-ready .story-section.is-visible .timer-item:nth-child(1) {
+  transition-delay: 380ms;
+}
+
+.reveal-ready .story-section.is-visible .timer-item:nth-child(2) {
+  transition-delay: 430ms;
+}
+
+.reveal-ready .story-section.is-visible .timer-item:nth-child(3) {
+  transition-delay: 480ms;
+}
+
+.reveal-ready .story-section.is-visible .timer-item:nth-child(4) {
+  transition-delay: 530ms;
+}
+
+.reveal-ready .story-section.is-visible .timer-item:nth-child(5) {
+  transition-delay: 580ms;
+}
+
+.reveal-ready .story-section.is-visible .timer-item:nth-child(6) {
+  transition-delay: 630ms;
+}
+
+.reveal-ready .story-section.is-visible .story-bridge {
+  transition-delay: 720ms;
 }
 
 .story-section {
@@ -1045,15 +1199,16 @@ img {
 
 .reveal-ready .primary-school-section .primary-school-story {
   opacity: 0;
-  transform: translateY(14px);
+  translate: 0 0;
+  transform: translateY(24px) scale(0.985);
   transition:
-    opacity 700ms ease,
-    transform 700ms ease;
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
 }
 
 .reveal-ready .primary-school-section.is-visible .primary-school-story {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .secondary-school-section {
@@ -1172,15 +1327,16 @@ img {
 
 .reveal-ready .secondary-school-section .secondary-school-story {
   opacity: 0;
-  transform: translateY(14px);
+  translate: 0 0;
+  transform: translateY(24px) rotate(-1.4deg) scale(0.985);
   transition:
-    opacity 700ms ease,
-    transform 700ms ease;
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
 }
 
 .reveal-ready .secondary-school-section.is-visible .secondary-school-story {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) rotate(0deg) scale(1);
 }
 
 .corner-story-section,
@@ -1259,16 +1415,17 @@ img {
 .reveal-ready .corner-story-section .corner-story,
 .reveal-ready .stair-story-section .stair-story {
   opacity: 0;
-  transform: translateY(14px);
+  translate: 0 0;
+  transform: translateY(24px) scale(0.985);
   transition:
-    opacity 700ms ease,
-    transform 700ms ease;
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
 }
 
 .reveal-ready .corner-story-section.is-visible .corner-story,
 .reveal-ready .stair-story-section.is-visible .stair-story {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .memory-section {
@@ -1435,15 +1592,66 @@ img {
 
 .reveal-ready .memory-section .memory-sheet {
   opacity: 0;
-  transform: translateY(16px);
+  translate: 0 0;
+  transform: translateY(24px) scale(0.985);
   transition:
-    opacity 700ms ease,
-    transform 700ms ease;
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
 }
 
 .reveal-ready .memory-section.is-visible .memory-sheet {
   opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-ready .memory-section .memory-topline,
+.reveal-ready .memory-section .memory-sheet h2,
+.reveal-ready .memory-section .memory-photo,
+.reveal-ready .memory-section .memory-copy,
+.reveal-ready .memory-section .memory-icon {
+  opacity: 0;
+  translate: 0 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
+}
+
+.reveal-ready .memory-section.is-visible .memory-topline,
+.reveal-ready .memory-section.is-visible .memory-sheet h2,
+.reveal-ready .memory-section.is-visible .memory-photo,
+.reveal-ready .memory-section.is-visible .memory-copy,
+.reveal-ready .memory-section.is-visible .memory-icon {
+  opacity: 1;
   transform: translateY(0);
+}
+
+.reveal-ready .memory-section.is-visible .memory-topline {
+  transition-delay: 130ms;
+}
+
+.reveal-ready .memory-section.is-visible .memory-sheet h2 {
+  transition-delay: 190ms;
+}
+
+.reveal-ready .memory-section.is-visible .memory-photo-tree {
+  transition-delay: 260ms;
+}
+
+.reveal-ready .memory-section.is-visible .memory-photo-peek {
+  transition-delay: 330ms;
+}
+
+.reveal-ready .memory-section.is-visible .memory-photo-couple {
+  transition-delay: 400ms;
+}
+
+.reveal-ready .memory-section.is-visible .memory-copy {
+  transition-delay: 490ms;
+}
+
+.reveal-ready .memory-section.is-visible .memory-icon {
+  transition-delay: 560ms;
 }
 
 .film-template-section {
@@ -1528,10 +1736,11 @@ img {
 
 .reveal-ready .film-template-section .film-strip {
   opacity: 0;
-  transform: translateY(-45%) rotate(-7deg) translateX(-18px);
+  translate: 0 0;
+  transform: translateY(-45%) rotate(-7deg) translateX(-22px);
   transition:
-    opacity 700ms ease,
-    transform 700ms ease;
+    opacity 980ms var(--reveal-ease),
+    transform 980ms var(--reveal-ease);
 }
 
 .reveal-ready .film-template-section.is-visible .film-strip {
@@ -1607,10 +1816,11 @@ img {
 
 .reveal-ready .film-template-section .film-template-copy > * {
   opacity: 0;
-  transform: translateY(14px) rotate(0deg);
+  translate: 0 0;
+  transform: translateY(18px) rotate(0deg);
   transition:
-    opacity 620ms ease,
-    transform 620ms ease;
+    opacity 860ms var(--reveal-ease),
+    transform 860ms var(--reveal-ease);
 }
 
 .reveal-ready .film-template-section.is-visible .film-template-copy > * {
@@ -1623,11 +1833,11 @@ img {
 }
 
 .reveal-ready .film-template-section.is-visible .film-template-copy > :nth-child(2) {
-  transition-delay: 90ms;
+  transition-delay: 170ms;
 }
 
 .reveal-ready .film-template-section.is-visible .film-template-copy > :nth-child(3) {
-  transition-delay: 170ms;
+  transition-delay: 290ms;
 }
 
 .film-template-copy h2 {
@@ -1948,10 +2158,11 @@ img {
 
 .reveal-ready .appreciation-section .appreciation-copy > * {
   opacity: 0;
-  transform: translateY(14px);
+  translate: 0 0;
+  transform: translateY(18px);
   transition:
-    opacity 620ms ease,
-    transform 620ms ease;
+    opacity 880ms var(--reveal-ease),
+    transform 880ms var(--reveal-ease);
 }
 
 .reveal-ready .appreciation-section.is-visible .appreciation-envelope:not(.is-ready) .appreciation-copy > *,
@@ -1961,23 +2172,23 @@ img {
 }
 
 .reveal-ready .appreciation-section.is-visible .appreciation-copy > :nth-child(2) {
-  transition-delay: 80ms;
+  transition-delay: 130ms;
 }
 
 .reveal-ready .appreciation-section.is-visible .appreciation-copy > :nth-child(3) {
-  transition-delay: 140ms;
+  transition-delay: 220ms;
 }
 
 .reveal-ready .appreciation-section.is-visible .appreciation-copy > :nth-child(4) {
-  transition-delay: 200ms;
+  transition-delay: 310ms;
 }
 
 .reveal-ready .appreciation-section.is-visible .appreciation-copy > :nth-child(5) {
-  transition-delay: 260ms;
+  transition-delay: 400ms;
 }
 
 .reveal-ready .appreciation-section.is-visible .appreciation-copy > :nth-child(6) {
-  transition-delay: 320ms;
+  transition-delay: 490ms;
 }
 
 .family-presence-section {
@@ -2330,18 +2541,21 @@ img {
   object-position: 52% 28%;
 }
 
+.reveal-ready .family-presence-section .family-presence-intro,
 .reveal-ready .family-presence-section .family-group,
 .reveal-ready .family-presence-section .family-presence-groups,
 .reveal-ready .family-presence-section .family-presence-title,
 .reveal-ready .family-presence-section .wedding-timeline-card,
 .reveal-ready .family-presence-section .wedding-timeline-photo {
   opacity: 0;
-  transform: translateY(16px);
+  translate: 0 0;
+  transform: translateY(20px);
   transition:
-    opacity 620ms ease,
-    transform 620ms ease;
+    opacity 860ms var(--reveal-ease),
+    transform 860ms var(--reveal-ease);
 }
 
+.reveal-ready .family-presence-section.is-visible .family-presence-intro,
 .reveal-ready .family-presence-section.is-visible .family-group,
 .reveal-ready .family-presence-section.is-visible .family-presence-groups,
 .reveal-ready .family-presence-section.is-visible .family-presence-title,
@@ -2352,19 +2566,19 @@ img {
 }
 
 .reveal-ready .family-presence-section.is-visible .family-presence-groups {
-  transition-delay: 80ms;
+  transition-delay: 120ms;
 }
 
 .reveal-ready .family-presence-section.is-visible .family-group-bride {
-  transition-delay: 150ms;
-}
-
-.reveal-ready .family-presence-section.is-visible .wedding-timeline-card {
   transition-delay: 220ms;
 }
 
+.reveal-ready .family-presence-section.is-visible .wedding-timeline-card {
+  transition-delay: 340ms;
+}
+
 .reveal-ready .family-presence-section.is-visible .wedding-timeline-photo {
-  transition-delay: 280ms;
+  transition-delay: 450ms;
 }
 
 @media (max-width: 360px) {
@@ -2694,10 +2908,11 @@ img {
 .reveal-ready .mountain-section .mountain-copy,
 .reveal-ready .mountain-section .mountain-image {
   opacity: 0;
-  transform: translateY(16px);
+  translate: 0 0;
+  transform: translateY(20px);
   transition:
-    opacity 620ms ease,
-    transform 620ms ease;
+    opacity 900ms var(--reveal-ease),
+    transform 900ms var(--reveal-ease);
 }
 
 .reveal-ready .mountain-section.is-visible .mountain-note,
@@ -2710,31 +2925,31 @@ img {
 
 .reveal-ready .mountain-section.is-visible .mountain-photo-primary {
   transform: rotate(-7deg);
-  transition-delay: 80ms;
+  transition-delay: 130ms;
 }
 
 .reveal-ready .mountain-section.is-visible .mountain-photo-tertiary {
   transform: rotate(5deg);
-  transition-delay: 150ms;
+  transition-delay: 230ms;
 }
 
 .reveal-ready .mountain-section.is-visible .mountain-note {
-  transition-delay: 190ms;
+  transition-delay: 320ms;
 }
 
 .reveal-ready .mountain-section.is-visible .mountain-photo-quaternary {
   transform: rotate(-5deg);
-  transition-delay: 260ms;
+  transition-delay: 420ms;
 }
 
 .reveal-ready .mountain-section.is-visible .mountain-photo-secondary {
   transform: rotate(6deg);
-  transition-delay: 310ms;
+  transition-delay: 520ms;
 }
 
 .reveal-ready .mountain-section.is-visible .mountain-photo-quinary {
   transform: rotate(3deg);
-  transition-delay: 360ms;
+  transition-delay: 620ms;
 }
 
 .rsvp-section {
@@ -2809,10 +3024,11 @@ img {
 .reveal-ready .rsvp-section .rsvp-copy,
 .reveal-ready .rsvp-section .rsvp-form-wrap {
   opacity: 0;
-  transform: translateY(16px);
+  translate: 0 0;
+  transform: translateY(20px);
   transition:
-    opacity 620ms ease,
-    transform 620ms ease;
+    opacity 860ms var(--reveal-ease),
+    transform 860ms var(--reveal-ease);
 }
 
 .reveal-ready .rsvp-section.is-visible .rsvp-copy,
@@ -2822,7 +3038,7 @@ img {
 }
 
 .reveal-ready .rsvp-section.is-visible .rsvp-form-wrap {
-  transition-delay: 120ms;
+  transition-delay: 190ms;
 }
 
 .wishes-section {
@@ -2951,6 +3167,42 @@ img {
 
 .wishes-list-wrap {
   margin-top: 20px;
+}
+
+.reveal-ready .wishes-section .wishes-heading,
+.reveal-ready .wishes-section .wishes-list-wrap,
+.reveal-ready .wishes-section .field,
+.reveal-ready .wishes-section .wish-submit {
+  opacity: 0;
+  translate: 0 0;
+  transform: translateY(18px);
+  transition:
+    opacity 860ms var(--reveal-ease),
+    transform 860ms var(--reveal-ease);
+}
+
+.reveal-ready .wishes-section.is-visible .wishes-heading,
+.reveal-ready .wishes-section.is-visible .wishes-list-wrap,
+.reveal-ready .wishes-section.is-visible .field,
+.reveal-ready .wishes-section.is-visible .wish-submit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-ready .wishes-section.is-visible .wishes-list-wrap {
+  transition-delay: 150ms;
+}
+
+.reveal-ready .wishes-section.is-visible .field:nth-of-type(1) {
+  transition-delay: 260ms;
+}
+
+.reveal-ready .wishes-section.is-visible .field:nth-of-type(2) {
+  transition-delay: 350ms;
+}
+
+.reveal-ready .wishes-section.is-visible .wish-submit {
+  transition-delay: 460ms;
 }
 
 .wishes-list {
@@ -3104,6 +3356,14 @@ img {
   .reveal-ready .scroll-reveal {
     opacity: 1;
     translate: 0 0;
+    transition: none;
+    will-change: auto;
+  }
+
+  .reveal-ready .scroll-reveal *,
+  .reveal-ready .scroll-reveal::before,
+  .reveal-ready .scroll-reveal::after {
+    animation: none;
     transition: none;
   }
 

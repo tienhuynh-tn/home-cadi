@@ -235,8 +235,8 @@ const setupScrollReveal = () => {
       });
     },
     {
-      rootMargin: "0px 0px -8% 0px",
-      threshold: 0.12,
+      rootMargin: "0px 0px -4% 0px",
+      threshold: 0.08,
     },
   );
 
