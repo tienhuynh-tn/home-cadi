@@ -255,10 +255,22 @@ const setupLetterEnvelope = () => {
 
   letterEnvelope.classList.add("is-ready");
 
-  envelopeButton.addEventListener("click", () => {
+  const openEnvelope = () => {
+    if (letterEnvelope.classList.contains("is-open")) {
+      return;
+    }
+
     letterEnvelope.classList.add("is-open");
     letterEnvelope.closest(".appreciation-section")?.classList.add("is-letter-open");
     envelopeButton.setAttribute("aria-expanded", "true");
+  };
+
+  letterEnvelope.addEventListener("click", (event) => {
+    if (event.target.closest(".appreciation-copy")) {
+      return;
+    }
+
+    openEnvelope();
   });
 };
 

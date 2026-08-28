@@ -1913,6 +1913,10 @@ img {
   place-items: center;
 }
 
+.appreciation-envelope.is-ready:not(.is-open) {
+  cursor: pointer;
+}
+
 .appreciation-envelope-button {
   position: relative;
   z-index: 2;
