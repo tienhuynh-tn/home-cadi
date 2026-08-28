@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" href="%BASE_URL%assets/favicon.png" />
+    <title>RSVP Admin - CADI'S WEDDING</title>
+  </head>
+  <body class="admin-rsvp-body">
+    <main class="admin-rsvp-shell">
+      <section class="admin-rsvp-panel" aria-labelledby="admin-rsvp-title">
+        <div class="admin-rsvp-heading">
+          <p>CADI'S WEDDING</p>
+          <h1 id="admin-rsvp-title">Quản lý xác nhận tham dự</h1>
+        </div>
+
+        <form class="admin-login-form" id="admin-login-form" novalidate>
+          <div class="field">
+            <label for="admin-email">Email</label>
+            <input id="admin-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="admin-password">Mật khẩu</label>
+            <input
+              id="admin-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+          <p class="form-status" id="admin-login-status" role="status"></p>
+          <button class="form-submit" type="submit">Đăng nhập</button>
+        </form>
+
+        <section class="admin-rsvp-content" id="admin-rsvp-content" hidden>
+          <div class="admin-rsvp-toolbar">
+            <p class="admin-rsvp-count" id="admin-rsvp-count">0 xác nhận</p>
+            <div class="admin-rsvp-actions">
+              <button class="admin-secondary-button" id="admin-refresh" type="button">Tải lại</button>
+              <button class="form-submit admin-export-button" id="admin-export" type="button">
+                Tải CSV
+              </button>
+              <button class="admin-secondary-button" id="admin-logout" type="button">Đăng xuất</button>
+            </div>
+          </div>
+          <p class="form-status" id="admin-rsvp-status" role="status"></p>
+          <div class="admin-rsvp-table-wrap">
+            <table class="admin-rsvp-table">
+              <thead>
+                <tr>
+                  <th>Thời gian</th>
+                  <th>Tên</th>
+                  <th>Trả lời</th>
+                  <th>Buổi tiệc</th>
+                  <th>Số người</th>
+                  <th>Lời nhắn</th>
+                </tr>
+              </thead>
+              <tbody id="admin-rsvp-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="/src/admin-rsvp.js"></script>
+  </body>
+</html>

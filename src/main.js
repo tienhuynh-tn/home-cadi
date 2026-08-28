@@ -3,7 +3,9 @@ import { createClient } from "@supabase/supabase-js";
 
 const WISH_LIMIT = 30;
 const NAME_LIMIT = 24;
+const RSVP_NAME_LIMIT = 60;
 const MESSAGE_LIMIT = 240;
+const RSVP_NOTE_LIMIT = 240;
 const WISH_ROTATION_MS = 5000;
 const TITLE_CHARACTER_DELAY_MS = 145;
 const TITLE_LINE_DELAY_MS = 650;
@@ -57,6 +59,9 @@ const wishForm = document.querySelector("#wish-form");
 const wishesList = document.querySelector("#wishes-list");
 const wishStatus = document.querySelector("#wish-status");
 const wishSubmit = document.querySelector(".wish-submit");
+const rsvpForm = document.querySelector("#rsvp-form");
+const rsvpStatus = document.querySelector("#rsvp-status");
+const rsvpSubmit = document.querySelector(".rsvp-submit");
 const storyYears = document.querySelector("#story-years");
 const storyMonths = document.querySelector("#story-months");
 const storyDays = document.querySelector("#story-days");
@@ -421,26 +426,48 @@ const setupWeddingSong = () => {
   weddingSong.addEventListener("pause", setMusicToggleState);
 };
 
-const setStatus = (message, tone = "") => {
-  if (!wishStatus) {
+const setFormStatus = (statusElement, message, tone = "") => {
+  if (!statusElement) {
     return;
   }
 
-  wishStatus.textContent = message;
+  statusElement.textContent = message;
   if (tone) {
-    wishStatus.dataset.tone = tone;
+    statusElement.dataset.tone = tone;
   } else {
-    delete wishStatus.dataset.tone;
+    delete statusElement.dataset.tone;
   }
 };
 
-const setSubmitting = (isSubmitting) => {
-  if (!wishSubmit) {
+const setStatus = (message, tone = "") => {
+  setFormStatus(wishStatus, message, tone);
+};
+
+const setRsvpStatus = (message, tone = "") => {
+  setFormStatus(rsvpStatus, message, tone);
+};
+
+const setSubmitState = (submitButton, isSubmitting, labels) => {
+  if (!submitButton) {
     return;
   }
 
-  wishSubmit.disabled = isSubmitting;
-  wishSubmit.textContent = isSubmitting ? "Đang gửi..." : "Gửi lời chúc";
+  submitButton.disabled = isSubmitting;
+  submitButton.textContent = isSubmitting ? labels.submitting : labels.idle;
+};
+
+const setSubmitting = (isSubmitting) => {
+  setSubmitState(wishSubmit, isSubmitting, {
+    idle: "Gửi lời chúc",
+    submitting: "Đang gửi...",
+  });
+};
+
+const setRsvpSubmitting = (isSubmitting) => {
+  setSubmitState(rsvpSubmit, isSubmitting, {
+    idle: "Gửi xác nhận",
+    submitting: "Đang gửi...",
+  });
 };
 
 const formatWishDate = (dateValue) => {
@@ -636,6 +663,63 @@ const getValidatedWish = (formData) => {
   return { name, message };
 };
 
+const getValidatedRsvp = (formData) => {
+  const name = String(formData.get("name") ?? "").trim();
+  const attendance = String(formData.get("attendance") ?? "").trim();
+  const events = String(formData.get("events") ?? "").trim();
+  const guestCountValue = String(formData.get("guest_count") ?? "").trim();
+  const note = String(formData.get("note") ?? "").trim();
+  const website = String(formData.get("website") ?? "").trim();
+  const allowedAttendance = new Set(["tham_du", "chua_chac", "khong_tham_du"]);
+  const allowedEvents = new Set(["ca_hai", "nha_gai", "nha_trai", "khong_tham_du"]);
+
+  if (website) {
+    return null;
+  }
+
+  if (!name || !attendance || !events) {
+    throw new Error("Bạn nhập tên, câu trả lời và buổi tiệc giúp tụi mình nha.");
+  }
+
+  if (name.length > RSVP_NAME_LIMIT) {
+    throw new Error(`Tên không vượt quá ${RSVP_NAME_LIMIT} ký tự.`);
+  }
+
+  if (!allowedAttendance.has(attendance) || !allowedEvents.has(events)) {
+    throw new Error("Thông tin xác nhận chưa hợp lệ, bạn chọn lại giúp tụi mình nha.");
+  }
+
+  if (attendance === "khong_tham_du" && events !== "khong_tham_du") {
+    throw new Error("Nếu không tham dự, bạn chọn buổi tiệc là Không tham dự giúp tụi mình nha.");
+  }
+
+  if (attendance !== "khong_tham_du" && events === "khong_tham_du") {
+    throw new Error("Bạn chọn buổi tiệc sẽ tham dự giúp tụi mình nha.");
+  }
+
+  if (note.length > RSVP_NOTE_LIMIT) {
+    throw new Error(`Lời nhắn không vượt quá ${RSVP_NOTE_LIMIT} ký tự.`);
+  }
+
+  if (hasSensitiveContent(name, note)) {
+    throw new Error("Nội dung có từ chưa phù hợp, bạn chỉnh lại giúp tụi mình nha.");
+  }
+
+  const guestCount = guestCountValue ? Number.parseInt(guestCountValue, 10) : null;
+
+  if (guestCountValue && (!Number.isInteger(guestCount) || guestCount < 1 || guestCount > 10)) {
+    throw new Error("Số người tham dự từ 1 đến 10 giúp tụi mình nha.");
+  }
+
+  return {
+    name,
+    attendance,
+    events,
+    guest_count: attendance === "khong_tham_du" ? null : (guestCount ?? 1),
+    note: note || null,
+  };
+};
+
 wishForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -674,6 +758,42 @@ wishForm?.addEventListener("submit", async (event) => {
   setSubmitting(false);
   await loadWishes({ announce: false });
   setStatus("Cảm ơn bạn đã gửi lời chúc!", "success");
+});
+
+rsvpForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!supabase) {
+    setRsvpStatus("Chưa cấu hình Supabase nên chưa thể gửi xác nhận.", "error");
+    return;
+  }
+
+  let rsvp;
+  try {
+    rsvp = getValidatedRsvp(new FormData(rsvpForm));
+  } catch (error) {
+    setRsvpStatus(error.message, "error");
+    return;
+  }
+
+  if (!rsvp) {
+    return;
+  }
+
+  setRsvpSubmitting(true);
+  setRsvpStatus("Đang gửi xác nhận...");
+
+  const { error } = await supabase.from("rsvps").insert(rsvp);
+
+  if (error) {
+    setRsvpStatus("Chưa thể gửi xác nhận. Vui lòng thử lại sau.", "error");
+    setRsvpSubmitting(false);
+    return;
+  }
+
+  rsvpForm.reset();
+  setRsvpSubmitting(false);
+  setRsvpStatus("Cảm ơn bạn đã xác nhận tham dự!", "success");
 });
 
 setupHandwritingTitle();

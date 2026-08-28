@@ -16,8 +16,6 @@
       content="Chung minh cuoi roi! 14.10.2026 - 15.10.2026"
     />
     <meta property="og:image" content="%BASE_URL%assets/cover.jpg" />
-    <link rel="preconnect" href="https://docs.google.com" />
-    <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
     <link rel="icon" type="image/png" href="%BASE_URL%assets/favicon.png" />
     <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
     <style>
@@ -787,14 +785,83 @@
             </p>
           </div>
 
-          <div class="rsvp-form-wrap">
-            <iframe
-              class="rsvp-form-frame"
-              src="https://docs.google.com/forms/d/e/1FAIpQLSc63QoHCY_oJIjmgdOvklBs5864phaFptjPGlNRY1yUk5DzHA/viewform?embedded=true"
-              title="Google Form xác nhận tham dự"
-              loading="eager"
-            ></iframe>
-          </div>
+          <form class="rsvp-form" id="rsvp-form" novalidate>
+            <div class="field scroll-reveal">
+              <label for="rsvp-name">Tên của bạn</label>
+              <input
+                id="rsvp-name"
+                name="name"
+                type="text"
+                maxlength="60"
+                autocomplete="name"
+                required
+              />
+            </div>
+
+            <fieldset class="rsvp-choice-group scroll-reveal">
+              <legend>Bạn sẽ tham dự chứ?</legend>
+              <label>
+                <input type="radio" name="attendance" value="tham_du" required />
+                <span>Có, mình sẽ tham dự</span>
+              </label>
+              <label>
+                <input type="radio" name="attendance" value="chua_chac" />
+                <span>Mình sẽ báo lại sau</span>
+              </label>
+              <label>
+                <input type="radio" name="attendance" value="khong_tham_du" />
+                <span>Tiếc quá, mình không tham dự được</span>
+              </label>
+            </fieldset>
+
+            <div class="field scroll-reveal">
+              <label for="rsvp-events">Buổi tiệc bạn tham dự</label>
+              <select id="rsvp-events" name="events" required>
+                <option value="">Chọn buổi tiệc</option>
+                <option value="ca_hai">Cả hai buổi tiệc</option>
+                <option value="nha_gai">Tiệc Nhà Gái - 14.10.2026</option>
+                <option value="nha_trai">Tiệc Nhà Trai - 15.10.2026</option>
+                <option value="khong_tham_du">Không tham dự</option>
+              </select>
+            </div>
+
+            <div class="field scroll-reveal">
+              <label for="rsvp-guest-count">Số người tham dự</label>
+              <input
+                id="rsvp-guest-count"
+                name="guest_count"
+                type="number"
+                min="1"
+                max="10"
+                inputmode="numeric"
+                placeholder="1"
+              />
+            </div>
+
+            <div class="field scroll-reveal">
+              <label for="rsvp-note">Lời nhắn thêm nếu có</label>
+              <textarea
+                id="rsvp-note"
+                name="note"
+                maxlength="240"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <input
+              class="form-extra"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+
+            <p class="form-status" id="rsvp-status" role="status"></p>
+
+            <button class="form-submit rsvp-submit scroll-reveal" type="submit">
+              Gửi xác nhận
+            </button>
+          </form>
         </section>
 
         <section class="wishes-section scroll-reveal" aria-labelledby="wishes-title">

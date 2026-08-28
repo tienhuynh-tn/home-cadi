@@ -135,6 +135,10 @@ img {
   max-width: 100%;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .signature-symbols {
   position: absolute;
   width: 0;
@@ -3010,23 +3014,49 @@ img {
   list-style: none;
 }
 
-.rsvp-form-wrap {
-  min-height: 360px;
-  overflow: hidden;
+.rsvp-form {
+  display: grid;
+  gap: 14px;
+  padding: 18px 16px 20px;
   border: 1px solid rgba(93, 69, 50, 0.16);
   background: rgba(255, 255, 255, 0.48);
   box-shadow: 0 12px 22px rgba(93, 69, 50, 0.1);
 }
 
-.rsvp-form-frame {
-  display: block;
-  width: 100%;
-  height: min(68svh, 520px);
+.rsvp-choice-group {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
   border: 0;
 }
 
+.rsvp-choice-group legend {
+  margin: 0 0 2px;
+  color: var(--soft-ink);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.rsvp-choice-group label {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 9px;
+  align-items: start;
+  color: rgba(32, 23, 16, 0.86);
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.rsvp-choice-group input {
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  accent-color: var(--red);
+}
+
 .reveal-ready .rsvp-section .rsvp-copy,
-.reveal-ready .rsvp-section .rsvp-form-wrap {
+.reveal-ready .rsvp-section .rsvp-form {
   opacity: 0;
   translate: 0 0;
   transform: translateY(20px);
@@ -3036,12 +3066,12 @@ img {
 }
 
 .reveal-ready .rsvp-section.is-visible .rsvp-copy,
-.reveal-ready .rsvp-section.is-visible .rsvp-form-wrap {
+.reveal-ready .rsvp-section.is-visible .rsvp-form {
   opacity: 1;
   transform: translateY(0);
 }
 
-.reveal-ready .rsvp-section.is-visible .rsvp-form-wrap {
+.reveal-ready .rsvp-section.is-visible .rsvp-form {
   transition-delay: 190ms;
 }
 
@@ -3097,7 +3127,8 @@ img {
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.field select {
   width: 100%;
   border: 1px solid rgba(93, 69, 50, 0.28);
   border-radius: 0;
@@ -3108,9 +3139,22 @@ img {
   line-height: 1.4;
 }
 
-.field input {
+.field input,
+.field select {
   min-height: 42px;
   padding: 9px 11px;
+}
+
+.field select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--soft-ink) 50%),
+    linear-gradient(135deg, var(--soft-ink) 50%, transparent 50%);
+  background-position:
+    calc(100% - 17px) 18px,
+    calc(100% - 11px) 18px;
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
 }
 
 .field textarea {
@@ -3120,13 +3164,15 @@ img {
 }
 
 .field input:focus,
-.field textarea:focus {
+.field textarea:focus,
+.field select:focus {
   border-color: rgba(34, 139, 34, 0.68);
   outline: 2px solid rgba(34, 139, 34, 0.16);
   outline-offset: 0;
 }
 
-.wish-extra {
+.wish-extra,
+.form-extra {
   position: absolute;
   left: -9999px;
   width: 1px;
@@ -3134,7 +3180,8 @@ img {
   opacity: 0;
 }
 
-.wish-status {
+.wish-status,
+.form-status {
   min-height: 1.25em;
   margin: 0;
   color: var(--soft-ink);
@@ -3142,15 +3189,18 @@ img {
   line-height: 1.35;
 }
 
-.wish-status[data-tone="error"] {
+.wish-status[data-tone="error"],
+.form-status[data-tone="error"] {
   color: var(--red);
 }
 
-.wish-status[data-tone="success"] {
+.wish-status[data-tone="success"],
+.form-status[data-tone="success"] {
   color: var(--green);
 }
 
-.wish-submit {
+.wish-submit,
+.form-submit {
   margin-bottom: 12px;
   min-height: 44px;
   border: 1px solid rgba(198, 0, 0, 0.86);
@@ -3164,7 +3214,8 @@ img {
   text-transform: uppercase;
 }
 
-.wish-submit:disabled {
+.wish-submit:disabled,
+.form-submit:disabled {
   cursor: wait;
   opacity: 0.68;
 }
@@ -3240,6 +3291,142 @@ img {
 
 .wish-card[hidden] {
   display: none;
+}
+
+.admin-rsvp-body {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 239, 0.9)),
+    var(--cream);
+  font-family: "Montserrat", "Segoe UI", sans-serif;
+}
+
+.admin-rsvp-shell {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.admin-rsvp-panel {
+  display: grid;
+  gap: 22px;
+}
+
+.admin-rsvp-heading {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-rsvp-heading p {
+  margin: 0;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.admin-rsvp-heading h1 {
+  margin: 0;
+  color: var(--red);
+  font-family: "1FTV VIP Scartoon", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.admin-login-form {
+  display: grid;
+  gap: 14px;
+  max-width: 420px;
+  padding: 22px;
+  border: 1px solid rgba(93, 69, 50, 0.18);
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 14px 28px rgba(93, 69, 50, 0.12);
+}
+
+.admin-rsvp-content {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-rsvp-toolbar {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-rsvp-count {
+  margin: 0;
+  color: var(--soft-ink);
+  font-weight: 700;
+}
+
+.admin-rsvp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.admin-secondary-button,
+.admin-export-button {
+  min-height: 40px;
+  margin-bottom: 0;
+  padding: 9px 14px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-secondary-button {
+  border: 1px solid rgba(93, 69, 50, 0.28);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--soft-ink);
+}
+
+.admin-secondary-button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.admin-rsvp-table-wrap {
+  overflow: auto;
+  border: 1px solid rgba(93, 69, 50, 0.18);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 14px 28px rgba(93, 69, 50, 0.1);
+}
+
+.admin-rsvp-table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+  color: var(--ink);
+  font-size: 0.86rem;
+}
+
+.admin-rsvp-table th,
+.admin-rsvp-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid rgba(93, 69, 50, 0.14);
+  text-align: left;
+  vertical-align: top;
+}
+
+.admin-rsvp-table th {
+  background: rgba(34, 139, 34, 0.08);
+  color: var(--soft-ink);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.admin-rsvp-table td {
+  line-height: 1.45;
 }
 
 .wish-card.is-active {
@@ -3417,9 +3604,9 @@ img {
   .reveal-ready .mountain-section.is-visible .mountain-copy,
   .reveal-ready .mountain-section.is-visible .mountain-image,
   .reveal-ready .rsvp-section .rsvp-copy,
-  .reveal-ready .rsvp-section .rsvp-form-wrap,
+  .reveal-ready .rsvp-section .rsvp-form,
   .reveal-ready .rsvp-section.is-visible .rsvp-copy,
-  .reveal-ready .rsvp-section.is-visible .rsvp-form-wrap {
+  .reveal-ready .rsvp-section.is-visible .rsvp-form {
     opacity: 1;
     transition: none;
   }
@@ -3451,9 +3638,9 @@ img {
   .reveal-ready .mountain-section.is-visible .mountain-copy,
   .reveal-ready .mountain-section.is-visible .mountain-image,
   .reveal-ready .rsvp-section .rsvp-copy,
-  .reveal-ready .rsvp-section .rsvp-form-wrap,
+  .reveal-ready .rsvp-section .rsvp-form,
   .reveal-ready .rsvp-section.is-visible .rsvp-copy,
-  .reveal-ready .rsvp-section.is-visible .rsvp-form-wrap {
+  .reveal-ready .rsvp-section.is-visible .rsvp-form {
     transform: translateY(0);
   }
 
@@ -3465,6 +3652,22 @@ img {
   .reveal-ready .film-template-section .film-template-copy h2,
   .reveal-ready .film-template-section.is-visible .film-template-copy h2 {
     transform: rotate(-7deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .admin-rsvp-shell {
+    width: min(calc(100vw - 24px), 520px);
+    padding: 22px 0;
+  }
+
+  .admin-rsvp-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .admin-rsvp-actions {
+    justify-content: flex-start;
   }
 }
 
