@@ -2994,15 +2994,8 @@ img {
 
 .rsvp-copy p {
   margin: 0;
-}
-
-.rsvp-copy .rsvp-confirmation-note {
-  font-size: clamp(0.72rem, 3.05vw, 0.84rem);
-}
-
-.rsvp-confirmation-note span {
-  display: block;
-  white-space: nowrap;
+  font-size: clamp(0.8rem, 3.35vw, 0.92rem);
+  text-align: justify;
 }
 
 .rsvp-events {
@@ -3169,6 +3162,12 @@ img {
   border-color: rgba(34, 139, 34, 0.68);
   outline: 2px solid rgba(34, 139, 34, 0.16);
   outline-offset: 0;
+}
+
+.field input:disabled,
+.field select:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
 }
 
 .wish-extra,

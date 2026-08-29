@@ -10,12 +10,18 @@ create table if not exists rsvps (
     attendance in ('tham_du', 'chua_chac', 'khong_tham_du')
   ),
   constraint rsvps_events_check check (
-    events in ('ca_hai', 'nha_gai', 'nha_trai', 'khong_tham_du')
+    events in ('ca_hai', 'nha_gai', 'nha_trai', 'chua_chac', 'khong_tham_du')
   ),
   constraint rsvps_guest_count_check check (
     guest_count is null or guest_count between 1 and 10
   )
 );
+
+alter table rsvps drop constraint if exists rsvps_events_check;
+alter table rsvps
+  add constraint rsvps_events_check check (
+    events in ('ca_hai', 'nha_gai', 'nha_trai', 'chua_chac', 'khong_tham_du')
+  );
 
 create table if not exists rsvp_admins (
   user_id uuid primary key references auth.users(id) on delete cascade,
@@ -47,9 +53,10 @@ on rsvps for insert
 with check (
   length(trim(name)) between 1 and 60
   and attendance in ('tham_du', 'chua_chac', 'khong_tham_du')
-  and events in ('ca_hai', 'nha_gai', 'nha_trai', 'khong_tham_du')
+  and events in ('ca_hai', 'nha_gai', 'nha_trai', 'chua_chac', 'khong_tham_du')
   and (guest_count is null or guest_count between 1 and 10)
   and (note is null or length(trim(note)) <= 240)
+  and (attendance <> 'chua_chac' or length(trim(coalesce(note, ''))) between 1 and 240)
 );
 
 drop policy if exists "Admins can read RSVP" on rsvps;

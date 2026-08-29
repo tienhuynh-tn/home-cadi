@@ -28,6 +28,7 @@ const EVENT_LABELS = {
   ca_hai: "Cả hai buổi tiệc",
   nha_gai: "Tiệc Nhà Gái - 14.10.2026",
   nha_trai: "Tiệc Nhà Trai - 15.10.2026",
+  chua_chac: "Chưa chọn buổi tiệc",
   khong_tham_du: "Không tham dự",
 };
 

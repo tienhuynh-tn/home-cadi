@@ -772,16 +772,10 @@
           <div class="rsvp-copy">
             <h2 id="rsvp-title">Xác nhận tham dự</h2>
             <p>
-              Vì tiệc được tổ chức trong tuần và chúng mình có rất nhiều người thân, bạn bè chung, nên mong bạn xác nhận sẽ tham dự:
+              Vì tiệc được tổ chức trong tuần và chúng mình có rất nhiều người thân, bạn bè chung, nên mong bạn xác nhận sẽ tham dự
             </p>
-            <ul class="rsvp-events" aria-label="Các buổi tiệc">
-              <li>♡ Tiệc Nhà Gái - 14.10.2026</li>
-              <li>♡ Tiệc Nhà Trai - 15.10.2026</li>
-              <li>♡ Người lớn không lựa chọn, người lớn tham dự cả hai</li>
-            </ul>
-            <p class="rsvp-confirmation-note">
-              <span>Thông tin xác nhận sẽ giúp chúng mình và gia đình</span>
-              <span>chuẩn bị chu đáo hơn để đón tiếp bạn.</span>
+            <p>
+              Thông tin xác nhận sẽ giúp chúng mình và gia đình chuẩn bị chu đáo hơn để đón tiếp bạn.
             </p>
           </div>
 
@@ -818,10 +812,9 @@
               <label for="rsvp-events">Buổi tiệc bạn tham dự</label>
               <select id="rsvp-events" name="events" required>
                 <option value="">Chọn buổi tiệc</option>
-                <option value="ca_hai">Cả hai buổi tiệc</option>
+                <option value="ca_hai">Người lớn không lựa chọn, người lớn tham dự cả hai</option>
                 <option value="nha_gai">Tiệc Nhà Gái - 14.10.2026</option>
                 <option value="nha_trai">Tiệc Nhà Trai - 15.10.2026</option>
-                <option value="khong_tham_du">Không tham dự</option>
               </select>
             </div>
 
@@ -834,12 +827,11 @@
                 min="1"
                 max="10"
                 inputmode="numeric"
-                placeholder="1"
               />
             </div>
 
             <div class="field scroll-reveal">
-              <label for="rsvp-note">Lời nhắn thêm nếu có</label>
+              <label for="rsvp-note">Lời nhắn thêm</label>
               <textarea
                 id="rsvp-note"
                 name="note"

@@ -62,6 +62,9 @@ const wishSubmit = document.querySelector(".wish-submit");
 const rsvpForm = document.querySelector("#rsvp-form");
 const rsvpStatus = document.querySelector("#rsvp-status");
 const rsvpSubmit = document.querySelector(".rsvp-submit");
+const rsvpEventSelect = document.querySelector("#rsvp-events");
+const rsvpGuestCount = document.querySelector("#rsvp-guest-count");
+const rsvpNote = document.querySelector("#rsvp-note");
 const storyYears = document.querySelector("#story-years");
 const storyMonths = document.querySelector("#story-months");
 const storyDays = document.querySelector("#story-days");
@@ -671,34 +674,40 @@ const getValidatedRsvp = (formData) => {
   const note = String(formData.get("note") ?? "").trim();
   const website = String(formData.get("website") ?? "").trim();
   const allowedAttendance = new Set(["tham_du", "chua_chac", "khong_tham_du"]);
-  const allowedEvents = new Set(["ca_hai", "nha_gai", "nha_trai", "khong_tham_du"]);
+  const allowedEvents = new Set(["ca_hai", "nha_gai", "nha_trai", "chua_chac", "khong_tham_du"]);
+  const normalizedEvents =
+    attendance === "khong_tham_du" || attendance === "chua_chac" ? attendance : events;
 
   if (website) {
     return null;
   }
 
-  if (!name || !attendance || !events) {
-    throw new Error("Bạn nhập tên, câu trả lời và buổi tiệc giúp tụi mình nha.");
+  if (!name || !attendance) {
+    throw new Error("Bạn nhập tên và câu trả lời giúp tụi mình nha.");
   }
 
   if (name.length > RSVP_NAME_LIMIT) {
     throw new Error(`Tên không vượt quá ${RSVP_NAME_LIMIT} ký tự.`);
   }
 
-  if (!allowedAttendance.has(attendance) || !allowedEvents.has(events)) {
+  if (!allowedAttendance.has(attendance)) {
     throw new Error("Thông tin xác nhận chưa hợp lệ, bạn chọn lại giúp tụi mình nha.");
   }
 
-  if (attendance === "khong_tham_du" && events !== "khong_tham_du") {
-    throw new Error("Nếu không tham dự, bạn chọn buổi tiệc là Không tham dự giúp tụi mình nha.");
+  if (attendance !== "khong_tham_du" && (!normalizedEvents || normalizedEvents === "khong_tham_du")) {
+    throw new Error("Bạn chọn buổi tiệc sẽ tham dự giúp tụi mình nha.");
   }
 
-  if (attendance !== "khong_tham_du" && events === "khong_tham_du") {
-    throw new Error("Bạn chọn buổi tiệc sẽ tham dự giúp tụi mình nha.");
+  if (!allowedEvents.has(normalizedEvents)) {
+    throw new Error("Thông tin xác nhận chưa hợp lệ, bạn chọn lại giúp tụi mình nha.");
   }
 
   if (note.length > RSVP_NOTE_LIMIT) {
     throw new Error(`Lời nhắn không vượt quá ${RSVP_NOTE_LIMIT} ký tự.`);
+  }
+
+  if (attendance === "chua_chac" && !note) {
+    throw new Error("Bạn thêm lời nhắn giúp tụi mình nha.");
   }
 
   if (hasSensitiveContent(name, note)) {
@@ -707,6 +716,10 @@ const getValidatedRsvp = (formData) => {
 
   const guestCount = guestCountValue ? Number.parseInt(guestCountValue, 10) : null;
 
+  if (attendance === "tham_du" && !guestCountValue) {
+    throw new Error("Bạn nhập số người tham dự giúp tụi mình nha.");
+  }
+
   if (guestCountValue && (!Number.isInteger(guestCount) || guestCount < 1 || guestCount > 10)) {
     throw new Error("Số người tham dự từ 1 đến 10 giúp tụi mình nha.");
   }
@@ -714,10 +727,32 @@ const getValidatedRsvp = (formData) => {
   return {
     name,
     attendance,
-    events,
-    guest_count: attendance === "khong_tham_du" ? null : (guestCount ?? 1),
+    events: normalizedEvents,
+    guest_count: attendance === "tham_du" ? guestCount : null,
     note: note || null,
   };
+};
+
+const updateRsvpRequirementState = () => {
+  if (!rsvpForm || !rsvpEventSelect || !rsvpGuestCount || !rsvpNote) {
+    return;
+  }
+
+  const attendance = String(new FormData(rsvpForm).get("attendance") ?? "");
+  const isAttending = attendance === "tham_du";
+  const isPending = attendance === "chua_chac";
+  const skipAttendanceDetails = attendance === "khong_tham_du" || isPending;
+
+  rsvpEventSelect.required = isAttending;
+  rsvpEventSelect.disabled = skipAttendanceDetails;
+  rsvpGuestCount.required = isAttending;
+  rsvpGuestCount.disabled = skipAttendanceDetails;
+  rsvpNote.required = isPending;
+
+  if (skipAttendanceDetails) {
+    rsvpEventSelect.value = "";
+    rsvpGuestCount.value = "";
+  }
 };
 
 wishForm?.addEventListener("submit", async (event) => {
@@ -792,9 +827,18 @@ rsvpForm?.addEventListener("submit", async (event) => {
   }
 
   rsvpForm.reset();
+  updateRsvpRequirementState();
   setRsvpSubmitting(false);
   setRsvpStatus("Cảm ơn bạn đã xác nhận tham dự!", "success");
 });
+
+rsvpForm?.addEventListener("change", (event) => {
+  if (event.target instanceof HTMLInputElement && event.target.name === "attendance") {
+    updateRsvpRequirementState();
+  }
+});
+
+updateRsvpRequirementState();
 
 setupHandwritingTitle();
 setupScrollReveal();
