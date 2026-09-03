@@ -1359,23 +1359,40 @@ img {
 
 .primary-school-caption span {
   display: inline-block;
+  position: relative;
+  z-index: 0;
   padding: 0 8px 1px 12px;
+}
+
+.primary-school-caption span::before {
+  position: absolute;
+  inset: -2px -9px -2px -14px;
+  z-index: -1;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 260 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 17 C27 9 55 13 80 10 C113 6 141 9 172 7 C205 6 233 5 255 11 C241 18 206 18 175 22 C136 27 110 23 77 25 C46 27 21 24 5 17 Z' fill='white' fill-opacity='0.9'/%3E%3Cpath d='M14 10 C48 6 84 8 121 7 C159 6 207 3 247 8' fill='none' stroke='white' stroke-opacity='0.78' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M13 22 C47 24 82 20 119 21 C156 23 200 20 244 22' fill='none' stroke='white' stroke-opacity='0.68' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 82%;
-  box-shadow: 0 3px 9px rgba(32, 23, 16, 0.055);
+  background-size: 100% 90%;
+  content: "";
+  filter: drop-shadow(0 3px 7px rgba(32, 23, 16, 0.055));
 }
 
 .primary-school-caption span:nth-child(2n) {
   padding-right: 11px;
   padding-left: 10px;
+}
+
+.primary-school-caption span:nth-child(2n)::before {
+  left: -12px;
+  right: -12px;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 260 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 14 C35 8 61 11 89 8 C123 5 151 8 181 7 C209 7 236 4 256 13 C232 17 206 18 178 20 C143 23 113 25 80 22 C50 20 25 24 4 14 Z' fill='white' fill-opacity='0.9'/%3E%3Cpath d='M11 9 C45 8 77 6 111 8 C147 10 193 5 249 9' fill='none' stroke='white' stroke-opacity='0.76' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M18 21 C49 18 87 22 124 21 C159 20 202 17 240 20' fill='none' stroke='white' stroke-opacity='0.66' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 .primary-school-caption span:nth-child(3n) {
   padding-right: 7px;
   padding-left: 13px;
+}
+
+.primary-school-caption span:nth-child(3n)::before {
   background-size: 100% 78%;
 }
 
