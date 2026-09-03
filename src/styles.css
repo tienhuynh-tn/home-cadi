@@ -1065,7 +1065,7 @@ img {
   width: min(100%, 390px);
   min-height: 448px;
   margin: 60px auto 0;
-  padding: 62px 0 0;
+  padding: 78px 0 0;
 }
 
 .story-date-note,
@@ -1114,9 +1114,9 @@ img {
 .story-couple-image {
   z-index: 1;
   justify-self: end;
-  width: min(70%, 278px);
+  width: min(64%, 252px);
   height: auto;
-  margin-right: -32px;
+  margin: 0 12px 0 0;
   object-fit: contain;
   transform: rotate(6deg);
   transform-origin: left top;
