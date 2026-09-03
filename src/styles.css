@@ -9,20 +9,9 @@
   --page-cream: rgba(255, 248, 239, 0.76);
   --page-sage: rgba(34, 139, 34, 0.07);
   --page-blush: rgba(198, 0, 0, 0.055);
-  --soft-page-bg:
-    linear-gradient(
-      180deg,
-      #ffffff 0,
-      #ffffff 112svh,
-      #fff9f1 190svh,
-      #f8faf4 320svh,
-      #fffdf8 470svh,
-      #f7faf4 620svh,
-      #fff8ef 760svh,
-      #ffffff 100%
-    );
-  --soft-section-bg: transparent;
-  --soft-section-bg-alt: transparent;
+  --soft-page-bg: #ffffff;
+  --soft-section-bg: #ffffff;
+  --soft-section-bg-alt: #ffffff;
 }
 
 @font-face {
