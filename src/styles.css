@@ -1382,7 +1382,7 @@ img {
 
 .primary-school-caption span::before {
   position: absolute;
-  inset: -2px -9px -2px -14px;
+  inset: -5px -9px -2px -14px;
   z-index: -1;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 260 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 17 C27 9 55 13 80 10 C113 6 141 9 172 7 C205 6 233 5 255 11 C241 18 206 18 175 22 C136 27 110 23 77 25 C46 27 21 24 5 17 Z' fill='white' fill-opacity='0.9'/%3E%3Cpath d='M14 10 C48 6 84 8 121 7 C159 6 207 3 247 8' fill='none' stroke='white' stroke-opacity='0.78' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M13 22 C47 24 82 20 119 21 C156 23 200 20 244 22' fill='none' stroke='white' stroke-opacity='0.68' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
   background-position: center;
