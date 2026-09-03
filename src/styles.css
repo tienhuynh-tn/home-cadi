@@ -1356,7 +1356,7 @@ img {
 
 .primary-school-caption {
   position: absolute;
-  right: max(-20%, calc(100% - 100vw + 14px));
+  right: max(-15%, calc(100% - 100vw + 14px));
   bottom: -25px;
   z-index: 2;
   display: grid;
