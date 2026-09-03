@@ -1301,6 +1301,43 @@ img {
   object-position: center;
 }
 
+.primary-school-years {
+  position: absolute;
+  left: 18px;
+  bottom: 12px;
+  z-index: 2;
+  display: inline-grid;
+  place-items: center;
+  width: max-content;
+  margin: 0;
+  padding: 1px 5px 3px;
+  color: rgba(32, 23, 16, 0.82);
+  font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-size: clamp(0.74rem, 3.35vw, 0.9rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.primary-school-years::before {
+  position: absolute;
+  inset: 3px 1px 1px 1px;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 132 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 13 C16 7 31 10 43 8 C60 5 75 7 91 6 C106 6 118 4 128 8 C120 14 103 13 88 16 C69 20 55 17 38 19 C24 21 13 18 4 13 Z' fill='white' fill-opacity='0.9'/%3E%3Cpath d='M12 7 C29 4 47 6 66 5 C85 4 106 2 124 6' fill='none' stroke='white' stroke-opacity='0.82' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M8 17 C25 19 42 16 60 17 C78 18 96 15 119 17' fill='none' stroke='white' stroke-opacity='0.72' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  content: "";
+  transform: rotate(-2deg);
+}
+
+.primary-school-years span {
+  display: block;
+  position: relative;
+}
+
 .primary-school-caption {
   position: absolute;
   right: -27%;
