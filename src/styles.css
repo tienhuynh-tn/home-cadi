@@ -514,7 +514,7 @@ img {
 .love-mark {
   position: absolute;
   z-index: 1;
-  color: rgba(158, 26, 26, 0.72);
+  color: rgba(178, 76, 79, 0.72);
   font-family: "1FTV VIP Scartoon", Georgia, serif;
   font-size: 1.1rem;
   font-weight: 900;
@@ -539,13 +539,13 @@ img {
 }
 
 .kid-doodle-sparkle {
-  color: rgba(34, 102, 34, 0.66);
+  color: rgba(45, 39, 104, 0.72);
   font-size: 1.12rem;
   text-shadow: 0 2px 8px rgba(255, 255, 255, 0.46);
 }
 
 .kid-doodle-heart {
-  color: rgba(158, 26, 26, 0.68);
+  color: rgba(178, 76, 79, 0.66);
   font-size: 0.95rem;
   text-shadow: 0 2px 8px rgba(255, 255, 255, 0.46);
 }
@@ -602,7 +602,7 @@ img {
   width: 6px;
   height: 6px;
   border-radius: 999px;
-  background: rgba(32, 23, 16, 0.48);
+  background: rgba(62, 66, 91, 0.46);
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.38);
   pointer-events: none;
 }
@@ -649,7 +649,7 @@ img {
   gap: 2px;
   justify-items: center;
   margin: 0;
-  color: rgba(198, 0, 0, 0.72);
+  color: rgba(218, 59, 52, 0.78);
   font-family: "1FTV VIP ERGISA BOLD", "1FTV VIP Ergisa", Georgia, serif;
   font-size: 0.72rem;
   font-weight: 900;
@@ -666,7 +666,7 @@ img {
 
 .kid-label path {
   fill: none;
-  stroke: rgba(198, 0, 0, 0.78);
+  stroke: rgba(218, 59, 52, 0.82);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3.2;
@@ -996,15 +996,15 @@ img {
 }
 
 .signature-elements-intro .signature-camera {
-  color: rgba(32, 23, 16, 0.48);
+  color: rgba(49, 95, 182, 0.5);
 }
 
 .signature-elements-intro .signature-book {
-  color: rgba(34, 102, 34, 0.52);
+  color: rgba(108, 59, 184, 0.52);
 }
 
 .signature-elements-intro .signature-cola {
-  color: rgba(158, 26, 26, 0.56);
+  color: rgba(241, 106, 69, 0.56);
 }
 
 .signature-elements-intro .signature-icon {
