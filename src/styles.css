@@ -1262,9 +1262,10 @@ img {
 }
 
 .primary-school-story {
+  position: relative;
   display: grid;
   gap: 12px;
-  width: min(100%, 340px);
+  width: min(100%, 312px);
   margin: 0 auto 0 0;
 }
 
@@ -1298,19 +1299,50 @@ img {
   aspect-ratio: 3 / 2;
   object-fit: cover;
   object-position: center;
-  border: 1px solid rgba(93, 69, 50, 0.22);
-  box-shadow: 0 12px 28px rgba(32, 23, 16, 0.14);
 }
 
 .primary-school-caption {
-  width: min(100%, 31ch);
-  margin: 0 auto;
+  position: absolute;
+  right: -27%;
+  bottom: -12px;
+  z-index: 2;
+  display: grid;
+  justify-items: end;
+  gap: 3px;
+  width: min(76%, 286px);
+  margin: 0;
+  padding: 0;
   color: rgba(32, 23, 16, 0.84);
-  font-family: "Montserrat", "Segoe UI", sans-serif;
-  font-size: 0.94rem;
-  font-weight: 400;
-  line-height: 1.45;
-  text-align: center;
+  font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-size: clamp(0.76rem, 3.45vw, 0.94rem);
+  font-weight: 700;
+  line-height: 1.12;
+  text-align: right;
+}
+
+.primary-school-caption span {
+  display: inline-block;
+  padding: 0 8px 1px 12px;
+  background:
+    radial-gradient(70% 90% at 16% 50%, rgba(255, 255, 255, 0.94) 0 62%, transparent 64%),
+    radial-gradient(82% 86% at 72% 48%, rgba(255, 255, 255, 0.91) 0 64%, transparent 66%);
+  border-radius: 68% 32% 62% 38% / 44% 58% 42% 56%;
+  box-shadow: 0 3px 9px rgba(32, 23, 16, 0.055);
+}
+
+.primary-school-caption span:nth-child(2n) {
+  padding-right: 11px;
+  padding-left: 10px;
+  background:
+    radial-gradient(74% 88% at 24% 52%, rgba(255, 255, 255, 0.94) 0 60%, transparent 62%),
+    radial-gradient(76% 82% at 78% 46%, rgba(255, 255, 255, 0.9) 0 62%, transparent 64%);
+  border-radius: 34% 66% 42% 58% / 56% 40% 60% 44%;
+}
+
+.primary-school-caption span:nth-child(3n) {
+  padding-right: 7px;
+  padding-left: 13px;
+  border-radius: 72% 28% 36% 64% / 40% 62% 38% 60%;
 }
 
 .reveal-ready .primary-school-section .primary-school-story {
