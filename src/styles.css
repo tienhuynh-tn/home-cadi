@@ -102,6 +102,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Bachelorette";
+  src: url("/assets/fonts/Bachelorette_PERSONAL_USE_ONLY.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -832,7 +840,7 @@ img {
 .story-section {
   position: relative;
   margin-top: 12px;
-  padding: 20px 18px 16px;
+  padding: 28px 16px 68px;
   background: var(--soft-section-bg-alt);
   overflow: visible;
 }
@@ -1026,20 +1034,128 @@ img {
 }
 
 .story-kicker {
-  margin: 0 0 6px;
-  color: var(--green);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  margin: 0 0 2px;
+  color: #111111;
+  font-family: "Montserrat", "Segoe UI", sans-serif;
+  font-size: clamp(1.13rem, 5.8vw, 1.46rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
 }
 
 .story-heading h2 {
   margin: 0;
   color: var(--red);
-  font-family: "1FTV VIP Scartoon", Georgia, serif;
-  font-size: clamp(1.5rem, 6.6vw, 1.92rem);
-  line-height: 1.05;
+  font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-variant-ligatures: none;
+  font-feature-settings:
+    "liga" 0,
+    "clig" 0,
+    "dlig" 0,
+    "calt" 0;
+  font-size: clamp(1.42rem, 7.2vw, 1.86rem);
+  font-weight: 400;
+  line-height: 1.12;
   letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.story-poster {
+  position: relative;
+  display: grid;
+  width: min(100%, 390px);
+  min-height: 448px;
+  margin: 60px auto 0;
+  padding: 62px 0 0;
+}
+
+.story-date-note,
+.story-grown-note {
+  color: var(--red);
+  font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-variant-ligatures: none;
+  font-feature-settings:
+    "liga" 0,
+    "clig" 0,
+    "dlig" 0,
+    "calt" 0;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.story-date-note {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 2;
+  display: grid;
+  gap: 0;
+  width: min(66vw, 252px);
+  margin: 0;
+  font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-size: clamp(0.98rem, 5.2vw, 1.36rem);
+  line-height: 1.18;
+  transform: rotate(-6deg);
+  transform-origin: left top;
+}
+
+.story-date-note > .story-note-line {
+  display: flex;
+  gap: 0.16em;
+  width: 100%;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.story-date-note > .story-note-line:last-child {
+  justify-content: center;
+  transform: translateY(4px);
+}
+
+.story-couple-image {
+  z-index: 1;
+  justify-self: end;
+  width: min(70%, 278px);
+  height: auto;
+  margin-right: -32px;
+  object-fit: contain;
+  transform: rotate(6deg);
+  transform-origin: left top;
+}
+
+.story-grown-note {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  width: min(66%, 244px);
+  margin: -12px auto 0 8px;
+  padding: 18px 22px 20px;
+  color: #111111;
+  font-size: clamp(0.62rem, 3.28vw, 0.84rem);
+  line-height: 0.98;
+  text-align: center;
+  transform: rotate(-6deg);
+  transform-origin: left top;
+}
+
+.story-grown-note::before,
+.story-grown-note::after {
+  position: absolute;
+  inset: 5px 2px 4px;
+  border: 3px solid var(--red);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.story-grown-note::before {
+  transform: rotate(-2deg);
+}
+
+.story-grown-note::after {
+  inset: 11px 0 2px 6px;
+  border-width: 2px;
+  transform: rotate(2deg);
 }
 
 .comic-panel {
