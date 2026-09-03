@@ -1340,8 +1340,8 @@ img {
 
 .primary-school-caption {
   position: absolute;
-  right: -27%;
-  bottom: -12px;
+  right: max(-12%, calc(100% - 100vw + 14px));
+  bottom: -18px;
   z-index: 2;
   display: grid;
   justify-items: end;
