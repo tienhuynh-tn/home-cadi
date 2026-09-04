@@ -3124,135 +3124,6 @@ img {
   background: var(--soft-section-bg);
 }
 
-.appreciation-section.is-letter-open {
-  padding-top: clamp(18px, 3.2svh, 26px);
-}
-
-.appreciation-envelope {
-  position: relative;
-  display: grid;
-  width: min(100%, 372px);
-  min-height: 272px;
-  margin: 0 auto;
-  place-items: center;
-}
-
-.appreciation-envelope.is-ready:not(.is-open) {
-  cursor: pointer;
-}
-
-.appreciation-envelope-button {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  width: min(100%, 320px);
-  min-height: 214px;
-  padding: 0;
-  place-items: center;
-  border: 0;
-  background: transparent;
-  color: rgba(93, 69, 50, 0.78);
-  font: inherit;
-  cursor: pointer;
-  transition:
-    opacity 360ms ease,
-    transform 520ms ease,
-    visibility 360ms ease;
-}
-
-.appreciation-envelope-button:focus-visible {
-  outline: 2px solid var(--green);
-  outline-offset: 5px;
-}
-
-.appreciation-envelope-shape {
-  position: relative;
-  display: block;
-  width: min(78vw, 282px);
-  aspect-ratio: 1.42;
-  filter: drop-shadow(0 16px 28px rgba(93, 69, 50, 0.12));
-}
-
-.appreciation-envelope-back,
-.appreciation-envelope-front,
-.appreciation-envelope-flap,
-.appreciation-envelope-letter {
-  position: absolute;
-  inset: 0;
-  display: block;
-}
-
-.appreciation-envelope-back {
-  border-radius: 6px;
-  background:
-    linear-gradient(135deg, transparent 49.6%, rgba(236, 204, 169, 0.82) 50%, transparent 50.8%),
-    linear-gradient(225deg, transparent 49.6%, rgba(236, 204, 169, 0.82) 50%, transparent 50.8%),
-    linear-gradient(180deg, #fff1df 0%, #f4dac0 100%);
-}
-
-.appreciation-envelope-letter {
-  inset: 8% 10% auto;
-  height: 68%;
-  border-radius: 5px 5px 2px 2px;
-  background:
-    repeating-linear-gradient(180deg, transparent 0 17px, rgba(198, 0, 0, 0.07) 18px 19px),
-    linear-gradient(180deg, #fffdf8, #fff8ef);
-  box-shadow: 0 8px 18px rgba(93, 69, 50, 0.09);
-  transform: translateY(24%);
-  transition: transform 560ms ease;
-}
-
-.appreciation-envelope-front {
-  top: 36%;
-  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
-  border-radius: 0 0 6px 6px;
-  background:
-    linear-gradient(145deg, rgba(255, 249, 242, 0.95), rgba(240, 211, 182, 0.92)),
-    linear-gradient(180deg, #f6dfc4, #efcfaf);
-}
-
-.appreciation-envelope-flap {
-  clip-path: polygon(0 0, 100% 0, 50% 62%);
-  border-radius: 6px 6px 0 0;
-  background: linear-gradient(180deg, #fff3e4, #edcdae);
-  transform-origin: top center;
-  transition: transform 560ms ease;
-}
-
-.appreciation-envelope-seal {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  z-index: 3;
-  display: grid;
-  width: 46px;
-  height: 46px;
-  place-items: center;
-  border: 1px solid rgba(198, 0, 0, 0.26);
-  border-radius: 50%;
-  background: rgba(255, 248, 239, 0.92);
-  color: var(--red);
-  font-family: "Montera", "Montserrat", "Segoe UI", sans-serif;
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 6px 14px rgba(93, 69, 50, 0.11);
-}
-
-.appreciation-envelope-text {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  color: rgba(93, 69, 50, 0.82);
-  font-family: "Montserrat", "Segoe UI", sans-serif;
-  font-size: clamp(0.88rem, 3.7vw, 1.06rem);
-  font-style: italic;
-  font-weight: 600;
-  line-height: 1;
-  transform: translateX(-50%);
-}
-
 .appreciation-copy {
   position: relative;
   display: grid;
@@ -3290,51 +3161,6 @@ img {
 
 .appreciation-copy::after {
   bottom: 14px;
-}
-
-.appreciation-envelope.is-ready .appreciation-copy {
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(18px) scale(0.98);
-  transition:
-    max-height 760ms ease,
-    padding 520ms ease,
-    opacity 420ms ease,
-    transform 620ms ease;
-}
-
-.appreciation-envelope.is-open {
-  display: block;
-  min-height: auto;
-}
-
-.appreciation-envelope.is-open .appreciation-envelope-button {
-  position: absolute;
-  inset: 0 auto auto 50%;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(-24px) scale(0.94);
-  translate: -50% 0;
-  pointer-events: none;
-}
-
-.appreciation-envelope.is-open .appreciation-envelope-flap {
-  transform: rotateX(180deg);
-}
-
-.appreciation-envelope.is-open .appreciation-envelope-letter {
-  transform: translateY(-18%);
-}
-
-.appreciation-envelope.is-ready.is-open .appreciation-copy {
-  max-height: 1100px;
-  padding-top: clamp(24px, 4.4svh, 34px);
-  padding-bottom: clamp(22px, 3.8svh, 30px);
-  opacity: 1;
-  transform: translateY(0) scale(1);
 }
 
 .appreciation-copy h2 {
@@ -3393,8 +3219,7 @@ img {
     transform 880ms var(--reveal-ease);
 }
 
-.reveal-ready .appreciation-section.is-visible .appreciation-envelope:not(.is-ready) .appreciation-copy > *,
-.reveal-ready .appreciation-section.is-visible .appreciation-envelope.is-open .appreciation-copy > * {
+.reveal-ready .appreciation-section.is-visible .appreciation-copy > * {
   opacity: 1;
   transform: translateY(0);
 }
@@ -3939,8 +3764,8 @@ img {
 
 .mountain-section {
   position: relative;
-  margin: 12px -14px 10px;
-  padding: clamp(22px, 4.5svh, 34px) 14px clamp(28px, 5svh, 40px);
+  margin: 0px -14px 10px;
+  padding: 0 14px clamp(28px, 5svh, 40px);
   overflow: hidden;
   background:
     linear-gradient(108deg, transparent 0 49%, rgba(93, 69, 50, 0.055) 49.2% 49.8%, transparent 50%),
@@ -4763,13 +4588,6 @@ img {
 
   .film-track {
     animation: none;
-  }
-
-  .appreciation-envelope-button,
-  .appreciation-envelope-flap,
-  .appreciation-envelope-letter,
-  .appreciation-envelope.is-ready .appreciation-copy {
-    transition: none;
   }
 
   .reveal-ready .film-template-section .film-strip,
