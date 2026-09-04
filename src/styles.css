@@ -419,6 +419,7 @@ img {
 .story-section,
 .primary-school-section,
 .secondary-school-section,
+.twenty-years-section,
 .film-template-section,
 .appreciation-section,
 .family-presence-section,
@@ -1764,24 +1765,7 @@ img {
   align-items: center;
   min-height: 362px;
   margin: -4px -14px 4px;
-  padding: 16px 0 42px;
   isolation: isolate;
-}
-
-.secondary-school-moment-smudge::after {
-  position: absolute;
-  left: -18px;
-  bottom: -2px;
-  z-index: 0;
-  width: 58%;
-  height: 54px;
-  background-image: url("/assets/stroke-of-grey-watercolor.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  content: "";
-  opacity: 0.58;
-  pointer-events: none;
-  transform: rotate(-3deg);
 }
 
 .secondary-school-smudge-note {
@@ -1916,6 +1900,194 @@ img {
 .reveal-ready .secondary-school-section.is-visible .secondary-school-moment {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+.twenty-years-section {
+  position: relative;
+  margin: 0 -14px;
+  padding: 0px 16px 0px;
+  overflow: hidden;
+  background: var(--soft-section-bg);
+  isolation: isolate;
+}
+
+.twenty-years-page {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: min(100%, 390px);
+  margin: 0 auto;
+  padding: 0px 0 28px;
+}
+
+.twenty-years-page::before,
+.twenty-years-page::after {
+  position: absolute;
+  z-index: 5;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  content: "";
+  pointer-events: none;
+}
+
+.twenty-years-page::before {
+  top: -70px;
+  left: 32px;
+  width: 57px;
+  height: 88px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 104 112' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M93 4 C62 2 46 23 56 42 C67 63 92 51 80 31 C66 7 31 18 18 45 C8 61 14 72 24 76 L32 80' fill='none' stroke='%23050505' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='7 8'/%3E%3Cpath d='M32 103 L18 80 L46 80 Z' fill='%23050505'/%3E%3C/svg%3E");
+  opacity: 0.92;
+}
+
+.twenty-years-page::after {
+  right: -18px;
+  bottom: -23px;
+  width: 53px;
+  height: 74px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 96 126' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2 C46 10 77 43 78 76 C78 100 59 115 36 119' fill='none' stroke='%23050505' stroke-width='4.2' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='8 11'/%3E%3Cpath d='M36 119 L55 98 L62 126 Z' fill='%23050505' transform='rotate(-8 49 112)'/%3E%3C/svg%3E");
+  opacity: 0.9;
+  rotate: 25deg
+}
+
+.twenty-years-copy {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 31ch);
+  margin: 16px auto 36px;
+  padding: 6px 5px 6px;
+  color: #050505;
+  font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-size: clamp(1.1rem, 5.2vw, 1.36rem);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.twenty-years-copy::before {
+  position: absolute;
+  inset: -12px -22px -10px;
+  z-index: -1;
+  background-image: url("/assets/stroke-of-grey-watercolor.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  content: "";
+  opacity: 0.68;
+  pointer-events: none;
+  transform: rotate(1deg);
+}
+
+.twenty-years-polaroid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(86vw, 316px);
+  margin: -4px auto 0;
+  padding: 12px 12px 22px;
+  background: rgba(249, 249, 246, 0.98);
+  box-shadow:
+    12px 14px 17px rgba(32, 23, 16, 0.18),
+    0 4px 8px rgba(32, 23, 16, 0.08);
+}
+
+.twenty-years-polaroid::before {
+  position: absolute;
+  left: -40px;
+  bottom: -8px;
+  z-index: 2;
+  width: 78px;
+  height: 23px;
+  background:
+    linear-gradient(90deg, transparent 0 8px, rgba(238, 229, 166, 0.72) 8px calc(100% - 8px), transparent calc(100% - 8px)),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.16) 0 4px, transparent 4px 10px);
+  box-shadow: 0 2px 6px rgba(93, 69, 50, 0.12);
+  clip-path: polygon(4% 5%, 100% 0, 92% 94%, 12% 100%, 19% 78%, 0 83%);
+  content: "";
+  opacity: 0.86;
+  pointer-events: none;
+  transform: rotate(34deg);
+}
+
+.twenty-years-tape {
+  position: absolute;
+  top: -20px;
+  left: 27%;
+  z-index: 3;
+  width: 42%;
+  height: 26px;
+  background:
+    linear-gradient(90deg, transparent 0 8px, rgba(190, 161, 104, 0.56) 8px calc(100% - 8px), transparent calc(100% - 8px)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0 4px, transparent 4px 10px);
+  box-shadow: 0 2px 5px rgba(93, 69, 50, 0.12);
+  clip-path: polygon(2% 8%, 96% 0, 100% 82%, 87% 76%, 81% 100%, 0 94%);
+  opacity: 0.84;
+  pointer-events: none;
+  transform: rotate(1deg);
+}
+
+.twenty-years-image {
+  display: block;
+  width: 100%;
+  height: min(calc(86vw - 24px), 292px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 50% 46%;
+  filter: saturate(0.92) contrast(0.98);
+}
+
+.twenty-years-caption {
+  display: grid;
+  justify-items: center;
+  margin: 12px 0 0;
+  color: #050505;
+  font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.twenty-years-caption span:first-child {
+  font-size: clamp(2.1rem, 8vw, 2rem);
+  font-weight: 700;
+  line-height: 0.82;
+}
+
+.twenty-years-caption span:last-child {
+  margin-top: -2px;
+  font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-size: clamp(1rem, 5.4vw, 1.42rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.26em;
+  transform: translateX(3.14em);
+}
+
+.reveal-ready .twenty-years-section .twenty-years-copy,
+.reveal-ready .twenty-years-section .twenty-years-polaroid {
+  opacity: 0;
+  translate: 0 0;
+  transform: translateY(24px) scale(0.985);
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
+}
+
+.reveal-ready .twenty-years-section .twenty-years-polaroid {
+  transform: translateY(28px) scale(0.985);
+}
+
+.reveal-ready .twenty-years-section.is-visible .twenty-years-copy,
+.reveal-ready .twenty-years-section.is-visible .twenty-years-polaroid {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-ready .twenty-years-section.is-visible .twenty-years-copy {
+  transition-delay: 120ms;
+}
+
+.reveal-ready .twenty-years-section.is-visible .twenty-years-polaroid {
+  transition-delay: 260ms;
 }
 
 .film-template-section {
@@ -3821,6 +3993,10 @@ img {
   .reveal-ready .secondary-school-section .secondary-school-moment,
   .reveal-ready .secondary-school-section.is-visible .secondary-school-title,
   .reveal-ready .secondary-school-section.is-visible .secondary-school-moment,
+  .reveal-ready .twenty-years-section .twenty-years-copy,
+  .reveal-ready .twenty-years-section .twenty-years-polaroid,
+  .reveal-ready .twenty-years-section.is-visible .twenty-years-copy,
+  .reveal-ready .twenty-years-section.is-visible .twenty-years-polaroid,
   .reveal-ready .appreciation-section .appreciation-copy > *,
   .reveal-ready .appreciation-section.is-visible .appreciation-copy > *,
   .reveal-ready .family-presence-section .family-group,
@@ -3865,6 +4041,10 @@ img {
   .reveal-ready .secondary-school-section .secondary-school-moment,
   .reveal-ready .secondary-school-section.is-visible .secondary-school-title,
   .reveal-ready .secondary-school-section.is-visible .secondary-school-moment,
+  .reveal-ready .twenty-years-section .twenty-years-copy,
+  .reveal-ready .twenty-years-section .twenty-years-polaroid,
+  .reveal-ready .twenty-years-section.is-visible .twenty-years-copy,
+  .reveal-ready .twenty-years-section.is-visible .twenty-years-polaroid,
   .reveal-ready .appreciation-section .appreciation-copy > *,
   .reveal-ready .appreciation-section.is-visible .appreciation-copy > *,
   .reveal-ready .mountain-section .mountain-note,
