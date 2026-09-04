@@ -1247,7 +1247,7 @@ img {
   z-index: 0;
   width: min(28vw, 96px);
   height: 136px;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 132 216' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M61 2 C82 35 83 61 64 88 C52 105 42 113 39 122 C51 108 73 102 87 111 C100 120 99 136 89 143 C82 148 74 146 68 148 C77 155 78 169 69 176 C58 184 47 176 43 165 C39 155 42 137 39 122 C31 132 19 142 12 155 C1 176 6 197 25 207 C14 211 4 204 2 193' fill='none' stroke='%23111111' stroke-opacity='0.92' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='14 17'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 132 216' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M61 2 C82 35 83 61 64 88 C52 105 42 113 39 122 C51 108 73 102 87 111 C100 120 99 136 89 143 C82 148 74 146 68 148 C77 155 78 169 69 176 C58 184 47 176 43 165 C39 155 42 137 39 122 C31 132 19 142 12 155 C1 176 7 197 30 206 C18 212 8 205 5 194' fill='none' stroke='%23111111' stroke-opacity='0.92' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='14 17'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   content: "";
@@ -1716,7 +1716,7 @@ img {
 
 .secondary-school-moment-stair::after {
   position: absolute;
-  right: -16px;
+  right: -18px;
   bottom: -45px;
   z-index: 3;
   width: 36px;
@@ -1759,6 +1759,133 @@ img {
   white-space: nowrap;
 }
 
+.secondary-school-moment-smudge {
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  align-items: center;
+  min-height: 362px;
+  margin: -4px -14px 4px;
+  padding: 16px 0 42px;
+  isolation: isolate;
+}
+
+.secondary-school-moment-smudge::after {
+  position: absolute;
+  left: -18px;
+  bottom: -2px;
+  z-index: 0;
+  width: 58%;
+  height: 54px;
+  background-image: url("/assets/stroke-of-grey-watercolor.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  content: "";
+  opacity: 0.58;
+  pointer-events: none;
+  transform: rotate(-3deg);
+}
+
+.secondary-school-smudge-note {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0;
+  width: min(38vw, 148px);
+  margin: 4px -2px 12px 8px;
+  padding: 28px 14px 24px 12px;
+  color: #050505;
+  font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-variant-ligatures: none;
+  font-feature-settings:
+    "liga" 0,
+    "clig" 0,
+    "dlig" 0,
+    "calt" 0;
+  font-size: clamp(0.74rem, 3.48vw, 0.94rem);
+  font-weight: 700;
+  line-height: 1.26;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.secondary-school-smudge-note::before {
+  position: absolute;
+  inset: -22px -18px -20px -16px;
+  z-index: -1;
+  background-image: url("/assets/red-smudge-acrylic-brush-stroke.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  content: "";
+  opacity: 0.78;
+  pointer-events: none;
+  transform: rotate(5deg);
+}
+
+.secondary-school-smudge-note span {
+  display: block;
+  white-space: nowrap;
+}
+
+.secondary-school-smudge-note-fallback {
+  font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-weight: 400;
+}
+
+.secondary-school-polaroid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-self: end;
+  width: clamp(160px, 52vw, 218px);
+  margin: 0 20px 0 -4px;
+  padding: 14px 12px 28px;
+  background: rgba(249, 249, 246, 0.96);
+  box-shadow:
+    0 14px 18px rgba(32, 23, 16, 0.18),
+    0 4px 8px rgba(32, 23, 16, 0.08);
+  transform: rotate(0.4deg);
+}
+
+.secondary-school-polaroid-tape {
+  position: absolute;
+  top: -22px;
+  left: 26%;
+  z-index: 3;
+  width: 52%;
+  height: 24px;
+  background:
+    linear-gradient(90deg, transparent 0 8px, rgba(190, 161, 104, 0.62) 8px calc(100% - 8px), transparent calc(100% - 8px)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0 4px, transparent 4px 10px);
+  box-shadow: 0 2px 5px rgba(93, 69, 50, 0.14);
+  clip-path: polygon(2% 8%, 96% 0, 100% 82%, 87% 76%, 81% 100%, 0 94%);
+  opacity: 0.9;
+  pointer-events: none;
+  transform: rotate(1.5deg);
+}
+
+.secondary-school-polaroid-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1.42;
+  object-fit: cover;
+  object-position: 52% 42%;
+  filter: saturate(0.92) contrast(0.98);
+}
+
+.secondary-school-polaroid-caption {
+  margin: 14px 0 0;
+  color: #050505;
+  font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-size: clamp(0.58rem, 2.9vw, 0.78rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .reveal-ready .secondary-school-section .secondary-school-title,
 .reveal-ready .secondary-school-section .secondary-school-moment {
   opacity: 0;
@@ -1779,6 +1906,10 @@ img {
 
 .reveal-ready .secondary-school-section .secondary-school-moment-stair {
   transform: translateY(28px) rotate(-1deg) scale(0.985);
+}
+
+.reveal-ready .secondary-school-section .secondary-school-moment-smudge {
+  transform: translateY(26px) scale(0.985);
 }
 
 .reveal-ready .secondary-school-section.is-visible .secondary-school-title,
