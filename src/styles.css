@@ -1628,7 +1628,7 @@ img {
 .secondary-school-note-first span::before,
 .secondary-school-note-corner span::before,
 .secondary-school-note-stair span::before {
-  inset: -7px -10px -5px -10px;
+  inset: -10px -10px -8px -10px;
   background-position: center;
   background-size: 100% 90%;
   filter: drop-shadow(0 3px 7px rgba(32, 23, 16, 0.055));
@@ -1705,7 +1705,7 @@ img {
 
 .secondary-school-note-corner {
   width: min(55vw, 220px);
-  margin: -192px -24px 0 auto;
+  margin: -192px -20px 0 auto;
   text-align: left;
 }
 
