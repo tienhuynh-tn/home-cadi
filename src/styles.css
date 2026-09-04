@@ -1202,6 +1202,47 @@ img {
     display: block;
     white-space: nowrap;
   }
+
+  section.propose-section {
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0;
+    overflow: hidden;
+    background: #f7f7fb;
+  }
+
+  section.propose-section .propose-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    object-fit: cover;
+  }
+
+  section.propose-section .propose-title {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    color: #111111;
+    font-family: "Bachelorette";
+    font-size: clamp(0.82rem, 3.7vw, 1.04rem);
+    font-weight: 400;
+    line-height: 1.08;
+    text-align: center;
+  }
+
+  section.propose-section .propose-title span {
+    display: block;
+    white-space: nowrap;
+  }
 }
 
 .comic-panel {
