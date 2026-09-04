@@ -1573,7 +1573,6 @@ img {
   }
 
   .wedding-collage-photo-top {
-    top: 10px;
     left: calc(var(--wedding-collage-gutter) + 72px);
     width: 202px;
     height: 125px;
@@ -1588,7 +1587,7 @@ img {
   }
 
   .wedding-collage-photo-top img {
-    object-position: center 44%;
+    object-position: center 22%;
   }
 
   .wedding-collage-note {
@@ -1614,7 +1613,7 @@ img {
   }
 
   .wedding-collage-photo-kiss {
-    top: 194px;
+    top: 170px;
     right: calc(var(--wedding-collage-gutter) + 20px);
     width: 178px;
     height: 210px;
@@ -1627,7 +1626,7 @@ img {
 
   .wedding-collage-copy {
     position: absolute;
-    top: 419px;
+    top: 388px;
     left: calc(var(--wedding-collage-gutter) + 30px);
     right: calc(var(--wedding-collage-gutter) + 30px);
     z-index: 3;
@@ -1653,7 +1652,7 @@ img {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6px;
-    align-items: end;
+    top: 432px;
   }
 
   .wedding-collage-photo-groom,
