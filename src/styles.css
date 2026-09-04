@@ -845,8 +845,7 @@ img {
 }
 
 .story-section::after,
-.primary-school-section::after,
-.secondary-school-section::after {
+.primary-school-section::after {
   position: absolute;
   bottom: -44px;
   z-index: 0;
@@ -864,11 +863,6 @@ img {
 
 .primary-school-section::after {
   display: none;
-}
-
-.secondary-school-section::after {
-  right: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 270 92' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M135 2 C126 21 70 21 62 44 C54 68 111 70 80 90' fill='none' stroke='%23c60000' stroke-opacity='0.28' stroke-width='1.8' stroke-linecap='round' stroke-dasharray='5 6'/%3E%3C/svg%3E");
 }
 
 .story-intro > :not(.signature-elements),
@@ -1413,7 +1407,7 @@ img {
   position: relative;
   display: grid;
   margin-top: 0;
-  padding: 30px 0 44px;
+  padding: 30px 4px 0;
   align-items: center;
   overflow: visible;
   background: var(--soft-section-bg);
@@ -1704,9 +1698,13 @@ img {
 }
 
 .secondary-school-note-corner {
-  width: min(55vw, 220px);
-  margin: -192px -20px 0 auto;
+  width: min(86vw, 334px);
+  margin: -192px -114px 0 auto;
   text-align: left;
+}
+
+.secondary-school-note-corner span {
+  white-space: nowrap;
 }
 
 .secondary-school-moment-stair {
@@ -2014,8 +2012,7 @@ img {
 
 .appreciation-section {
   position: relative;
-  margin: 12px -14px 10px;
-  padding: clamp(32px, 5.8svh, 48px) 6px clamp(30px, 5.2svh, 44px);
+  margin: 0 -14px 0;
   overflow: hidden;
   background: var(--soft-section-bg);
 }
