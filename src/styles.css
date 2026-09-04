@@ -425,7 +425,6 @@ img {
 .wedding-vow-section,
 .wedding-home-section,
 .appreciation-section,
-.family-presence-section,
 .mountain-section,
 .rsvp-section,
 .wishes-section {
@@ -875,7 +874,6 @@ img {
 .secondary-school-section > :not(.signature-elements),
 .film-template-section > :not(.signature-elements),
 .appreciation-section > :not(.signature-elements),
-.family-presence-section > :not(.signature-elements),
 .mountain-section > :not(.signature-elements),
 .rsvp-section > :not(.signature-elements),
 .wishes-section > :not(.signature-elements) {
@@ -3244,396 +3242,6 @@ img {
   transition-delay: 490ms;
 }
 
-.family-presence-section {
-  position: relative;
-  display: grid;
-  min-height: min(58svh, 500px);
-  margin: 8px -14px 10px;
-  padding: clamp(22px, 4svh, 34px) 20px clamp(22px, 4svh, 34px);
-  overflow: hidden;
-  background: var(--soft-section-bg-alt);
-  isolation: isolate;
-}
-
-.family-presence-section::before {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    radial-gradient(circle at 26% 16%, rgba(34, 139, 34, 0.055), transparent 28%),
-    radial-gradient(circle at 76% 82%, rgba(198, 0, 0, 0.045), transparent 30%),
-    repeating-linear-gradient(
-      -6deg,
-      rgba(93, 69, 50, 0.018) 0,
-      rgba(93, 69, 50, 0.018) 1px,
-      transparent 1px,
-      transparent 14px
-    );
-  content: "";
-  opacity: 0.52;
-  pointer-events: none;
-}
-
-.signature-elements-family-presence {
-  z-index: 0;
-}
-
-.family-key-icon {
-  width: 30px;
-  height: 30px;
-  opacity: 0.48;
-}
-
-.family-key-icon-book {
-  top: 34px;
-  left: 18px;
-  transform: rotate(-10deg);
-}
-
-.family-key-icon-pencil {
-  top: 50%;
-  right: -16px;
-  transform: rotate(14deg);
-}
-
-.family-key-icon-camera {
-  right: 22px;
-  bottom: 36px;
-  transform: rotate(-8deg);
-}
-
-.family-key-icon-film {
-  bottom: 32%;
-  left: -14px;
-  transform: rotate(-12deg);
-}
-
-.family-key-icon-cola {
-  top: 24%;
-  right: 14px;
-  transform: rotate(12deg);
-}
-
-.family-presence-copy {
-  display: grid;
-  min-height: 100%;
-  align-content: center;
-  gap: clamp(12px, 2.4svh, 18px);
-  text-align: center;
-}
-
-.family-presence-intro,
-.family-presence-title {
-  color: var(--ink);
-  font-size: clamp(0.62rem, 2.85vw, 0.9rem);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  line-height: 1.08;
-  white-space: nowrap;
-}
-
-.family-presence-intro {
-  max-width: 100%;
-  margin: 0 auto calc(-1 * clamp(8px, 1.8svh, 12px));
-}
-
-.family-presence-title {
-  margin: 0;
-}
-
-.family-presence-groups {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(14px, 4vw, 20px);
-  align-items: start;
-}
-
-.family-group {
-  position: relative;
-  display: grid;
-  min-width: 0;
-  gap: clamp(12px, 2.2svh, 15px);
-}
-
-.family-group h2 {
-  display: grid;
-  gap: 7px;
-  margin: 0;
-  letter-spacing: 0;
-}
-
-.family-group h2 span:first-child {
-  color: rgba(32, 23, 16, 0.76);
-  font-family: "Montserrat", "Segoe UI", sans-serif;
-  font-size: clamp(0.62rem, 2.75vw, 0.78rem);
-  font-weight: 600;
-  line-height: 1.15;
-}
-
-.family-group h2 span:last-child {
-  color: var(--red);
-  font-family: "1FTV VIP Scartoon", Georgia, serif;
-  font-size: clamp(1.46rem, 6.6vw, 1.92rem);
-  font-weight: 900;
-  line-height: 1;
-}
-
-.family-list {
-  display: grid;
-  gap: clamp(11px, 2.1svh, 14px);
-  width: 100%;
-  margin: 0 auto;
-}
-
-.family-row {
-  display: grid;
-  gap: 5px;
-  justify-items: center;
-  min-width: 0;
-}
-
-.family-row dt {
-  color: rgba(34, 139, 34, 0.86);
-  font-size: clamp(0.58rem, 2.45vw, 0.7rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.family-group-groom .family-row dt {
-  justify-self: start;
-  text-align: left;
-}
-
-.family-group-groom .family-row dd {
-  justify-self: start;
-  text-align: left;
-}
-
-.family-group-bride .family-row dt {
-  justify-self: end;
-  text-align: right;
-}
-
-.family-group-bride .family-row dd {
-  justify-self: end;
-  text-align: right;
-}
-
-.family-row dd {
-  max-width: 100%;
-  margin: 0;
-  color: var(--ink);
-  font-family: "Montserrat", "Segoe UI", sans-serif;
-  font-size: clamp(0.72rem, 3.55vw, 1rem);
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: 0;
-  white-space: nowrap;
-}
-
-.wedding-timeline-card {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(106px, 32vw, 132px);
-  align-items: stretch;
-  width: calc(100% + 16px);
-  margin-top: clamp(2px, 1svh, 8px);
-  margin-right: -8px;
-  margin-left: -8px;
-  overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(255, 253, 248, 0.9), rgba(255, 253, 248, 0.68)),
-    repeating-linear-gradient(0deg, rgba(93, 69, 50, 0.035) 0 1px, transparent 1px 13px);
-  border: 1px solid rgba(93, 69, 50, 0.12);
-  box-shadow: 0 12px 24px rgba(32, 23, 16, 0.1);
-}
-
-.wedding-timeline-card-groom {
-  grid-template-columns: clamp(106px, 32vw, 132px) minmax(0, 1fr);
-}
-
-.wedding-timeline-card + .wedding-timeline-card {
-  margin-top: calc(-1 * clamp(12px, 2.4svh, 18px));
-}
-
-.wedding-timeline-copy {
-  position: relative;
-  min-width: 0;
-  padding: clamp(16px, 3.8vw, 20px) clamp(8px, 2.2vw, 12px) clamp(16px, 3.8vw, 20px) clamp(16px, 4.2vw, 20px);
-  text-align: left;
-}
-
-.wedding-timeline-copy::before {
-  position: absolute;
-  top: clamp(16px, 4vw, 20px);
-  left: 0;
-  width: 3px;
-  height: 38px;
-  background: linear-gradient(180deg, var(--red), rgba(34, 139, 34, 0.78));
-  content: "";
-}
-
-.wedding-timeline-card-groom .wedding-timeline-copy {
-  padding-right: clamp(16px, 4.2vw, 20px);
-  padding-left: clamp(8px, 2.2vw, 12px);
-  text-align: right;
-}
-
-.wedding-timeline-card-groom .wedding-timeline-copy::before {
-  right: 0;
-  left: auto;
-}
-
-.wedding-timeline-title {
-  margin: 0 0 12px;
-  color: var(--red);
-  font-family: "1FTV VIP Scartoon", Georgia, serif;
-  font-size: clamp(1.08rem, 5vw, 1.42rem);
-  font-weight: 900;
-  line-height: 1.05;
-}
-
-.wedding-timeline-card-groom .wedding-timeline-title {
-  font-size: clamp(0.96rem, 4.4vw, 1.24rem);
-  white-space: nowrap;
-}
-
-.wedding-timeline-list {
-  display: grid;
-  gap: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.wedding-timeline-list li {
-  position: relative;
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-  padding: 7px 0 7px 12px;
-}
-
-.wedding-timeline-card-groom .wedding-timeline-list li {
-  padding-right: 12px;
-  padding-left: 0;
-}
-
-.wedding-timeline-list span {
-  color: rgba(32, 23, 16, 0.82);
-  font-family: "Montserrat", "Segoe UI", sans-serif;
-  font-size: clamp(0.7rem, 2.95vw, 0.86rem);
-  font-weight: 400;
-  line-height: 1.18;
-  white-space: nowrap;
-}
-
-.wedding-timeline-list time {
-  position: relative;
-  color: var(--red);
-  font-size: clamp(0.7rem, 2.95vw, 0.86rem);
-  font-weight: 700;
-  line-height: 1.1;
-  white-space: nowrap;
-}
-
-.wedding-timeline-list time::before {
-  position: absolute;
-  top: 0.4em;
-  left: -12px;
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  background: var(--green);
-  content: "";
-}
-
-.wedding-timeline-card-groom .wedding-timeline-list time::before {
-  right: -12px;
-  left: auto;
-}
-
-.wedding-timeline-photo {
-  position: relative;
-  align-self: stretch;
-  min-height: 100%;
-  margin: 0 -16px 0 0;
-  overflow: hidden;
-  border-left: 1px solid rgba(93, 69, 50, 0.16);
-}
-
-.wedding-timeline-card-groom .wedding-timeline-photo {
-  margin: 0 0 0 -16px;
-  border-right: 1px solid rgba(93, 69, 50, 0.16);
-  border-left: 0;
-}
-
-.wedding-timeline-photo::before {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  z-index: 1;
-  width: 46px;
-  height: 14px;
-  background: rgba(213, 199, 171, 0.62);
-  content: "";
-  transform: translateX(-50%) rotate(2deg);
-}
-
-.wedding-timeline-photo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 34%;
-}
-
-.wedding-timeline-card-groom .wedding-timeline-photo img {
-  object-position: 52% 28%;
-}
-
-.reveal-ready .family-presence-section .family-presence-intro,
-.reveal-ready .family-presence-section .family-group,
-.reveal-ready .family-presence-section .family-presence-groups,
-.reveal-ready .family-presence-section .family-presence-title,
-.reveal-ready .family-presence-section .wedding-timeline-card,
-.reveal-ready .family-presence-section .wedding-timeline-photo {
-  opacity: 0;
-  translate: 0 0;
-  transform: translateY(20px);
-  transition:
-    opacity 860ms var(--reveal-ease),
-    transform 860ms var(--reveal-ease);
-}
-
-.reveal-ready .family-presence-section.is-visible .family-presence-intro,
-.reveal-ready .family-presence-section.is-visible .family-group,
-.reveal-ready .family-presence-section.is-visible .family-presence-groups,
-.reveal-ready .family-presence-section.is-visible .family-presence-title,
-.reveal-ready .family-presence-section.is-visible .wedding-timeline-card,
-.reveal-ready .family-presence-section.is-visible .wedding-timeline-photo {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-ready .family-presence-section.is-visible .family-presence-groups {
-  transition-delay: 120ms;
-}
-
-.reveal-ready .family-presence-section.is-visible .family-group-bride {
-  transition-delay: 220ms;
-}
-
-.reveal-ready .family-presence-section.is-visible .wedding-timeline-card {
-  transition-delay: 340ms;
-}
-
-.reveal-ready .family-presence-section.is-visible .wedding-timeline-photo {
-  transition-delay: 450ms;
-}
-
 @media (max-width: 360px) {
   .film-template-copy {
     padding-left: 126px;
@@ -3657,71 +3265,6 @@ img {
     letter-spacing: 0.04em;
   }
 
-  .family-presence-section {
-    min-height: min(60svh, 460px);
-    padding-right: 16px;
-    padding-left: 16px;
-  }
-
-  .family-presence-copy {
-    align-content: center;
-    gap: 18px;
-  }
-
-  .family-presence-groups {
-    gap: 12px;
-  }
-
-  .family-list {
-    gap: 11px;
-  }
-
-  .family-row dd {
-    font-size: clamp(0.66rem, 3.35vw, 0.84rem);
-  }
-
-  .wedding-timeline-card {
-    grid-template-columns: minmax(0, 1fr) 94px;
-    width: calc(100% + 20px);
-    margin-right: -10px;
-    margin-left: -10px;
-  }
-
-  .wedding-timeline-card-groom {
-    grid-template-columns: 94px minmax(0, 1fr);
-  }
-
-  .wedding-timeline-copy {
-    padding-right: 6px;
-    padding-left: 14px;
-  }
-
-  .wedding-timeline-card-groom .wedding-timeline-copy {
-    padding-right: 14px;
-    padding-left: 6px;
-  }
-
-  .wedding-timeline-title {
-    font-size: clamp(0.96rem, 4.5vw, 1.12rem);
-  }
-
-  .wedding-timeline-card-groom .wedding-timeline-title {
-    font-size: clamp(0.86rem, 4.25vw, 0.98rem);
-  }
-
-  .wedding-timeline-list li {
-    padding: 5px 0 5px 10px;
-  }
-
-  .wedding-timeline-card-groom .wedding-timeline-list li {
-    padding-right: 10px;
-    padding-left: 0;
-  }
-
-  .wedding-timeline-list time,
-  .wedding-timeline-list span {
-    font-size: clamp(0.62rem, 2.78vw, 0.72rem);
-  }
 }
 
 .love-timer {
@@ -3765,7 +3308,7 @@ img {
 .mountain-section {
   position: relative;
   margin: 0px -14px 10px;
-  padding: 0 14px clamp(28px, 5svh, 40px);
+  padding: 0 14px 0;
   overflow: hidden;
   background:
     linear-gradient(108deg, transparent 0 49%, rgba(93, 69, 50, 0.055) 49.2% 49.8%, transparent 50%),
@@ -3990,7 +3533,7 @@ img {
   display: grid;
   gap: 18px;
   margin: 12px -14px 10px;
-  padding: clamp(30px, 5svh, 42px) 18px;
+  padding: 18px 18px;
   overflow: hidden;
   background: var(--soft-section-bg-alt);
 }
@@ -4606,16 +4149,6 @@ img {
   .reveal-ready .twenty-years-section.is-visible .twenty-years-polaroid,
   .reveal-ready .appreciation-section .appreciation-copy > *,
   .reveal-ready .appreciation-section.is-visible .appreciation-copy > *,
-  .reveal-ready .family-presence-section .family-group,
-  .reveal-ready .family-presence-section .family-presence-groups,
-  .reveal-ready .family-presence-section .family-presence-title,
-  .reveal-ready .family-presence-section .wedding-timeline-card,
-  .reveal-ready .family-presence-section .wedding-timeline-photo,
-  .reveal-ready .family-presence-section.is-visible .family-group,
-  .reveal-ready .family-presence-section.is-visible .family-presence-groups,
-  .reveal-ready .family-presence-section.is-visible .family-presence-title,
-  .reveal-ready .family-presence-section.is-visible .wedding-timeline-card,
-  .reveal-ready .family-presence-section.is-visible .wedding-timeline-photo,
   .reveal-ready .mountain-section .mountain-note,
   .reveal-ready .mountain-section .mountain-photo,
   .reveal-ready .mountain-section .mountain-copy,
@@ -4632,16 +4165,6 @@ img {
     transition: none;
   }
 
-  .reveal-ready .family-presence-section .family-group,
-  .reveal-ready .family-presence-section .family-presence-groups,
-  .reveal-ready .family-presence-section .family-presence-title,
-  .reveal-ready .family-presence-section .wedding-timeline-card,
-  .reveal-ready .family-presence-section .wedding-timeline-photo,
-  .reveal-ready .family-presence-section.is-visible .family-group,
-  .reveal-ready .family-presence-section.is-visible .family-presence-groups,
-  .reveal-ready .family-presence-section.is-visible .family-presence-title,
-  .reveal-ready .family-presence-section.is-visible .wedding-timeline-card,
-  .reveal-ready .family-presence-section.is-visible .wedding-timeline-photo,
   .reveal-ready .primary-school-section .primary-school-story,
   .reveal-ready .primary-school-section.is-visible .primary-school-story,
   .reveal-ready .secondary-school-section .secondary-school-title,
