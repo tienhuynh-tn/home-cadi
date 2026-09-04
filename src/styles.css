@@ -1714,6 +1714,21 @@ img {
   margin-top: -54px;
 }
 
+.secondary-school-moment-stair::after {
+  position: absolute;
+  right: -16px;
+  bottom: -45px;
+  z-index: 3;
+  width: 36px;
+  height: 141px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 96 166' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 2 C75 1 96 42 67 68 C46 87 11 78 16 48 C21 18 71 29 76 74 C82 121 54 149 18 157' fill='none' stroke='%23050505' stroke-width='5.2' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='9 13'/%3E%3Cpath d='M18 157 L42 138 L48 168 Z' fill='%23050505' transform='rotate(-8 33 153)'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  content: "";
+  pointer-events: none;
+  transform: rotate(-6deg);
+}
+
 .secondary-school-photo-wrap-stair {
   grid-column: 1 / -1;
   grid-row: 1;
