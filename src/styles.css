@@ -1909,6 +1909,11 @@ img {
   overflow: hidden;
   background: var(--soft-section-bg);
   isolation: isolate;
+  z-index: 2;
+}
+
+.twenty-years-section {
+  overflow: visible !important;
 }
 
 .twenty-years-page {
@@ -1931,22 +1936,23 @@ img {
 }
 
 .twenty-years-page::before {
-  top: -70px;
-  left: 32px;
-  width: 57px;
-  height: 88px;
+  top: -78px;
+  left: 72px;
+  width: 50px;
+  height: 78px;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 104 112' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M93 4 C62 2 46 23 56 42 C67 63 92 51 80 31 C66 7 31 18 18 45 C8 61 14 72 24 76 L32 80' fill='none' stroke='%23050505' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='7 8'/%3E%3Cpath d='M32 103 L18 80 L46 80 Z' fill='%23050505'/%3E%3C/svg%3E");
   opacity: 0.92;
+  z-index: 10;
 }
 
 .twenty-years-page::after {
   right: -18px;
   bottom: -23px;
-  width: 53px;
-  height: 74px;
+  width: 40px;
+  height: 78px;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 96 126' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2 C46 10 77 43 78 76 C78 100 59 115 36 119' fill='none' stroke='%23050505' stroke-width='4.2' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='8 11'/%3E%3Cpath d='M36 119 L55 98 L62 126 Z' fill='%23050505' transform='rotate(-8 49 112)'/%3E%3C/svg%3E");
   opacity: 0.9;
-  rotate: 25deg
+  rotate: 4deg
 }
 
 .twenty-years-copy {
@@ -2047,7 +2053,7 @@ img {
 }
 
 .twenty-years-caption span:first-child {
-  font-size: clamp(2.1rem, 8vw, 2rem);
+  font-size: 1.5em;
   font-weight: 700;
   line-height: 0.82;
 }
@@ -2055,8 +2061,6 @@ img {
 .twenty-years-caption span:last-child {
   margin-top: -2px;
   font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
-  font-size: clamp(1rem, 5.4vw, 1.42rem);
-  font-weight: 400;
   line-height: 1;
   letter-spacing: 0.26em;
   transform: translateX(3.14em);
