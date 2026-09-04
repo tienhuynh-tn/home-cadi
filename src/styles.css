@@ -1422,11 +1422,11 @@ img {
 
 .secondary-school-section::before {
   position: absolute;
-  top: -12px;
-  right: 96px;
+  top: -9px;
+  right: 86px;
   z-index: 0;
-  width: 40px;
-  height: 78px;
+  width: 38px;
+  height: 92px;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 42 154' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 2 C15 28 34 39 29 62 C25 80 6 74 9 57 C12 40 37 43 39 66 C42 94 16 101 18 124 C19 141 28 148 15 152' fill='none' stroke='%23111111' stroke-opacity='0.8' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='5 8'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -1492,11 +1492,11 @@ img {
 
 .secondary-school-photo-wrap {
   position: relative;
+  width: min(68vw, 256px);
   margin: 0;
-  padding: 9px;
-  background: #ffffff;
-  box-shadow: 0 12px 22px rgba(32, 23, 16, 0.12);
-  filter: drop-shadow(0 4px 7px rgba(32, 23, 16, 0.08));
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  filter: drop-shadow(0 12px 18px rgba(32, 23, 16, 0.16));
 }
 
 .secondary-school-photo-wrap::before,
@@ -1507,12 +1507,12 @@ img {
 }
 
 .secondary-school-photo-wrap::before {
-  inset: -7px;
-  z-index: -1;
-  background:
-    linear-gradient(#fffdf9, #f8f6ef),
-    repeating-linear-gradient(96deg, rgba(32, 23, 16, 0.08) 0 1px, transparent 1px 9px);
-  clip-path: polygon(0 5%, 5% 2%, 12% 4%, 20% 0, 30% 4%, 42% 1%, 53% 5%, 64% 1%, 75% 4%, 86% 1%, 100% 5%, 98% 21%, 100% 34%, 97% 49%, 100% 63%, 97% 78%, 100% 95%, 87% 98%, 78% 95%, 66% 100%, 55% 96%, 43% 100%, 32% 96%, 21% 100%, 11% 96%, 0 99%, 3% 84%, 0 70%, 3% 56%, 0 42%, 3% 28%);
+  inset: 0;
+  z-index: 1;
+  background-image: var(--secondary-paper-frame);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 80%;
 }
 
 .secondary-school-photo-wrap::after {
@@ -1526,14 +1526,17 @@ img {
 }
 
 .secondary-school-image {
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  top: 16.5%;
+  left: 6.5%;
+  z-index: 2;
   display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
+  width: 86.5%;
+  height: 68%;
+  aspect-ratio: auto;
+  clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0% 100%);
   object-fit: cover;
-  object-position: 38% center;
+  object-position: 15% center;
   filter: saturate(0.88) contrast(0.98);
 }
 
@@ -1543,27 +1546,20 @@ img {
 }
 
 .secondary-school-photo-wrap-first {
-  width: min(62vw, 232px);
   margin-right: 6px;
-  padding: 6px 6px 0;
   transform: rotate(-13deg);
 }
 
-.secondary-school-photo-wrap-first::before {
-  inset: -2px -2px 0;
-  clip-path: polygon(0 5%, 5% 2%, 12% 4%, 20% 0, 30% 4%, 42% 1%, 53% 5%, 64% 1%, 75% 4%, 86% 1%, 100% 5%, 98% 21%, 100% 34%, 97% 49%, 100% 63%, 97% 78%, 100% 96%, 88% 97%, 78% 96%, 66% 98%, 55% 97%, 43% 98%, 32% 97%, 21% 98%, 11% 96%, 0 98%, 2% 84%, 0 70%, 2% 56%, 0 42%, 2% 28%);
-}
-
 .secondary-school-photo-wrap-first::after {
-  top: -8px;
-  right: -36px;
+  top: 17px;
+  right: -20px;
   transform: rotate(39deg);
 }
 
 .secondary-school-years {
   position: absolute;
-  right: 14px;
-  bottom: 40px;
+  right: 14%;
+  bottom: 20%;
   z-index: 4;
   display: inline-block;
   padding: 0 8px 2px;
@@ -1676,7 +1672,7 @@ img {
 
 .secondary-school-note-first {
   width: min(76%, 286px);
-  margin: -192px auto 0 10px;
+  margin: -240px auto 0 -10px;
   text-align: left;
 }
 
@@ -1688,11 +1684,11 @@ img {
 
 .secondary-school-moment-corner::before {
   position: absolute;
-  top: -69px;
-  left: 80px;
+  top: -110px;
+  left: 40px;
   z-index: 1;
-  width: 53px;
-  height: 61px;
+  width: 60px;
+  height: 149px;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 84 94' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M75 2 C56 10 55 35 70 38 C84 41 81 14 64 16 C40 18 39 55 58 59 C73 62 74 41 58 40 C31 38 18 62 22 91' fill='none' stroke='%23050505' stroke-opacity='0.8' stroke-width='2.4' stroke-linecap='round' stroke-dasharray='5 6'/%3E%3Cpath d='M22 91 L12 74 L32 76 Z' fill='%23050505'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -1701,7 +1697,6 @@ img {
 }
 
 .secondary-school-photo-wrap-corner {
-  width: min(70vw, 270px);
   margin-left: 10px;
   transform: rotate(7deg);
 }
@@ -1713,48 +1708,50 @@ img {
 }
 
 .secondary-school-image-corner {
-  aspect-ratio: 4 / 3;
   object-position: 48% 42%;
 }
 
 .secondary-school-note-corner {
   width: min(55vw, 220px);
-  margin: -142px 3px 0 auto;
+  margin: -192px -24px 0 auto;
   text-align: left;
 }
 
 .secondary-school-moment-stair {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   align-items: start;
-  min-height: 282px;
-  margin-top: -18px;
+  min-height: 248px;
+  margin-top: -54px;
 }
 
 .secondary-school-photo-wrap-stair {
   grid-column: 1 / -1;
+  grid-row: 1;
   justify-self: end;
-  width: min(82vw, 308px);
   margin-right: 2px;
   transform: rotate(-5deg);
 }
 
 .secondary-school-photo-wrap-stair::after {
-  top: -16px;
-  left: -4px;
-  transform: rotate(34deg);
+  top: 18px;
+  left: -28px;
+  transform: rotate(-26deg);
 }
 
 .secondary-school-image-stair {
-  aspect-ratio: 4 / 3;
   object-position: 55% 46%;
 }
 
 .secondary-school-note-stair {
   grid-column: 1 / 2;
   grid-row: 1;
-  width: min(46vw, 178px);
-  margin: 128px 0 0 10px;
+  width: min(86vw, 334px);
+  margin: 174px 8px 8px -2px;
   text-align: left;
+}
+
+.secondary-school-note-stair span {
+  white-space: nowrap;
 }
 
 .reveal-ready .secondary-school-section .secondary-school-title,
