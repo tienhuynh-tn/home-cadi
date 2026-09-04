@@ -1418,6 +1418,87 @@ img {
     display: block;
     white-space: nowrap;
   }
+
+  section.from-us-section {
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 16px 0 16px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #284f2f 0%, #385f3c 45%, #f6f7f2 92%, #ffffff 100%);
+  }
+
+  .from-us-collage {
+    position: relative;
+    width: min(326px, calc(100vw - 40px));
+    aspect-ratio: 346 / 590;
+    margin: 0 auto;
+  }
+
+  .from-us-title,
+  .from-us-closing {
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    color: #ffffff;
+    font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
+    font-size: clamp(1.24rem, 5.8vw, 1.62rem);
+    font-weight: 400;
+    line-height: 0.96;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .from-us-title {
+    top: 4px;
+    left: 24px;
+    text-shadow: 0 2px 7px rgba(21, 38, 20, 0.34);
+  }
+
+  .from-us-closing {
+    right: 22px;
+    bottom: 2px;
+    color: #101010;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.56);
+  }
+
+  .from-us-photos {
+    position: absolute;
+    top: 40px;
+    left: 24px;
+    right: 24px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .from-us-photo-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    overflow: hidden;
+    background: #dfe5d8;
+  }
+
+  .from-us-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .from-us-photo-frame:nth-child(1) img {
+    object-position: center 100%;
+  }
+
+  .from-us-photo-frame:nth-child(2) img {
+    object-position: center 100%;
+  }
+
+  .from-us-photo-frame:nth-child(3) img {
+    object-position: center 100%;
+  }
 }
 
 .comic-panel {
