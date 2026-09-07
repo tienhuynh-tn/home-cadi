@@ -3244,7 +3244,6 @@ img {
 .family-invitation-section {
   position: relative;
   margin: 0 -14px;
-  padding: clamp(16px, 2.4svh, 24px) 14px clamp(18px, 3svh, 28px);
   overflow: hidden;
   background:
     url("/assets/subtle-noise.png") center / 460px auto,
@@ -3257,23 +3256,19 @@ img {
   width: min(100%, 390px);
   min-height: min(100svh, 844px);
   margin: 0 auto;
-  padding: clamp(23px, 4.8svh, 42px) clamp(20px, 5.4vw, 28px) clamp(26px, 5svh, 42px);
+  padding: clamp(23px, 2.8svh, 42px) clamp(20px, 4.4vw, 28px) clamp(26px, 4svh, 42px);
   overflow: hidden;
   color: #101014;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
-    url("/assets/subtle-noise.png") center / 360px auto,
-    #f5f3ee;
   font-family: "Montserrat", "Segoe UI", sans-serif;
   isolation: isolate;
 }
 
 .family-invitation-logo {
   position: absolute;
-  top: clamp(42px, 8.2svh, 70px);
-  right: clamp(48px, 13.5vw, 62px);
+  top: clamp(56px, 12.2svh, 86px);
+  right: clamp(22px, 4.5vw, 56px);
   z-index: 1;
-  width: clamp(52px, 16vw, 70px);
+  width: clamp(94px, 24vw, 94px);
   height: auto;
   opacity: 0.86;
 }
@@ -3304,7 +3299,7 @@ img {
 
 .family-invitation-parent p {
   color: rgba(16, 16, 20, 0.9);
-  font-size: clamp(0.52rem, 2.25vw, 0.66rem);
+  font-size: clamp(0.62rem, 3.5vw, 0.86rem);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.02em;
@@ -3312,13 +3307,13 @@ img {
 
 .family-invitation-parent p:first-child {
   margin-bottom: 3px;
-  font-size: clamp(0.58rem, 2.5vw, 0.72rem);
+  font-size: clamp(0.62rem, 3.5vw, 0.86rem);
   letter-spacing: 0.08em;
 }
 
 .family-invitation-parent p:last-child {
   margin-top: 2px;
-  font-size: clamp(0.42rem, 1.78vw, 0.54rem);
+  font-size: clamp(0.58rem, 2.5vw, 0.72rem);
   font-weight: 500;
   letter-spacing: 0;
   white-space: nowrap;
@@ -3358,7 +3353,7 @@ img {
   justify-self: end;
   margin-top: -2px;
   margin-right: clamp(32px, 8.5vw, 44px);
-  font-size: clamp(0.48rem, 2.05vw, 0.6rem);
+  font-size: clamp(0.52rem, 2.6vw, 0.62rem);
   font-weight: 600;
   letter-spacing: 0;
 }
@@ -3382,7 +3377,7 @@ img {
 }
 
 .family-invitation-couple p:nth-child(2) {
-  font-size: clamp(0.84rem, 3.2vw, 1.04rem);
+  font-size: clamp(1.2rem, 6.2vw, 1.2rem);
   line-height: 0.8;
 }
 
@@ -3393,7 +3388,7 @@ img {
   margin-top: clamp(20px, 3.5svh, 30px);
   padding-left: clamp(58px, 18vw, 82px);
   border-top: 1px solid rgba(16, 16, 20, 0.78);
-  font-size: clamp(0.43rem, 1.85vw, 0.54rem);
+  font-size: clamp(0.6rem, 2.2vw, 0.6rem);
   font-weight: 700;
   line-height: 1.6;
   letter-spacing: 0.04em;
@@ -3455,13 +3450,13 @@ img {
 
 .family-invitation-lotus-big {
   right: clamp(2px, 2vw, 12px);
-  bottom: clamp(-28px, -3svh, -12px);
-  width: clamp(132px, 44vw, 178px);
+  bottom: clamp(-10px, 8svh, 2px);
+  width: clamp(122px, 34vw, 168px);
 }
 
 .family-invitation-lotus-small {
-  left: clamp(104px, 30vw, 142px);
-  bottom: clamp(-16px, -1.8svh, -6px);
+  left: clamp(110px, 40vw, 156px);
+  bottom: clamp(-10px, 8svh, 2px);
   width: clamp(76px, 23vw, 96px);
   opacity: 0.2;
 }
