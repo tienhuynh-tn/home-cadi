@@ -1055,7 +1055,7 @@ img {
     "clig" 0,
     "dlig" 0,
     "calt" 0;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -2094,7 +2094,7 @@ img {
   width: max-content;
   margin: 0;
   padding: 1px 5px 3px;
-  color: rgba(32, 23, 16, 0.82);
+  color: #050505;
   font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
   font-size: clamp(0.74rem, 3.35vw, 0.9rem);
   font-weight: 700;
@@ -2132,7 +2132,7 @@ img {
   width: min(76%, 286px);
   margin: 0;
   padding: 0;
-  color: rgba(32, 23, 16, 0.84);
+  color: #050505;
   font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
   font-size: clamp(0.76rem, 3.45vw, 0.94rem);
   font-weight: 700;
