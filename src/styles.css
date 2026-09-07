@@ -3316,6 +3316,7 @@ img {
   gap: 3px;
   width: min(82vw, 320px);
   margin: 12px auto 0;
+  padding-top: 40px;
   isolation: isolate;
 }
 
@@ -3341,7 +3342,10 @@ img {
 }
 
 .mountain-header {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 3;
   text-align: center;
 }
@@ -3356,7 +3360,7 @@ img {
 }
 
 .mountain-title {
-  margin: 8px 0 -26px;
+  margin: 8px 0 0;
   color: rgba(32, 23, 16, 0.9);
   font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
   font-size: clamp(1.45rem, 7.7vw, 2rem);
@@ -3370,6 +3374,11 @@ img {
   aspect-ratio: 3 / 2;
   height: auto;
   object-fit: cover;
+}
+
+.mountain-photo:nth-of-type(2) .mountain-image,
+.mountain-photo:nth-of-type(3) .mountain-image {
+  aspect-ratio: 4.2 / 1;
 }
 
 .reveal-ready .mountain-section .mountain-header,
@@ -3395,15 +3404,15 @@ img {
   transition-delay: 100ms;
 }
 
-.reveal-ready .mountain-section.is-visible .mountain-photo:nth-child(1) {
+.reveal-ready .mountain-section.is-visible .mountain-photo:nth-of-type(1) {
   transition-delay: 220ms;
 }
 
-.reveal-ready .mountain-section.is-visible .mountain-photo:nth-child(2) {
+.reveal-ready .mountain-section.is-visible .mountain-photo:nth-of-type(2) {
   transition-delay: 340ms;
 }
 
-.reveal-ready .mountain-section.is-visible .mountain-photo:nth-child(3) {
+.reveal-ready .mountain-section.is-visible .mountain-photo:nth-of-type(3) {
   transition-delay: 460ms;
 }
 
