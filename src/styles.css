@@ -1329,6 +1329,7 @@ img {
     top: 60.2%;
     left: 26.6%;
     width: 56%;
+    clip-path: inset(0 0 20% 0);
   }
 
   .proposal-collage-note {
