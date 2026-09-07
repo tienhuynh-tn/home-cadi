@@ -3309,6 +3309,7 @@ img {
   margin-bottom: 3px;
   font-size: clamp(0.62rem, 3.5vw, 0.86rem);
   letter-spacing: 0.08em;
+  font-weight: 400
 }
 
 .family-invitation-parent p:last-child {
@@ -3343,7 +3344,7 @@ img {
   font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
   font-size: clamp(2rem, 10.5vw, 2.9rem);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 0.8;
   letter-spacing: 0;
   transform: rotate(-5deg);
@@ -3363,7 +3364,6 @@ img {
   z-index: 2;
   display: grid;
   justify-items: center;
-  gap: clamp(5px, 1svh, 8px);
   margin-top: clamp(20px, 3.4svh, 32px);
   text-align: center;
 }
@@ -3371,7 +3371,7 @@ img {
 .family-invitation-couple p {
   font-family: "Montserrat", "Segoe UI", sans-serif;
   font-size: clamp(1.02rem, 4.55vw, 1.34rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: 0.02em;
 }
@@ -3379,18 +3379,16 @@ img {
 .family-invitation-couple p:nth-child(2) {
   font-size: clamp(1.2rem, 6.2vw, 1.2rem);
   line-height: 0.8;
+  font-weight: 400;
 }
 
 .family-invitation-role {
   position: relative;
   z-index: 2;
   justify-self: end;
-  margin-top: clamp(20px, 3.5svh, 30px);
   padding-left: clamp(58px, 18vw, 82px);
-  border-top: 1px solid rgba(16, 16, 20, 0.78);
   font-size: clamp(0.6rem, 2.2vw, 0.6rem);
   font-weight: 700;
-  line-height: 1.6;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -3399,8 +3397,8 @@ img {
   position: relative;
   z-index: 3;
   display: grid;
-  gap: clamp(18px, 3.2svh, 28px);
-  margin-top: clamp(12px, 2.6svh, 24px);
+  gap: clamp(0px, 2.2svh, -4px);
+  margin-top: clamp(-10px, -10svh, 10px);
 }
 
 .family-invitation-event {
