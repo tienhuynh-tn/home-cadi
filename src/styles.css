@@ -1204,6 +1204,12 @@ img {
     white-space: nowrap;
   }
 
+  section.agree .agree-title .agree-title-number {
+    display: inline;
+    font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
+    white-space: inherit;
+  }
+
   section.proposal-collage-section {
     position: relative;
     width: 100vw;
@@ -2589,14 +2595,17 @@ img {
   transform: rotate(5deg);
 }
 
-.secondary-school-smudge-note span {
+.secondary-school-smudge-note > span {
   display: block;
   white-space: nowrap;
 }
 
 .secondary-school-smudge-note-fallback {
+  display: inline-block;
   font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
   font-weight: 700;
+  transform: translateY(-0.28em);
+  white-space: inherit;
 }
 
 .secondary-school-polaroid {
@@ -4354,5 +4363,11 @@ img {
   section.agree .agree-title span {
     display: block;
     white-space: nowrap;
+  }
+
+  section.agree .agree-title .agree-title-number {
+    display: inline;
+    font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
+    white-space: inherit;
   }
 }
