@@ -4083,20 +4083,6 @@ img {
   text-align: center;
 }
 
-.wish-meta {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  color: rgba(34, 139, 34, 0.82);
-  font-size: 0.72rem;
-  font-weight: 600;
-}
-
 @keyframes wish-card-in {
   from {
     opacity: 0;

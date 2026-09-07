@@ -2,7 +2,6 @@ import "./styles.css";
 import { createClient } from "@supabase/supabase-js";
 
 const WISH_LIMIT = 30;
-const NAME_LIMIT = 24;
 const RSVP_NAME_LIMIT = 60;
 const MESSAGE_LIMIT = 240;
 const RSVP_NOTE_LIMIT = 240;
@@ -441,19 +440,6 @@ const setRsvpSubmitting = (isSubmitting) => {
   });
 };
 
-const formatWishDate = (dateValue) => {
-  if (!dateValue) {
-    return "";
-  }
-
-  const date = new Date(dateValue);
-  const day = padTime(date.getDate());
-  const month = padTime(date.getMonth() + 1);
-  const year = date.getFullYear();
-
-  return `${day}.${month}.${year}`;
-};
-
 const normalizeWishText = (value) =>
   value
     .toLowerCase()
@@ -552,21 +538,7 @@ const renderWishes = (wishes) => {
     message.className = "wish-message";
     message.textContent = wish.message;
 
-    const meta = document.createElement("p");
-    meta.className = "wish-meta";
-
-    const name = document.createElement("span");
-    name.textContent = wish.name;
-
-    const date = document.createElement("span");
-    date.textContent = formatWishDate(wish.created_at);
-
-    meta.append(name);
-    if (date.textContent) {
-      meta.append("•", date);
-    }
-
-    item.append(message, meta);
+    item.append(message);
     wishesList.append(item);
   });
 
@@ -590,7 +562,7 @@ const loadWishes = async ({ announce = true } = {}) => {
 
   const { data, error } = await supabase
     .from("wishes")
-    .select("name,message,created_at")
+    .select("message,created_at")
     .order("created_at", { ascending: false })
     .limit(WISH_LIMIT);
 
@@ -607,7 +579,7 @@ const loadWishes = async ({ announce = true } = {}) => {
 };
 
 const getValidatedWish = (formData) => {
-  const name = String(formData.get("name") ?? "").trim();
+  const name = "Ẩn danh";
   const message = String(formData.get("message") ?? "").trim();
   const website = String(formData.get("website") ?? "").trim();
 
@@ -615,19 +587,15 @@ const getValidatedWish = (formData) => {
     return null;
   }
 
-  if (!name || !message) {
-    throw new Error("Bạn nhập tên và lời chúc giúp tụi mình nha.");
-  }
-
-  if (name.length > NAME_LIMIT) {
-    throw new Error(`Tên không vượt quá ${NAME_LIMIT} ký tự.`);
+  if (!message) {
+    throw new Error("Bạn nhập lời chúc giúp tụi mình nha.");
   }
 
   if (message.length > MESSAGE_LIMIT) {
     throw new Error(`Lời chúc không vượt quá ${MESSAGE_LIMIT} ký tự.`);
   }
 
-  if (hasSensitiveContent(name, message)) {
+  if (hasSensitiveContent(message)) {
     throw new Error("Nội dung có từ chưa phù hợp, bạn chỉnh lại giúp tụi mình nha.");
   }
 
