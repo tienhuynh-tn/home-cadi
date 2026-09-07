@@ -3033,8 +3033,8 @@ img {
 .film-template-copy h2 {
   margin: 0;
   color: var(--red);
-  font-family: "1FTV VIP Scartoon", "Cooper Black", Georgia, serif;
-  font-size: clamp(2.06rem, 10.8vw, 3.75rem);
+  font-family: "Bachelorette", "Cooper Black", Georgia, serif;
+  font-size: clamp(2.06rem, 14.8vw, 3.75rem);
   font-weight: 900;
   line-height: 0.98;
   letter-spacing: 0;
@@ -3112,8 +3112,8 @@ img {
   font-style: normal;
   font-weight: 700;
   line-height: 1.22;
-  text-align: center;
-  text-align-last: center;
+  text-align: justify;
+  text-align-last: left;
 }
 
 .appreciation-copy::before,
@@ -3139,7 +3139,7 @@ img {
   font-size: clamp(1.08rem, 5.1vw, 1.52rem);
   font-style: normal;
   font-weight: 700;
-  line-height: 0.96;
+  line-height: 1.2;
   letter-spacing: 0;
   text-align: left;
   text-align-last: left;
@@ -3157,14 +3157,14 @@ img {
 }
 
 .appreciation-copy h2 span:nth-child(2) {
-  padding-left: 34px;
-  font-size: 0.82em;
+  padding-left: 42px;
+  font-size: 0.92em;
   white-space: nowrap;
 }
 
 .appreciation-copy h2 span:last-child {
   padding-left: 158px;
-  font-size: 0.72em;
+  font-size: 0.92em;
   text-align: right;
   text-align-last: center;
 }
@@ -3424,7 +3424,7 @@ img {
 }
 
 .family-invitation-event p:nth-child(2) {
-  font-size: clamp(0.42rem, 1.85vw, 0.54rem);
+  font-size: clamp(0.62rem, 2vw, 0.64rem);
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: 0;
@@ -3607,10 +3607,9 @@ img {
 .mountain-copy {
   max-width: 50ch;
   margin: 17px auto 0;
-  color: rgba(32, 23, 16, 0.82);
   font-family: "Montserrat", "Segoe UI", sans-serif;
   font-size: clamp(0.66rem, 2.7vw, 0.78rem);
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.45;
   text-align: center;
 }
