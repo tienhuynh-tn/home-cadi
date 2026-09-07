@@ -425,6 +425,7 @@ img {
 .wedding-vow-section,
 .wedding-home-section,
 .appreciation-section,
+.family-invitation-section,
 .mountain-section,
 .rsvp-section,
 .wishes-section {
@@ -874,6 +875,7 @@ img {
 .secondary-school-section > :not(.signature-elements),
 .film-template-section > :not(.signature-elements),
 .appreciation-section > :not(.signature-elements),
+.family-invitation-section > :not(.signature-elements),
 .mountain-section > :not(.signature-elements),
 .rsvp-section > :not(.signature-elements),
 .wishes-section > :not(.signature-elements) {
@@ -3239,6 +3241,285 @@ img {
   transition-delay: 580ms;
 }
 
+.family-invitation-section {
+  position: relative;
+  margin: 0 -14px;
+  padding: clamp(16px, 2.4svh, 24px) 14px clamp(18px, 3svh, 28px);
+  overflow: hidden;
+  background:
+    url("/assets/subtle-noise.png") center / 460px auto,
+    var(--soft-section-bg);
+}
+
+.family-invitation-card {
+  position: relative;
+  display: grid;
+  width: min(100%, 390px);
+  min-height: min(100svh, 844px);
+  margin: 0 auto;
+  padding: clamp(23px, 4.8svh, 42px) clamp(20px, 5.4vw, 28px) clamp(26px, 5svh, 42px);
+  overflow: hidden;
+  color: #101014;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    url("/assets/subtle-noise.png") center / 360px auto,
+    #f5f3ee;
+  font-family: "Montserrat", "Segoe UI", sans-serif;
+  isolation: isolate;
+}
+
+.family-invitation-logo {
+  position: absolute;
+  top: clamp(42px, 8.2svh, 70px);
+  right: clamp(48px, 13.5vw, 62px);
+  z-index: 1;
+  width: clamp(52px, 16vw, 70px);
+  height: auto;
+  opacity: 0.86;
+}
+
+.family-invitation-parents {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: clamp(22px, 4.4svh, 36px);
+  width: min(58vw, 230px);
+}
+
+.family-invitation-parent {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  text-align: left;
+}
+
+.family-invitation-parent p,
+.family-invitation-announcement p,
+.family-invitation-couple p,
+.family-invitation-role,
+.family-invitation-event p,
+.family-invitation-event time {
+  margin: 0;
+}
+
+.family-invitation-parent p {
+  color: rgba(16, 16, 20, 0.9);
+  font-size: clamp(0.52rem, 2.25vw, 0.66rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.family-invitation-parent p:first-child {
+  margin-bottom: 3px;
+  font-size: clamp(0.58rem, 2.5vw, 0.72rem);
+  letter-spacing: 0.08em;
+}
+
+.family-invitation-parent p:last-child {
+  margin-top: 2px;
+  font-size: clamp(0.42rem, 1.78vw, 0.54rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.family-invitation-announcement {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0;
+  margin-top: clamp(12px, 2svh, 18px);
+  text-align: center;
+}
+
+.family-invitation-announcement p:first-child {
+  justify-self: start;
+  margin-left: clamp(26px, 7vw, 38px);
+  font-size: clamp(0.58rem, 2.55vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.family-invitation-announcement h2 {
+  margin: 1px 0 0;
+  color: rgba(16, 16, 20, 0.76);
+  font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-size: clamp(2rem, 10.5vw, 2.9rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: 0;
+  transform: rotate(-5deg);
+}
+
+.family-invitation-announcement p:last-child {
+  justify-self: end;
+  margin-top: -2px;
+  margin-right: clamp(32px, 8.5vw, 44px);
+  font-size: clamp(0.48rem, 2.05vw, 0.6rem);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.family-invitation-couple {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: clamp(5px, 1svh, 8px);
+  margin-top: clamp(20px, 3.4svh, 32px);
+  text-align: center;
+}
+
+.family-invitation-couple p {
+  font-family: "Montserrat", "Segoe UI", sans-serif;
+  font-size: clamp(1.02rem, 4.55vw, 1.34rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.family-invitation-couple p:nth-child(2) {
+  font-size: clamp(0.84rem, 3.2vw, 1.04rem);
+  line-height: 0.8;
+}
+
+.family-invitation-role {
+  position: relative;
+  z-index: 2;
+  justify-self: end;
+  margin-top: clamp(20px, 3.5svh, 30px);
+  padding-left: clamp(58px, 18vw, 82px);
+  border-top: 1px solid rgba(16, 16, 20, 0.78);
+  font-size: clamp(0.43rem, 1.85vw, 0.54rem);
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.family-invitation-events {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  gap: clamp(18px, 3.2svh, 28px);
+  margin-top: clamp(12px, 2.6svh, 24px);
+}
+
+.family-invitation-event {
+  display: grid;
+  gap: 1px;
+}
+
+.family-invitation-event-bride {
+  justify-items: end;
+  text-align: right;
+}
+
+.family-invitation-event-groom {
+  justify-items: start;
+  text-align: left;
+}
+
+.family-invitation-event p:first-child {
+  font-size: clamp(0.82rem, 3.85vw, 1.08rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+}
+
+.family-invitation-event p:nth-child(2) {
+  font-size: clamp(0.42rem, 1.85vw, 0.54rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.family-invitation-event time {
+  display: block;
+  font-size: clamp(1.02rem, 4.6vw, 1.32rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.05em;
+}
+
+.family-invitation-lotus {
+  position: absolute;
+  z-index: 1;
+  height: auto;
+  opacity: 0.24;
+  pointer-events: none;
+}
+
+.family-invitation-lotus-big {
+  right: clamp(2px, 2vw, 12px);
+  bottom: clamp(-28px, -3svh, -12px);
+  width: clamp(132px, 44vw, 178px);
+}
+
+.family-invitation-lotus-small {
+  left: clamp(104px, 30vw, 142px);
+  bottom: clamp(-16px, -1.8svh, -6px);
+  width: clamp(76px, 23vw, 96px);
+  opacity: 0.2;
+}
+
+.reveal-ready .family-invitation-section .family-invitation-parents,
+.reveal-ready .family-invitation-section .family-invitation-logo,
+.reveal-ready .family-invitation-section .family-invitation-announcement,
+.reveal-ready .family-invitation-section .family-invitation-couple,
+.reveal-ready .family-invitation-section .family-invitation-role,
+.reveal-ready .family-invitation-section .family-invitation-events,
+.reveal-ready .family-invitation-section .family-invitation-lotus {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 900ms var(--reveal-ease),
+    transform 900ms var(--reveal-ease);
+}
+
+.reveal-ready .family-invitation-section .family-invitation-logo,
+.reveal-ready .family-invitation-section .family-invitation-lotus {
+  transform: translateY(10px) scale(0.98);
+}
+
+.reveal-ready .family-invitation-section.is-visible .family-invitation-parents,
+.reveal-ready .family-invitation-section.is-visible .family-invitation-logo,
+.reveal-ready .family-invitation-section.is-visible .family-invitation-announcement,
+.reveal-ready .family-invitation-section.is-visible .family-invitation-couple,
+.reveal-ready .family-invitation-section.is-visible .family-invitation-role,
+.reveal-ready .family-invitation-section.is-visible .family-invitation-events,
+.reveal-ready .family-invitation-section.is-visible .family-invitation-lotus {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-ready .family-invitation-section.is-visible .family-invitation-logo {
+  transition-delay: 120ms;
+}
+
+.reveal-ready .family-invitation-section.is-visible .family-invitation-announcement {
+  transition-delay: 220ms;
+}
+
+.reveal-ready .family-invitation-section.is-visible .family-invitation-couple {
+  transition-delay: 330ms;
+}
+
+.reveal-ready .family-invitation-section.is-visible .family-invitation-role {
+  transition-delay: 420ms;
+}
+
+.reveal-ready .family-invitation-section.is-visible .family-invitation-events {
+  transition-delay: 520ms;
+}
+
+.reveal-ready .family-invitation-section.is-visible .family-invitation-lotus {
+  transition-delay: 620ms;
+}
+
 @media (max-width: 360px) {
   .film-template-copy {
     padding-left: 126px;
@@ -4027,6 +4308,20 @@ img {
   .reveal-ready .twenty-years-section.is-visible .twenty-years-polaroid,
   .reveal-ready .appreciation-section .appreciation-copy > *,
   .reveal-ready .appreciation-section.is-visible .appreciation-copy > *,
+  .reveal-ready .family-invitation-section .family-invitation-parents,
+  .reveal-ready .family-invitation-section .family-invitation-logo,
+  .reveal-ready .family-invitation-section .family-invitation-announcement,
+  .reveal-ready .family-invitation-section .family-invitation-couple,
+  .reveal-ready .family-invitation-section .family-invitation-role,
+  .reveal-ready .family-invitation-section .family-invitation-events,
+  .reveal-ready .family-invitation-section .family-invitation-lotus,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-parents,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-logo,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-announcement,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-couple,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-role,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-events,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-lotus,
   .reveal-ready .mountain-section .mountain-header,
   .reveal-ready .mountain-section .mountain-photo,
   .reveal-ready .mountain-section .mountain-copy,
@@ -4055,6 +4350,20 @@ img {
   .reveal-ready .twenty-years-section.is-visible .twenty-years-polaroid,
   .reveal-ready .appreciation-section .appreciation-copy > *,
   .reveal-ready .appreciation-section.is-visible .appreciation-copy > *,
+  .reveal-ready .family-invitation-section .family-invitation-parents,
+  .reveal-ready .family-invitation-section .family-invitation-logo,
+  .reveal-ready .family-invitation-section .family-invitation-announcement,
+  .reveal-ready .family-invitation-section .family-invitation-couple,
+  .reveal-ready .family-invitation-section .family-invitation-role,
+  .reveal-ready .family-invitation-section .family-invitation-events,
+  .reveal-ready .family-invitation-section .family-invitation-lotus,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-parents,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-logo,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-announcement,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-couple,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-role,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-events,
+  .reveal-ready .family-invitation-section.is-visible .family-invitation-lotus,
   .reveal-ready .mountain-section .mountain-header,
   .reveal-ready .mountain-section .mountain-photo,
   .reveal-ready .mountain-section .mountain-copy,
