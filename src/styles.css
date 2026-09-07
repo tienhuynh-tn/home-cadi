@@ -2896,7 +2896,9 @@ img {
   min-height: 0;
   margin: 0px -14px 0px;
   overflow: hidden;
-  background: var(--soft-section-bg-alt);
+  background:
+    url("/assets/subtle-noise.png") center / cover no-repeat,
+    var(--soft-section-bg-alt);
   isolation: isolate;
 }
 
@@ -3129,7 +3131,9 @@ img {
   position: relative;
   margin: 0 -14px 0;
   overflow: hidden;
-  background: var(--soft-section-bg);
+  background:
+    url("/assets/subtle-noise.png") center / cover no-repeat,
+    var(--soft-section-bg);
 }
 
 .appreciation-copy {
@@ -3147,20 +3151,11 @@ img {
   line-height: 1.58;
   text-align: justify;
   text-align-last: left;
-  background:
-    linear-gradient(rgba(255, 253, 248, 0.5), rgba(255, 253, 248, 0.38)),
-    linear-gradient(180deg, rgba(255, 245, 232, 0.34), rgba(255, 245, 232, 0.12));
-  box-shadow: 0 18px 38px rgba(93, 69, 50, 0.045);
 }
 
 .appreciation-copy::before,
 .appreciation-copy::after {
-  position: absolute;
-  right: 14px;
-  left: 14px;
-  height: 1px;
-  background: rgba(198, 0, 0, 0.08);
-  content: "";
+  content: none;
 }
 
 .appreciation-copy::before {
