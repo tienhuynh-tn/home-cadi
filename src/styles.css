@@ -2339,7 +2339,7 @@ img {
   z-index: 4;
   display: inline-block;
   padding: 0 8px 2px;
-  color: rgba(32, 23, 16, 0.86);
+  color: #050505;
   font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
   font-size: clamp(0.76rem, 3.7vw, 0.96rem);
   font-weight: 700;
@@ -2851,8 +2851,9 @@ img {
 }
 
 .twenty-years-caption span:last-child {
-  margin-top: -2px;
+  margin-top: 4px;
   font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-size: 0.86em;
   line-height: 1;
   letter-spacing: 0.26em;
   transform: translateX(3.14em);
