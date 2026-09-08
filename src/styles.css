@@ -494,18 +494,6 @@ img {
   isolation: isolate;
 }
 
-.story-kids::before {
-  position: absolute;
-  left: 18%;
-  right: 17%;
-  bottom: 18px;
-  z-index: 0;
-  height: 20px;
-  border-bottom: 3px solid rgba(32, 23, 16, 0.82);
-  border-radius: 50%;
-  content: "";
-}
-
 .love-mark {
   position: absolute;
   z-index: 1;
