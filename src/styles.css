@@ -3082,7 +3082,7 @@ img {
 
 .film-template-subtitle {
   max-width: 16ch;
-  margin: clamp(38px, 6.8svh, 58px) 0 0;
+  margin: clamp(16px, 3.2svh, 22px) 0 42px;
   color: var(--ink);
   font-family: "Montserrat", "Segoe UI", sans-serif;
   font-size: clamp(1.02rem, 4.8vw, 1.38rem);
@@ -3097,9 +3097,9 @@ img {
   margin: clamp(18px, 3.2svh, 26px) 0 0;
   color: rgba(32, 23, 16, 0.86);
   font-family: "Montserrat", "Segoe UI", sans-serif;
-  font-size: clamp(0.86rem, 3.8vw, 1.08rem);
+  font-size: clamp(0.96rem, 4.8vw, 1.18rem);
   font-weight: 400;
-  line-height: 1.12;
+  line-height: 0.7;
   letter-spacing: 0;
 }
 
@@ -3108,10 +3108,10 @@ img {
 }
 
 .film-template-details span:nth-child(2),
+.film-template-details span:nth-child(3),
 .film-template-details span:last-child {
   color: rgba(93, 69, 50, 0.8);
   font-family: "Montera", "Montserrat", "Segoe UI", sans-serif;
-  font-size: clamp(0.72rem, 3.1vw, 0.88rem);
   font-weight: 600;
   letter-spacing: 0.06em;
 }
