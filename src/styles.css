@@ -1425,7 +1425,7 @@ img {
   .from-us-collage {
     position: relative;
     width: min(326px, calc(100vw - 40px));
-    aspect-ratio: 346 / 590;
+    aspect-ratio: 346 / 500;
     margin: 0 auto;
   }
 
@@ -1444,7 +1444,7 @@ img {
   }
 
   .from-us-title {
-    top: 4px;
+    top: 12px;
     left: 24px;
     text-shadow: 0 2px 7px rgba(21, 38, 20, 0.34);
   }
@@ -1462,8 +1462,7 @@ img {
     left: 24px;
     right: 24px;
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 2px;
+    grid-template-rows: repeat(3, auto);
   }
 
   .from-us-photo-frame {
@@ -1473,6 +1472,14 @@ img {
     overflow: hidden;
     background: #dfe5d8;
   }
+
+  .from-us-photo-frame:nth-child(2) {
+    aspect-ratio: 16 / 7.4;
+  }
+
+    .from-us-photo-frame:nth-child(3) {
+      aspect-ratio: 16 / 6.4;
+    }
 
   .from-us-photo-frame img {
     width: 100%;
