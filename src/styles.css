@@ -169,7 +169,7 @@ img {
   width: 100vw;
   max-width: 100vw;
   min-height: 100svh;
-  padding: 0 14px 30px;
+  padding: 0 14px 0px;
   background: var(--soft-page-bg);
   isolation: isolate;
 }
