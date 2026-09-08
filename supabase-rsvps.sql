@@ -1,6 +1,7 @@
 create table if not exists rsvps (
   id uuid primary key default gen_random_uuid(),
   name text not null,
+  friend_side text,
   attendance text not null,
   events text not null,
   guest_count integer,
@@ -9,6 +10,9 @@ create table if not exists rsvps (
   created_at timestamptz not null default now(),
   constraint rsvps_attendance_check check (
     attendance in ('tham_du', 'chua_chac', 'khong_tham_du')
+  ),
+  constraint rsvps_friend_side_check check (
+    friend_side is null or friend_side in ('co_dau', 'chu_re', 'ca_hai')
   ),
   constraint rsvps_events_check check (
     events in ('ca_hai', 'nha_gai', 'nha_trai', 'chua_chac', 'khong_tham_du')
@@ -22,6 +26,13 @@ create table if not exists rsvps (
 );
 
 alter table rsvps add column if not exists wish_message text;
+alter table rsvps add column if not exists friend_side text;
+
+alter table rsvps drop constraint if exists rsvps_friend_side_check;
+alter table rsvps
+  add constraint rsvps_friend_side_check check (
+    friend_side is null or friend_side in ('co_dau', 'chu_re', 'ca_hai')
+  );
 
 alter table rsvps drop constraint if exists rsvps_events_check;
 alter table rsvps
@@ -64,6 +75,7 @@ create policy "Anyone can add RSVP"
 on rsvps for insert
 with check (
   length(trim(name)) between 1 and 60
+  and friend_side in ('co_dau', 'chu_re', 'ca_hai')
   and attendance in ('tham_du', 'chua_chac', 'khong_tham_du')
   and events in ('ca_hai', 'nha_gai', 'nha_trai', 'chua_chac', 'khong_tham_du')
   and (guest_count is null or guest_count between 1 and 10)

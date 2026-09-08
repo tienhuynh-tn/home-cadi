@@ -32,6 +32,12 @@ const EVENT_LABELS = {
   khong_tham_du: "Không tham dự",
 };
 
+const FRIEND_SIDE_LABELS = {
+  co_dau: "Cô dâu Ngọc Thảo",
+  chu_re: "Chú rể Cao Duy",
+  ca_hai: "Cả hai tụi mình 🤍",
+};
+
 let rsvps = [];
 
 const setLoginStatus = (message, tone = "") => {
@@ -83,7 +89,7 @@ const renderRsvps = () => {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
 
-    cell.colSpan = 7;
+    cell.colSpan = 8;
     cell.textContent = "Chưa có xác nhận nào.";
     row.append(cell);
     tableBody.append(row);
@@ -94,6 +100,7 @@ const renderRsvps = () => {
     const cells = [
       formatDateTime(rsvp.created_at),
       rsvp.name,
+      FRIEND_SIDE_LABELS[rsvp.friend_side] ?? rsvp.friend_side,
       ATTENDANCE_LABELS[rsvp.attendance] ?? rsvp.attendance,
       EVENT_LABELS[rsvp.events] ?? rsvp.events,
       rsvp.guest_count ?? "",
@@ -137,7 +144,7 @@ const loadRsvps = async () => {
 
   const { data, error } = await supabase
     .from("rsvps")
-    .select("created_at,name,attendance,events,guest_count,note,wish_message")
+    .select("created_at,name,friend_side,attendance,events,guest_count,note,wish_message")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -165,10 +172,20 @@ const csvEscape = (value) => {
 };
 
 const downloadCsv = () => {
-  const headers = ["Thời gian", "Tên", "Trả lời", "Buổi tiệc", "Số người", "Lời nhắn", "Lời chúc"];
+  const headers = [
+    "Thời gian",
+    "Tên",
+    "Bạn của",
+    "Trả lời",
+    "Buổi tiệc",
+    "Số người",
+    "Lời nhắn",
+    "Lời chúc",
+  ];
   const rows = rsvps.map((rsvp) => [
     formatDateTime(rsvp.created_at),
     rsvp.name,
+    FRIEND_SIDE_LABELS[rsvp.friend_side] ?? rsvp.friend_side,
     ATTENDANCE_LABELS[rsvp.attendance] ?? rsvp.attendance,
     EVENT_LABELS[rsvp.events] ?? rsvp.events,
     rsvp.guest_count ?? "",

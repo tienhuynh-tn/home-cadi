@@ -547,12 +547,14 @@ const loadWishes = async () => {
 
 const getValidatedRsvp = (formData) => {
   const name = String(formData.get("name") ?? "").trim();
+  const friendSide = String(formData.get("friend_side") ?? "").trim();
   const attendance = String(formData.get("attendance") ?? "").trim();
   const events = String(formData.get("events") ?? "").trim();
   const guestCountValue = String(formData.get("guest_count") ?? "").trim();
   const note = String(formData.get("note") ?? "").trim();
   const wishMessage = String(formData.get("wish_message") ?? "").trim();
   const website = String(formData.get("website") ?? "").trim();
+  const allowedFriendSides = new Set(["co_dau", "chu_re", "ca_hai"]);
   const allowedAttendance = new Set(["tham_du", "chua_chac", "khong_tham_du"]);
   const allowedEvents = new Set(["ca_hai", "nha_gai", "nha_trai", "chua_chac", "khong_tham_du"]);
   const normalizedEvents =
@@ -568,6 +570,10 @@ const getValidatedRsvp = (formData) => {
 
   if (name.length > RSVP_NAME_LIMIT) {
     throw new Error(`Tên không vượt quá ${RSVP_NAME_LIMIT} ký tự.`);
+  }
+
+  if (!allowedFriendSides.has(friendSide)) {
+    throw new Error("Bạn chọn bạn của ai giúp tụi mình nha.");
   }
 
   if (!allowedAttendance.has(attendance)) {
@@ -610,6 +616,7 @@ const getValidatedRsvp = (formData) => {
 
   return {
     name,
+    friend_side: friendSide,
     attendance,
     events: normalizedEvents,
     guest_count: attendance === "tham_du" ? guestCount : null,
