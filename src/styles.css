@@ -1492,7 +1492,7 @@ img {
   }
 
   .from-us-photo-frame:nth-child(2) img {
-    object-position: center 0;
+    object-position: center 100%;
   }
 
   .from-us-photo-frame:nth-child(3) img {
