@@ -208,12 +208,7 @@ img {
 }
 
 .hero-photo::after {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 24%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.02) 68%, rgba(255, 255, 255, 0.78) 86%, #ffffff 100%),
-    radial-gradient(circle at center, transparent 48%, rgba(255, 255, 255, 0.42) 100%);
-  content: "";
+  display: none;
 }
 
 .hero-photo img {
@@ -235,8 +230,8 @@ img {
 }
 
 .eyebrow {
-  margin: 0 0 clamp(26px, 6.6svh, 48px);
-  color: #0c0c0c;
+  margin: -24px 0 clamp(26px, 6.6svh, 48px);
+  color: #ffffff;
   font-family: "UTM Avo", "Montserrat", "Segoe UI", sans-serif;
   font-size: clamp(0.78rem, 3vw, 0.98rem);
   font-weight: 400;
@@ -246,7 +241,7 @@ img {
 
 .hero-title {
   margin: 0 auto;
-  color: #050505;
+  color: #ffffff;
   display: grid;
   font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
   font-size: clamp(3.1rem, 14.6vw, 4.55rem);
@@ -321,8 +316,8 @@ img {
 
 .note {
   max-width: min(100%, 36ch);
-  margin: clamp(16px, 3.8svh, 28px) auto 0;
-  color: #050505;
+  margin: clamp(12px, 2.8svh, 22px) auto 0;
+  color: #ffffff;
   font-family: "1FTV HF Gesco", "Montserrat", "Segoe UI", sans-serif;
   font-size: clamp(0.88rem, 3.7vw, 1.14rem);
   line-height: 1.15;
@@ -330,8 +325,8 @@ img {
 }
 
 .date {
-  margin: clamp(9px, 2svh, 16px) 0 0;
-  color: #050505;
+  margin: clamp(8px, 1svh, 12px) 0 0;
+  color: #ffffff;
   font-family: "UTM Avo", "Montserrat", "Segoe UI", sans-serif;
   font-size: clamp(0.82rem, 3.6vw, 1.04rem);
   font-weight: 400;
