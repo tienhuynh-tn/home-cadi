@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "images:cover": "scripts/generate-cover-variants.sh",
     "preview": "vite preview"
   },
   "devDependencies": {

@@ -1,11 +1,6 @@
 # Source Images
 
-Replace `cover.jpg` in this folder when updating the wedding photo.
+Replace `cover.jpg` in this folder when archiving the original wedding photo.
 
-After replacing it, run:
-
-```sh
-npm run images:cover
-```
-
-That command updates the public image files used by the website.
+The visible cover page uses `public/assets/cover.jpg` directly. When updating
+the cover, copy the provided original image to both paths.

@@ -1,28 +1,19 @@
 # Image Workflow
 
 Current image behavior:
-- `index.html` uses responsive JPEG variants for the visible hero image.
-- `source-images/cover.jpg` is the editable source image.
-- `public/assets/cover.jpg` is the generated Open Graph image.
+- `index.html` uses `public/assets/cover.jpg` directly for the visible hero image.
+- `source-images/cover.jpg` archives the original provided cover photo.
+- `public/assets/cover.jpg` is the same original image used by the hero and Open Graph image.
 - The hero image element should keep:
-  - `src="%BASE_URL%assets/cover-720.jpg"`
-  - `srcset` with 480w, 720w, and 1080w variants
-  - `sizes="100vw"`
-  - `width="1366"` and `height="2048"`
+  - `src="%BASE_URL%assets/cover.jpg"`
+  - intrinsic `width` and `height` matching the original image
   - `fetchpriority="high"`
   - `decoding="async"`
 
-Current optimized variants:
-- `cover-480.jpg`: 480 px wide
-- `cover-720.jpg`: 720 px wide
-- `cover-1080.jpg`: 1080 px wide
-
 When replacing `cover.jpg`:
-1. Put the new original at `source-images/cover.jpg`.
-2. Regenerate public assets with `npm run images:cover`.
-3. Check sizes with `du -h public/assets/cover*.jpg`.
-4. Check dimensions with `sips -g pixelWidth -g pixelHeight public/assets/cover-480.jpg public/assets/cover-720.jpg public/assets/cover-1080.jpg`.
+1. Copy the provided original image to `source-images/cover.jpg`.
+2. Copy the same original image to `public/assets/cover.jpg`.
+3. Check dimensions with `sips -g pixelWidth -g pixelHeight public/assets/cover.jpg`.
+4. Update the hero image `width` and `height` in `index.html` if needed.
 5. Run `npm run build`.
 6. Preview mobile layout and confirm the crop remains acceptable.
-
-Do not edit the generated files in `public/assets/` directly unless the user asks for a one-off manual asset change.

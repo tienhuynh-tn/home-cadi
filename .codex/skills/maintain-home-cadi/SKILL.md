@@ -22,7 +22,7 @@ Do not commit or push unless the user explicitly requests it.
 - For site purpose, current copy, and project facts, read `references/project-overview.md`.
 - For file ownership and repository layout, read `references/structure.md`.
 - For visual changes, typography, spacing, and mobile layout, read `references/design-guidelines.md`.
-- For hero image optimization or asset replacement, read `references/image-workflow.md`.
+- For cover image replacement, read `references/image-workflow.md`.
 - For build, deploy, GitHub Pages, Netlify, commit, or push work, read `references/deploy-and-git.md`.
 
 ## Core Workflow
@@ -34,13 +34,7 @@ Do not commit or push unless the user explicitly requests it.
 5. For visual work, start or reuse `npm run dev -- --host 127.0.0.1` when a preview is useful.
 6. Review the final diff before summarizing.
 
-## Image Variant Helper
+## Cover Image Workflow
 
-For replacing or regenerating hero image variants, use:
-
-```sh
-cd /Users/tienhuynh-tn/Projects/home-cadi
-npm run images:cover
-```
-
-Read `references/image-workflow.md` before running it.
+The cover page uses the original image directly at `public/assets/cover.jpg`.
+Read `references/image-workflow.md` before replacing it.
