@@ -36,5 +36,5 @@ Do not commit or push unless the user explicitly requests it.
 
 ## Cover Image Workflow
 
-The cover page uses the original image directly at `public/assets/cover.jpg`.
+The cover page uses the original image directly at `public/assets/cover.jpeg`.
 Read `references/image-workflow.md` before replacing it.

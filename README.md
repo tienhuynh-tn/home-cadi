@@ -75,7 +75,7 @@ The SQL policy has broader length checks than the client so the browser remains 
 
 To update the cover image:
 
-1. Replace `source-images/cover.jpg`.
+1. Replace `source-images/cover.jpeg`.
 2. Run:
 
 ```sh
@@ -84,7 +84,7 @@ npm run images:cover
 
 This regenerates:
 
-- `public/assets/cover.jpg`
+- `public/assets/cover.jpeg`
 - `public/assets/cover-480.jpg`
 - `public/assets/cover-720.jpg`
 - `public/assets/cover-1080.jpg`
