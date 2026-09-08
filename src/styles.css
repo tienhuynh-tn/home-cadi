@@ -2061,7 +2061,7 @@ img {
 
 .primary-school-caption {
   position: absolute;
-  right: max(-12%, calc(100% - 100vw + 14px));
+  right: max(-16%, calc(100% - 100vw + 16px));
   bottom: -25px;
   z-index: 2;
   display: grid;
@@ -2082,7 +2082,7 @@ img {
   display: inline-block;
   position: relative;
   z-index: 0;
-  padding: 0 8px 1px 12px;
+  padding: 0 2px 1px 12px;
 }
 
 .primary-school-caption span::before {
