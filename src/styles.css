@@ -1492,7 +1492,7 @@ img {
   }
 
   .from-us-photo-frame:nth-child(2) img {
-    object-position: center 100%;
+    object-position: center 0;
   }
 
   .from-us-photo-frame:nth-child(3) img {
@@ -3686,7 +3686,11 @@ img {
 
 .mountain-photo:nth-of-type(2) .mountain-image,
 .mountain-photo:nth-of-type(3) .mountain-image {
-  aspect-ratio: 4.2 / 1;
+  aspect-ratio: 3.2 / 1;
+}
+
+.mountain-photo:nth-of-type(2) .mountain-image {
+  object-position: center 68%;
 }
 
 .reveal-ready .mountain-section .mountain-header,
