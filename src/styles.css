@@ -1729,12 +1729,12 @@ img {
   .wedding-vow-frame {
     position: relative;
     width: 100vw;
-    height: min(156vw, 626px);
-    min-height: 500px;
-    max-height: 626px;
+    height: min(164.6vw, 660px);
+    min-height: 525px;
+    max-height: 660px;
     margin: 0;
     overflow: hidden;
-    background: #315136;
+    background: #14341d;
     box-shadow: 0 7px 18px rgba(32, 23, 16, 0.08);
   }
 
@@ -1742,31 +1742,77 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 49% 50%;
+    object-position: 39% 50%;
+  }
+
+  .wedding-vow-inset {
+    position: absolute;
+    top: clamp(44px, 13.9vw, 55px);
+    left: max(30px, calc((100vw - 390px) / 2 + 36px));
+    z-index: 2;
+    width: min(48.7vw, 190px);
+    aspect-ratio: 190 / 209;
+    margin: 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.34);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .wedding-vow-inset img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 74%;
+    transform: scale(3.18);
+    transform-origin: 55% 60%;
   }
 
   .wedding-vow-text {
     position: absolute;
-    top: 32%;
-    right: max(16px, calc((100vw - 390px) / 2 + 16px));
+    top: clamp(46px, 14vw, 52px);
+    right: max(24px, calc((100vw - 390px) / 2 + 27px));
     z-index: 3;
-    width: min(41vw, 160px);
+    width: max-content;
     margin: 0;
-    color: #ffffff;
+    color: rgba(6, 9, 6, 0.9);
     font-family: "Bachelorette", "1FTV VIP Handstand", "Segoe Script", cursive;
-    font-size: clamp(0.8rem, 3.9vw, 0.96rem);
+    font-size: clamp(0.78rem, 3.9vw, 0.8rem);
     font-weight: 700;
-    line-height: 1.22;
+    line-height: 1.4;
     letter-spacing: 0;
-    text-align: center;
-    transform: translateY(-50%) rotate(0deg);
-    transform-origin: center;
+    text-align: left;
+    -webkit-text-stroke: 0.18px rgba(6, 9, 6, 0.58);
     isolation: isolate;
   }
 
   .wedding-vow-text::before,
   .wedding-vow-text::after {
-    content: none;
+    position: absolute;
+    z-index: 0;
+    background: rgba(255, 255, 255, 0.82);
+    content: "";
+    mask-image: url("/assets/stroke-of-grey-watercolor.png");
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    pointer-events: none;
+    -webkit-mask-image: url("/assets/stroke-of-grey-watercolor.png");
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+  }
+
+  .wedding-vow-text::before {
+    inset: -24px -22px -16px -17px;
+    opacity: 1;
+    transform: rotate(-2deg);
+    color: rgba(103, 98, 98, 0.82);
+  }
+
+  .wedding-vow-text::after {
+    inset: -4px -17px -18px -22px;
+    opacity: 0.48;
+    transform: rotate(2deg) scaleX(1.05);
   }
 
   .wedding-vow-text span {
@@ -1784,9 +1830,10 @@ img {
       transform var(--reveal-duration) var(--reveal-ease);
   }
 
+  .reveal-ready .wedding-vow-section .wedding-vow-inset,
   .reveal-ready .wedding-vow-section .wedding-vow-text {
     opacity: 0;
-    transform: translateY(calc(-50% + 10px)) rotate(0deg);
+    transform: translateY(10px);
     transition:
       opacity var(--reveal-duration) var(--reveal-ease) 160ms,
       transform var(--reveal-duration) var(--reveal-ease) 160ms;
@@ -1797,9 +1844,10 @@ img {
     transform: translateY(0) scale(1);
   }
 
+  .reveal-ready .wedding-vow-section.is-visible .wedding-vow-inset,
   .reveal-ready .wedding-vow-section.is-visible .wedding-vow-text {
     opacity: 1;
-    transform: translateY(-50%) rotate(0deg);
+    transform: translateY(0);
   }
 
   section.wedding-home-section {
