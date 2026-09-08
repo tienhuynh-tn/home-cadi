@@ -83,7 +83,7 @@ const renderRsvps = () => {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
 
-    cell.colSpan = 6;
+    cell.colSpan = 7;
     cell.textContent = "Chưa có xác nhận nào.";
     row.append(cell);
     tableBody.append(row);
@@ -98,6 +98,7 @@ const renderRsvps = () => {
       EVENT_LABELS[rsvp.events] ?? rsvp.events,
       rsvp.guest_count ?? "",
       rsvp.note ?? "",
+      rsvp.wish_message ?? "",
     ];
 
     cells.forEach((value) => {
@@ -136,7 +137,7 @@ const loadRsvps = async () => {
 
   const { data, error } = await supabase
     .from("rsvps")
-    .select("created_at,name,attendance,events,guest_count,note")
+    .select("created_at,name,attendance,events,guest_count,note,wish_message")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -164,7 +165,7 @@ const csvEscape = (value) => {
 };
 
 const downloadCsv = () => {
-  const headers = ["Thời gian", "Tên", "Trả lời", "Buổi tiệc", "Số người", "Lời nhắn"];
+  const headers = ["Thời gian", "Tên", "Trả lời", "Buổi tiệc", "Số người", "Lời nhắn", "Lời chúc"];
   const rows = rsvps.map((rsvp) => [
     formatDateTime(rsvp.created_at),
     rsvp.name,
@@ -172,6 +173,7 @@ const downloadCsv = () => {
     EVENT_LABELS[rsvp.events] ?? rsvp.events,
     rsvp.guest_count ?? "",
     rsvp.note ?? "",
+    rsvp.wish_message ?? "",
   ]);
   const csv = [headers, ...rows].map((row) => row.map(csvEscape).join(",")).join("\r\n");
   const blob = new Blob([`\uFEFF${csv}`], { type: "text/csv;charset=utf-8" });

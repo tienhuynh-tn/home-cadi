@@ -8,15 +8,16 @@ Mobile-first wedding invitation for Duy and Thao, built with Vite.
 - Responsive cover image variants in `public/assets`.
 - Story sections with decorative signature icons for camera, teacher/book, pencil, film, and Coca-Cola can.
 - Wedding song audio with a bottom-right music toggle.
-- Wishes section backed by Supabase, shown one at a time as rotating quote cards.
-- Client-side wish validation for required fields, length limits, spam honeypot, and common sensitive words.
+- RSVP form backed by Supabase, with an optional wish saved on the RSVP row.
+- Public wishes page backed by RSVP wishes, shown one at a time as centered text.
+- Client-side RSVP validation for required fields, length limits, spam honeypot, and common sensitive words.
 
 ## Project Structure
 
 - `index.html`: visible page markup, SVG symbols, audio tag, and form markup.
 - `src/styles.css`: all layout and visual styling.
-- `src/main.js`: scroll reveal, story timer, music control, wishes loading/submission, and form validation.
-- `supabase-wishes.sql`: Supabase table and row-level security policies for wishes.
+- `src/main.js`: scroll reveal, story timer, music control, RSVP submission, public wish loading, and form validation.
+- `supabase-rsvps.sql`: Supabase table, row-level security policies, admin access, and public RSVP wishes function.
 - `public/assets`: browser-served images and song.
 - `source-images`: source images used to regenerate public image variants.
 - `scripts/generate-cover-variants.sh`: cover image variant generator.
@@ -49,24 +50,25 @@ npm run preview
 
 ## Environment Variables
 
-The wishes feature needs Supabase credentials at build/runtime:
+The RSVP and public wishes features need Supabase credentials at build/runtime:
 
 ```sh
 VITE_SUPABASE_URL=
 VITE_SUPABASE_ANON_KEY=
 ```
 
-If these are missing, the site still renders but the wishes form cannot load or submit wishes.
+If these are missing, the site still renders but the RSVP form cannot submit and public wishes cannot load.
 
-## Wishes Setup
+## RSVP And Wishes Setup
 
-Run `supabase-wishes.sql` in Supabase to create the `wishes` table and public read/insert policies.
+Run `supabase-rsvps.sql` in Supabase to create/update the `rsvps` table, RSVP admin access, and the public read function for RSVP wishes.
 
 Current client limits:
 
-- Name: `24` characters.
-- Message: `240` characters.
-- Empty values are rejected.
+- Name: `60` characters.
+- RSVP note: `240` characters.
+- Optional wish: `240` characters.
+- Required RSVP values are rejected when empty; the wish can be left blank.
 - Common sensitive words and phrases in English and Vietnamese are rejected.
 
 The SQL policy has broader length checks than the client so the browser remains the stricter user-facing validation layer.

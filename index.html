@@ -1108,6 +1108,16 @@
               ></textarea>
             </div>
 
+            <div class="field scroll-reveal">
+              <label for="rsvp-wish">Một lời chúc dành cho tụi mình 🤍 </br> (kèm biệt danh của bạn nhé!)</label>
+              <textarea
+                id="rsvp-wish"
+                name="wish_message"
+                maxlength="240"
+                rows="4"
+              ></textarea>
+            </div>
+
             <input
               class="form-extra"
               name="website"
@@ -1124,49 +1134,12 @@
           </form>
         </section>
 
-        <section class="wishes-section scroll-reveal" aria-labelledby="wishes-title">
-          <div class="signature-elements signature-elements-wishes" aria-hidden="true">
-            <svg class="signature-icon signature-book signature-icon-top-left"><use href="#signature-book"></use></svg>
-            <svg class="signature-icon signature-cola signature-icon-middle-right"><use href="#signature-cola"></use></svg>
-            <svg class="signature-icon signature-pencil signature-icon-bottom-left"><use href="#signature-pencil"></use></svg>
-          </div>
-          <div class="wishes-heading scroll-reveal">
-            <h2 id="wishes-title">
-              <span>Gửi lời chúc đến</span>
-              <span>Duy và Thảo</span>
-            </h2>
-          </div>
-
+        <section class="wishes-section rsvp-wishes-page scroll-reveal" aria-label="Lời chúc gửi đến Duy và Thảo">
           <div class="wishes-list-wrap scroll-reveal">
             <div class="wishes-carousel" aria-live="polite">
               <ul class="wishes-list" id="wishes-list"></ul>
             </div>
           </div>
-
-          <form class="wish-form" id="wish-form" novalidate>
-            <div class="field scroll-reveal">
-              <label for="wish-message">Một lời chúc dành cho tụi mình 🤍 </br> (kèm biệt danh của bạn nhé!)</label>
-              <textarea
-                id="wish-message"
-                name="message"
-                maxlength="240"
-                rows="4"
-                required
-              ></textarea>
-            </div>
-
-            <input
-              class="wish-extra"
-              name="website"
-              tabindex="-1"
-              autocomplete="off"
-              aria-hidden="true"
-            />
-
-            <p class="wish-status" id="wish-status" role="status"></p>
-
-            <button class="wish-submit scroll-reveal" type="submit">Gửi lời chúc</button>
-          </form>
         </section>
       </section>
 
