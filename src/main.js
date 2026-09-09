@@ -1,5 +1,4 @@
 import "./styles.css";
-import { createClient } from "@supabase/supabase-js";
 
 const WISH_LIMIT = 30;
 const RSVP_NAME_LIMIT = 60;
@@ -49,10 +48,7 @@ const DAY_IN_MS = 24 * HOUR_IN_MS;
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase =
-  supabaseUrl && supabaseAnonKey
-    ? createClient(supabaseUrl, supabaseAnonKey)
-    : null;
+let supabaseClientPromise;
 
 const wishesList = document.querySelector("#wishes-list");
 const rsvpForm = document.querySelector("#rsvp-form");
@@ -76,6 +72,29 @@ let songWasStarted = false;
 let songWasPausedByUser = false;
 let currentWishIndex = 0;
 let wishRotationTimer;
+
+const getSupabaseClient = async () => {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return null;
+  }
+
+  if (!supabaseClientPromise) {
+    supabaseClientPromise = import("@supabase/supabase-js").then(({ createClient }) =>
+      createClient(supabaseUrl, supabaseAnonKey),
+    );
+  }
+
+  return supabaseClientPromise;
+};
+
+const scheduleNonCriticalWork = (callback) => {
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(callback, { timeout: 2500 });
+    return;
+  }
+
+  window.setTimeout(callback, 1200);
+};
 
 const padTime = (value) => String(value).padStart(2, "0");
 
@@ -164,6 +183,7 @@ const setupHandwritingTitle = () => {
         line.maskElement.style.width = `${line.widths[characterIndex]}px`;
 
         if (characterIndex === line.characters.length - 1) {
+          line.maskElement.style.willChange = "auto";
           window.setTimeout(() => typeLine(lineIndex + 1), TITLE_LINE_DELAY_MS);
         }
       }, characterIndex * TITLE_CHARACTER_DELAY_MS);
@@ -520,6 +540,15 @@ const renderWishes = (wishes) => {
 };
 
 const loadWishes = async () => {
+  let supabase;
+  try {
+    supabase = await getSupabaseClient();
+  } catch (error) {
+    console.error("Supabase client load failed", error);
+    renderWishes([]);
+    return;
+  }
+
   if (!supabase) {
     renderWishes([]);
     return;
@@ -642,7 +671,7 @@ const updateRsvpRequirementState = () => {
 rsvpForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  if (!supabase) {
+  if (!supabaseUrl || !supabaseAnonKey) {
     setRsvpStatus("Chưa cấu hình Supabase nên chưa thể gửi xác nhận.", "error");
     return;
   }
@@ -661,6 +690,16 @@ rsvpForm?.addEventListener("submit", async (event) => {
 
   setRsvpSubmitting(true);
   setRsvpStatus("Đang gửi xác nhận...");
+
+  let supabase;
+  try {
+    supabase = await getSupabaseClient();
+  } catch (error) {
+    console.error("Supabase client load failed", error);
+    setRsvpStatus("Chưa thể gửi xác nhận. Vui lòng thử lại sau.", "error");
+    setRsvpSubmitting(false);
+    return;
+  }
 
   const { error } = await supabase.from("rsvps").insert(rsvp);
 
@@ -697,4 +736,4 @@ setupScrollReveal();
 setupWeddingSong();
 updateStoryTimer();
 window.setInterval(updateStoryTimer, SECOND_IN_MS);
-loadWishes();
+scheduleNonCriticalWork(loadWishes);
