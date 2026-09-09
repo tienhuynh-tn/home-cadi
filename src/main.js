@@ -326,20 +326,12 @@ const setupWeddingSong = () => {
   weddingSong.loop = true;
   weddingSong.muted = false;
   weddingSong.volume = 1;
-  weddingSong.load();
   setMusicToggleState();
-  playWeddingSong();
 
   const gestureEvents = [
     "pointerdown",
-    "pointermove",
-    "pointerup",
     "touchstart",
-    "touchmove",
-    "touchend",
     "mousedown",
-    "wheel",
-    "scroll",
     "click",
     "keydown",
   ];

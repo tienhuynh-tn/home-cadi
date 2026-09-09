@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/assets/fonts/montserrat/Montserrat-Regular.otf") format("opentype");
+  src: url("../assets/fonts/montserrat/Montserrat-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/assets/fonts/montserrat/Montserrat-Italic.otf") format("opentype");
+  src: url("../assets/fonts/montserrat/Montserrat-Italic.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/assets/fonts/montserrat/Montserrat-SemiBold.otf") format("opentype");
+  src: url("../assets/fonts/montserrat/Montserrat-SemiBold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -40,7 +40,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/assets/fonts/montserrat/Montserrat-Bold.otf") format("opentype");
+  src: url("../assets/fonts/montserrat/Montserrat-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -48,7 +48,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/assets/fonts/montserrat/Montserrat-ExtraBold.otf") format("opentype");
+  src: url("../assets/fonts/montserrat/Montserrat-ExtraBold.otf") format("opentype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -56,7 +56,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/assets/fonts/montserrat/Montserrat-Black.otf") format("opentype");
+  src: url("../assets/fonts/montserrat/Montserrat-Black.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -64,7 +64,7 @@
 
 @font-face {
   font-family: "UTM Avo";
-  src: url("/assets/fonts/UTM Avo.ttf") format("truetype");
+  src: url("../assets/fonts/UTM Avo.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -72,7 +72,7 @@
 
 @font-face {
   font-family: "1FTV VIP Handstand";
-  src: url("/assets/fonts/1FTV-VIP-Handstand.otf") format("opentype");
+  src: url("../assets/fonts/1FTV-VIP-Handstand.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -80,7 +80,7 @@
 
 @font-face {
   font-family: "1FTV HF Gesco";
-  src: url("/assets/fonts/1FTV-HF-Gesco-id0oy5.ttf") format("truetype");
+  src: url("../assets/fonts/1FTV-HF-Gesco-id0oy5.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -88,7 +88,7 @@
 
 @font-face {
   font-family: "1FTV VIP Ergisa";
-  src: url("/assets/fonts/1FTV-VIP-Ergisa-Regular.otf") format("opentype");
+  src: url("../assets/fonts/1FTV-VIP-Ergisa-Regular.otf") format("opentype");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
@@ -96,7 +96,7 @@
 
 @font-face {
   font-family: "1FTV VIP ERGISA BOLD";
-  src: url("/assets/fonts/1FTV-VIP-Ergisa-Regular.otf") format("opentype");
+  src: url("../assets/fonts/1FTV-VIP-Ergisa-Regular.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -104,7 +104,7 @@
 
 @font-face {
   font-family: "Bachelorette";
-  src: url("/assets/fonts/Bachelorette_PERSONAL_USE_ONLY.otf") format("opentype");
+  src: url("../assets/fonts/Bachelorette_PERSONAL_USE_ONLY.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -1878,12 +1878,12 @@ img {
     z-index: 0;
     background: rgba(255, 255, 255, 0.82);
     content: "";
-    mask-image: url("/assets/stroke-of-grey-watercolor.png");
+    mask-image: url("../assets/stroke-of-grey-watercolor.png");
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
     pointer-events: none;
-    -webkit-mask-image: url("/assets/stroke-of-grey-watercolor.png");
+    -webkit-mask-image: url("../assets/stroke-of-grey-watercolor.png");
     -webkit-mask-position: center;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
@@ -2661,7 +2661,7 @@ img {
   position: absolute;
   inset: -22px -18px -20px -16px;
   z-index: -1;
-  background-image: url("/assets/red-smudge-acrylic-brush-stroke.png");
+  background-image: url("../assets/red-smudge-acrylic-brush-stroke.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -2842,7 +2842,7 @@ img {
   position: absolute;
   inset: -12px -22px -10px;
   z-index: -1;
-  background-image: url("/assets/stroke-of-grey-watercolor.png");
+  background-image: url("../assets/stroke-of-grey-watercolor.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -2973,7 +2973,7 @@ img {
   margin: 0px -14px 0px;
   overflow: hidden;
   background:
-    url("/assets/subtle-noise.png") center / cover no-repeat,
+    url("../assets/subtle-noise.png") center / cover no-repeat,
     var(--soft-section-bg-alt);
   isolation: isolate;
 }
@@ -3209,7 +3209,7 @@ img {
   padding: clamp(24px, 4.4svh, 34px) 14px clamp(26px, 4.6svh, 38px);
   overflow: hidden;
   background:
-    url("/assets/subtle-noise.png") center / cover no-repeat,
+    url("../assets/subtle-noise.png") center / cover no-repeat,
     var(--soft-section-bg);
 }
 
@@ -3366,7 +3366,7 @@ img {
   margin: 0 -14px;
   overflow: hidden;
   background:
-    url("/assets/subtle-noise.png") center / 460px auto,
+    url("../assets/subtle-noise.png") center / 460px auto,
     var(--soft-section-bg);
 }
 
@@ -3702,7 +3702,7 @@ img {
   margin: 0 -14px 0px;
   padding: 28px 14px 34px;
   overflow: hidden;
-  background: var(--soft-section-bg) url("/assets/subtle-noise.png") center / 460px auto;
+  background: var(--soft-section-bg) url("../assets/subtle-noise.png") center / 460px auto;
 }
 
 .mountain-collage {
@@ -3826,7 +3826,7 @@ img {
   padding: 18px 18px;
   overflow: hidden;
   background:
-    url("/assets/subtle-noise.png") center / 460px auto,
+    url("../assets/subtle-noise.png") center / 460px auto,
     var(--soft-section-bg-alt);
 }
 
@@ -3932,7 +3932,7 @@ img {
   position: relative;
   padding: 32px 18px 28px;
   background:
-    url("/assets/subtle-noise.png") center / 460px auto,
+    url("../assets/subtle-noise.png") center / 460px auto,
     var(--soft-section-bg);
   overflow: hidden;
 }
@@ -4049,7 +4049,7 @@ img {
   padding: 48px 24px;
   place-items: center;
   background:
-    url("/assets/subtle-noise.png") center / 460px auto,
+    url("../assets/subtle-noise.png") center / 460px auto,
     var(--soft-section-bg);
 }
 

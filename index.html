@@ -18,6 +18,14 @@
     <meta property="og:image" content="%BASE_URL%assets/cover.jpeg" />
     <link rel="icon" type="image/png" href="%BASE_URL%assets/favicon.png" />
     <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
+    <link
+      rel="preload"
+      as="image"
+      href="%BASE_URL%assets/cover.jpeg"
+      imagesrcset="%BASE_URL%assets/cover-1600.jpeg 1600w, %BASE_URL%assets/cover.jpeg 2400w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Noto+Serif+Display:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -70,8 +78,10 @@
           <div class="hero-photo" aria-label="Hoang Duy va Ngoc Thao">
             <img
               src="%BASE_URL%assets/cover.jpeg"
-              width="4508"
-              height="3005"
+              srcset="%BASE_URL%assets/cover-1600.jpeg 1600w, %BASE_URL%assets/cover.jpeg 2400w"
+              sizes="100vw"
+              width="2400"
+              height="1600"
               fetchpriority="high"
               decoding="async"
               alt="Hoang Duy va Ngoc Thao"
@@ -167,8 +177,8 @@
               <img
                 class="kid-photo kid-photo-couple scroll-reveal"
                 src="%BASE_URL%assets/bride-groom-small.PNG"
-                width="1881"
-                height="2412"
+                width="936"
+                height="1200"
                 loading="lazy"
                 decoding="async"
                 alt="Cô dâu và chú rể lúc nhỏ"
@@ -368,8 +378,8 @@
               <img
                 class="twenty-years-image"
                 src="%BASE_URL%assets/20-years-together.jpeg"
-                width="1400"
-                height="933"
+                width="1066"
+                height="1600"
                 loading="lazy"
                 decoding="async"
                 alt="Chú rể vẫy tay trước cô dâu"
@@ -394,8 +404,8 @@
               <img
                       class="agree-photo agree-photo-couple scroll-reveal"
                       src="%BASE_URL%assets/agree.jpeg"
-                      width="4000"
-                      height="6000"
+                      width="1066"
+                      height="1600"
                       loading="lazy"
                       decoding="async"
                       alt="Cô dâu và chú rể nắm tay nhau"
@@ -501,8 +511,8 @@
           <img
             class="propose-photo scroll-reveal"
             src="%BASE_URL%assets/propose.JPG"
-            width="4000"
-            height="6000"
+            width="1600"
+            height="1066"
             loading="lazy"
             decoding="async"
             alt="Khoảnh khắc trao nhẫn cầu hôn"
@@ -580,8 +590,8 @@
             <figure class="wedding-collage-photo wedding-collage-photo-kiss">
               <img
                 src="%BASE_URL%assets/wedding-collage-kiss.jpeg"
-                width="1400"
-                height="933"
+                width="1066"
+                height="1600"
                 loading="lazy"
                 decoding="async"
                 alt="Chú rể hôn cô dâu trong ngày cưới"
@@ -596,8 +606,8 @@
               <figure class="wedding-collage-photo wedding-collage-photo-groom">
                 <img
                   src="%BASE_URL%assets/wedding-collage-groom.jpeg"
-                  width="1400"
-                  height="933"
+                  width="1066"
+                  height="1600"
                   loading="lazy"
                   decoding="async"
                   alt="Chú rể cầm thư đứng trước cô dâu"
@@ -606,8 +616,8 @@
               <figure class="wedding-collage-photo wedding-collage-photo-bride">
                 <img
                   src="%BASE_URL%assets/wedding-collage-bride.jpeg"
-                  width="1400"
-                  height="933"
+                  width="1066"
+                  height="1600"
                   loading="lazy"
                   decoding="async"
                   alt="Cô dâu cầm bó hoa trong ngày cưới"
@@ -622,8 +632,8 @@
             <img
               class="wedding-vow-photo"
               src="%BASE_URL%assets/choose-you.jpeg"
-              width="1800"
-              height="1200"
+              width="1333"
+              height="2000"
               loading="lazy"
               decoding="async"
               alt="Cô dâu chú rể trong khu vườn ngày cưới"
@@ -643,8 +653,8 @@
             <img
               class="wedding-gentle-photo"
               src="%BASE_URL%assets/wedding-vow-walk.jpeg"
-              width="1600"
-              height="1066"
+              width="1333"
+              height="2000"
               loading="lazy"
               decoding="async"
               alt="Cô dâu chú rể trong khu vườn ngày cưới"
@@ -652,8 +662,8 @@
             <figure class="wedding-gentle-inset">
               <img
                 src="%BASE_URL%assets/wedding-vow-stand.jpeg"
-                width="1400"
-                height="933"
+                width="1066"
+                height="1600"
                 loading="lazy"
                 decoding="async"
                 alt="Cô dâu chú rể đứng trước phông cưới trong khu vườn"
@@ -672,8 +682,8 @@
             <img
               class="wedding-home-photo"
               src="%BASE_URL%assets/wedding-homecoming.jpeg"
-              width="1600"
-              height="1066"
+              width="1333"
+              height="2000"
               loading="lazy"
               decoding="async"
               alt="Cô dâu chú rể ngồi bên đài phun nước trong ngày cưới"
@@ -697,7 +707,7 @@
             <div class="film-track">
               <figure class="film-frame">
                 <img
-                  src="%BASE_URL%assets/film-1.png"
+                  src="%BASE_URL%assets/film-1.jpg"
                   width="900"
                   height="1350"
                   loading="lazy"
@@ -707,7 +717,7 @@
               </figure>
               <figure class="film-frame">
                 <img
-                  src="%BASE_URL%assets/film-2.JPG"
+                  src="%BASE_URL%assets/film-2.jpg"
                   width="899"
                   height="1350"
                   loading="lazy"
@@ -797,7 +807,7 @@
               </figure>
               <figure class="film-frame" aria-hidden="true">
                 <img
-                  src="%BASE_URL%assets/film-3.jpg"
+                  src="%BASE_URL%assets/film-3.jpeg"
                   width="897"
                   height="1350"
                   loading="lazy"
@@ -807,7 +817,7 @@
               </figure>
               <figure class="film-frame" aria-hidden="true">
                 <img
-                  src="%BASE_URL%assets/film-4.jpg"
+                  src="%BASE_URL%assets/film-4.jpeg"
                   width="900"
                   height="1350"
                   loading="lazy"
@@ -817,7 +827,7 @@
               </figure>
               <figure class="film-frame" aria-hidden="true">
                 <img
-                  src="%BASE_URL%assets/film-5.jpg"
+                  src="%BASE_URL%assets/film-5.jpeg"
                   width="900"
                   height="1350"
                   loading="lazy"
@@ -827,7 +837,7 @@
               </figure>
               <figure class="film-frame" aria-hidden="true">
                 <img
-                  src="%BASE_URL%assets/film-6.jpg"
+                  src="%BASE_URL%assets/film-6.jpeg"
                   width="900"
                   height="1350"
                   loading="lazy"
@@ -837,7 +847,7 @@
               </figure>
               <figure class="film-frame" aria-hidden="true">
                 <img
-                  src="%BASE_URL%assets/film-7.jpg"
+                  src="%BASE_URL%assets/film-7.jpeg"
                   width="1350"
                   height="900"
                   loading="lazy"
@@ -847,7 +857,7 @@
               </figure>
               <figure class="film-frame" aria-hidden="true">
                 <img
-                  src="%BASE_URL%assets/film-8.jpg"
+                  src="%BASE_URL%assets/film-8.jpeg"
                   width="900"
                   height="1350"
                   loading="lazy"
@@ -884,8 +894,8 @@
             <figure class="appreciation-photo-frame" aria-label="Ảnh Thảo và Duy">
               <img
                 src="%BASE_URL%assets/letter.jpeg"
-                width="1600"
-                height="1066"
+                width="1066"
+                height="1600"
                 loading="lazy"
                 decoding="async"
                 alt="Thảo và Duy trong ngày cưới"
@@ -995,7 +1005,7 @@
             <figure class="mountain-photo">
               <img
                 class="mountain-image"
-                src="%BASE_URL%assets/mountain-home-1.png"
+                src="%BASE_URL%assets/mountain-home-1.jpg"
                 width="1800"
                 height="1200"
                 alt="Cô dâu chú rể trước một ngôi chùa ở Tây Ninh"
@@ -1006,7 +1016,7 @@
             <figure class="mountain-photo">
               <img
                 class="mountain-image"
-                src="%BASE_URL%assets/mountain-home-2.png"
+                src="%BASE_URL%assets/mountain-home-2.jpg"
                 width="1800"
                 height="1200"
                 alt="Cô dâu chú rể nắm tay nhau ở Tây Ninh"
@@ -1017,7 +1027,7 @@
             <figure class="mountain-photo">
               <img
                 class="mountain-image"
-                src="%BASE_URL%assets/mountain-home-3.png"
+                src="%BASE_URL%assets/mountain-home-3.jpg"
                 width="1800"
                 height="1200"
                 alt="Cô dâu chú rể đứng cách nhau trong khu vườn"
@@ -1170,7 +1180,7 @@
       </section>
     </main>
 
-    <audio id="wedding-song" src="%BASE_URL%assets/song.mp3" preload="auto" autoplay loop playsinline></audio>
+    <audio id="wedding-song" src="%BASE_URL%assets/song.mp3" preload="none" loop playsinline></audio>
     <button
       class="music-toggle"
       id="music-toggle"
