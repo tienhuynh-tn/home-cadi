@@ -4,16 +4,9 @@
     <list default="true" id="ad9fbfd7-a430-4620-8e2a-1a1904457ea6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/film-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/film-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/film-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/film-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/film-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/film-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/film-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/film-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/film-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/wedding-vow-stand.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/wedding-vow-walk.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/cover-1600.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/cover.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/cover.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

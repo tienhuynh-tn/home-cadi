@@ -167,8 +167,8 @@ img {
 
 .phone-stage {
   position: relative;
-  overflow: hidden;
-  overscroll-behavior-y: none;
+  overflow-x: hidden;
+  overflow-y: visible;
   width: 100vw;
   max-width: 100vw;
   min-height: 100svh;
@@ -427,7 +427,8 @@ img {
 .family-invitation-section,
 .mountain-section,
 .rsvp-section,
-.wishes-section {
+.wishes-section,
+.travel-collage-section {
   backdrop-filter: blur(5px);
 }
 
@@ -4075,6 +4076,289 @@ img {
   transform: translateY(0);
 }
 
+.travel-collage-section {
+  position: relative;
+  margin: 0 -14px;
+  padding: 0 0 max(76px, env(safe-area-inset-bottom));
+  background:
+    url("../assets/subtle-noise.png") center / 460px auto,
+    var(--soft-section-bg);
+  overflow: hidden;
+}
+
+.travel-collage-page {
+  position: relative;
+  --travel-inner: min(326px, 100vw);
+  --travel-gutter: calc((100vw - var(--travel-inner)) / 2);
+  width: 100vw;
+  height: calc(var(--travel-inner) * 2.72);
+  min-height: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  background:
+    url("../assets/subtle-noise.png") center / 430px auto,
+    #f3f3ee;
+}
+
+.travel-collage-title {
+  position: absolute;
+  top: 16px;
+  left: calc(var(--travel-gutter) + 54px);
+  right: calc(var(--travel-gutter) + 54px);
+  z-index: 3;
+  margin: 0;
+  color: #101010;
+  font-family: "1FTV VIP Bachelorette", "Times New Roman", serif;
+  font-size: clamp(1.58rem, 8vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.travel-collage-title span {
+  display: block;
+  white-space: nowrap;
+}
+
+.travel-collage-marker {
+  position: absolute;
+  top: 374px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  margin: 0;
+  color: #050505;
+  font-family: "1FTV VIP Bachelorette", "Times New Roman", serif;
+  font-size: clamp(4.6rem, 22vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.travel-collage-photo {
+  position: absolute;
+  z-index: 2;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 6px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 2px 7px rgba(32, 23, 16, 0.12);
+}
+
+.travel-collage-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.travel-collage-photo-top-main {
+  top: 91px;
+  left: calc(var(--travel-gutter) + 25px);
+  width: 150px;
+  height: 150px;
+  padding-bottom: 8px;
+}
+
+.travel-collage-photo-top-main img {
+  object-position: 47% 45%;
+}
+
+.travel-collage-photo-peek {
+  top: 91px;
+  right: calc(var(--travel-gutter) + 37px);
+  width: 73px;
+  height: 100px;
+}
+
+.travel-collage-photo-peek img {
+  object-position: 52% 38%;
+}
+
+.travel-collage-photo-strip {
+  top: 205px;
+  right: calc(var(--travel-gutter) + 34px);
+  width: 82px;
+  height: 39px;
+  padding: 4px;
+}
+
+.travel-collage-photo-strip img {
+  object-position: 50% 52%;
+}
+
+.travel-collage-photo-small-left {
+  top: 253px;
+  left: calc(var(--travel-gutter) + 22px);
+  width: 70px;
+  height: 98px;
+  padding: 4px;
+}
+
+.travel-collage-photo-small-left img {
+  object-position: 46% 42%;
+}
+
+.travel-collage-photo-small-center {
+  top: 253px;
+  left: calc(var(--travel-gutter) + 101px);
+  width: 70px;
+  height: 98px;
+  padding: 4px;
+}
+
+.travel-collage-photo-small-center img {
+  object-position: 48% 50%;
+}
+
+.travel-collage-photo-small-right {
+  top: 253px;
+  right: calc(var(--travel-gutter) + 23px);
+  width: 94px;
+  height: 98px;
+  padding: 4px;
+}
+
+.travel-collage-photo-small-right img {
+  object-position: 50% 44%;
+}
+
+.travel-collage-photo-lower-left {
+  top: 449px;
+  left: calc(var(--travel-gutter) + 40px);
+  width: 73px;
+  height: 106px;
+}
+
+.travel-collage-photo-lower-left img {
+  object-position: 49% 35%;
+}
+
+.travel-collage-photo-lower-main {
+  top: 454px;
+  right: calc(var(--travel-gutter) + 36px);
+  width: 156px;
+  height: 153px;
+}
+
+.travel-collage-photo-lower-main img {
+  object-position: 51% 42%;
+}
+
+.travel-collage-photo-lower-strip {
+  top: 565px;
+  left: calc(var(--travel-gutter) + 48px);
+  width: 65px;
+  height: 44px;
+  padding: 4px;
+}
+
+.travel-collage-photo-lower-strip img {
+  object-position: 47% 44%;
+}
+
+.travel-collage-photo-lower-kiss {
+  top: 617px;
+  left: calc(var(--travel-gutter) + 42px);
+  width: 76px;
+  height: 108px;
+  padding: 4px;
+}
+
+.travel-collage-photo-lower-kiss img {
+  object-position: 47% 46%;
+}
+
+.travel-collage-photo-lower-pair {
+  top: 617px;
+  left: calc(var(--travel-gutter) + 132px);
+  width: 74px;
+  height: 98px;
+  padding: 4px;
+}
+
+.travel-collage-photo-lower-pair img {
+  object-position: 42% 39%;
+}
+
+.travel-collage-photo-lower-right {
+  top: 617px;
+  right: calc(var(--travel-gutter) + 23px);
+  width: 74px;
+  height: 98px;
+  padding: 4px;
+}
+
+.travel-collage-photo-lower-right img {
+  object-position: 50% 42%;
+}
+
+.travel-collage-photo-bottom {
+  top: 734px;
+  left: calc(var(--travel-gutter) + 32px);
+  right: calc(var(--travel-gutter) + 27px);
+  height: 126px;
+  padding: 0;
+}
+
+.travel-collage-photo-bottom img {
+  object-position: 52% 56%;
+}
+
+.reveal-ready .travel-collage-section .travel-collage-title,
+.reveal-ready .travel-collage-section .travel-collage-marker,
+.reveal-ready .travel-collage-section .travel-collage-photo {
+  opacity: 0;
+  translate: 0 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
+}
+
+.reveal-ready .travel-collage-section.is-visible .travel-collage-title,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-marker,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-top-main {
+  transition-delay: 70ms;
+}
+
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-peek,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-strip {
+  transition-delay: 140ms;
+}
+
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-small-left,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-small-center,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-small-right {
+  transition-delay: 230ms;
+}
+
+.reveal-ready .travel-collage-section.is-visible .travel-collage-marker {
+  transition-delay: 300ms;
+}
+
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-lower-left,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-lower-main,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-lower-strip {
+  transition-delay: 380ms;
+}
+
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-lower-kiss,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-lower-pair,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-lower-right,
+.reveal-ready .travel-collage-section.is-visible .travel-collage-photo-bottom {
+  transition-delay: 460ms;
+}
+
 .wishes-list {
   display: grid;
   margin: 0;
@@ -4399,7 +4683,13 @@ img {
   .reveal-ready .rsvp-section .rsvp-copy,
   .reveal-ready .rsvp-section .rsvp-form,
   .reveal-ready .rsvp-section.is-visible .rsvp-copy,
-  .reveal-ready .rsvp-section.is-visible .rsvp-form {
+  .reveal-ready .rsvp-section.is-visible .rsvp-form,
+  .reveal-ready .travel-collage-section .travel-collage-title,
+  .reveal-ready .travel-collage-section .travel-collage-marker,
+  .reveal-ready .travel-collage-section .travel-collage-photo,
+  .reveal-ready .travel-collage-section.is-visible .travel-collage-title,
+  .reveal-ready .travel-collage-section.is-visible .travel-collage-marker,
+  .reveal-ready .travel-collage-section.is-visible .travel-collage-photo {
     opacity: 1;
     transition: none;
   }
@@ -4447,7 +4737,13 @@ img {
   .reveal-ready .rsvp-section .rsvp-copy,
   .reveal-ready .rsvp-section .rsvp-form,
   .reveal-ready .rsvp-section.is-visible .rsvp-copy,
-  .reveal-ready .rsvp-section.is-visible .rsvp-form {
+  .reveal-ready .rsvp-section.is-visible .rsvp-form,
+  .reveal-ready .travel-collage-section .travel-collage-title,
+  .reveal-ready .travel-collage-section .travel-collage-marker,
+  .reveal-ready .travel-collage-section .travel-collage-photo,
+  .reveal-ready .travel-collage-section.is-visible .travel-collage-title,
+  .reveal-ready .travel-collage-section.is-visible .travel-collage-marker,
+  .reveal-ready .travel-collage-section.is-visible .travel-collage-photo {
     transform: translateY(0);
   }
 
