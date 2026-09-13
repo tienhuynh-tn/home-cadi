@@ -81,7 +81,6 @@ with check (
   and (guest_count is null or guest_count between 1 and 10)
   and (note is null or length(trim(note)) <= 240)
   and (wish_message is null or length(trim(wish_message)) between 1 and 240)
-  and (attendance <> 'chua_chac' or length(trim(coalesce(note, ''))) between 1 and 240)
 );
 
 create or replace function public.get_public_rsvp_wishes(wish_limit integer default 30)
