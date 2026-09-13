@@ -4228,7 +4228,7 @@ img {
 }
 
 .travel-collage-photo-lower-strip img {
-  object-position: 47% 44%;
+  object-position: 47% 82%;
 }
 
 .travel-collage-photo-lower-kiss {
@@ -4469,7 +4469,7 @@ img {
 }
 
 .giving-collage-photo-lower-main img {
-  object-position: 51% 39%;
+  object-position: 51% 100%;
 }
 
 .giving-collage-photo-lower-strip {
@@ -4529,7 +4529,7 @@ img {
 }
 
 .giving-collage-photo-bottom img {
-  object-position: 52% 52%;
+  object-position: 52% 22%;
 }
 
 .reveal-ready .travel-collage-section .giving-collage-title,
@@ -4592,8 +4592,7 @@ img {
   min-height: 100svh;
   min-height: 100dvh;
   padding: 0;
-  overflow: hidden;
-  overscroll-behavior-y: contain;
+  overflow: visible;
   background: #2f641f;
 }
 
