@@ -3475,12 +3475,21 @@ img {
 .family-invitation-role {
   position: relative;
   z-index: 2;
+  display: inline-flex;
+  align-items: baseline;
+  gap: clamp(8px, 2vw, 12px);
   justify-self: end;
-  padding-left: clamp(58px, 18vw, 82px);
   font-size: clamp(0.8rem, 2.6vw, 0.8rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   white-space: nowrap;
+}
+
+.family-invitation-role::before {
+  content: "";
+  flex: 0 0 clamp(48px, 15vw, 70px);
+  height: 1px;
+  background: #111111;
 }
 
 .family-invitation-events {
