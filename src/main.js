@@ -3,7 +3,7 @@ import "./styles.css";
 const WISH_LIMIT = 30;
 const RSVP_NAME_LIMIT = 60;
 const RSVP_NOTE_LIMIT = 240;
-const RSVP_WISH_LIMIT = 240;
+const RSVP_WISH_LIMIT = 500;
 const WISH_ROTATION_MS = 5000;
 const TITLE_CHARACTER_DELAY_MS = 145;
 const TITLE_LINE_DELAY_MS = 650;

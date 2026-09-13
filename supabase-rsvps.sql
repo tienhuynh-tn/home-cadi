@@ -21,7 +21,7 @@ create table if not exists rsvps (
     guest_count is null or guest_count between 1 and 10
   ),
   constraint rsvps_wish_message_check check (
-    wish_message is null or length(trim(wish_message)) between 1 and 240
+    wish_message is null or length(trim(wish_message)) between 1 and 500
   )
 );
 
@@ -43,7 +43,7 @@ alter table rsvps
 alter table rsvps drop constraint if exists rsvps_wish_message_check;
 alter table rsvps
   add constraint rsvps_wish_message_check check (
-    wish_message is null or length(trim(wish_message)) between 1 and 240
+    wish_message is null or length(trim(wish_message)) between 1 and 500
   );
 
 create table if not exists rsvp_admins (
@@ -80,7 +80,7 @@ with check (
   and events in ('ca_hai', 'nha_gai', 'nha_trai', 'chua_chac', 'khong_tham_du')
   and (guest_count is null or guest_count between 1 and 10)
   and (note is null or length(trim(note)) <= 240)
-  and (wish_message is null or length(trim(wish_message)) between 1 and 240)
+  and (wish_message is null or length(trim(wish_message)) between 1 and 500)
 );
 
 create or replace function public.get_public_rsvp_wishes(wish_limit integer default 30)
