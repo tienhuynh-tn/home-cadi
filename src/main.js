@@ -620,10 +620,6 @@ const getValidatedRsvp = (formData) => {
     throw new Error(`Lời chúc không vượt quá ${RSVP_WISH_LIMIT} ký tự.`);
   }
 
-  if (attendance === "chua_chac" && !note) {
-    throw new Error("Bạn thêm lời nhắn giúp tụi mình nha.");
-  }
-
   if (hasSensitiveContent(name, note, wishMessage)) {
     throw new Error("Nội dung có từ chưa phù hợp, bạn chỉnh lại giúp tụi mình nha.");
   }
@@ -663,7 +659,7 @@ const updateRsvpRequirementState = () => {
   rsvpEventSelect.disabled = skipAttendanceDetails;
   rsvpGuestCount.required = isAttending;
   rsvpGuestCount.disabled = skipAttendanceDetails;
-  rsvpNote.required = isPending;
+  rsvpNote.required = false;
 
   if (skipAttendanceDetails) {
     rsvpEventSelect.value = "";
