@@ -4585,11 +4585,13 @@ img {
 .final-home-section {
   position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   margin: 0 -14px;
+  height: 100svh;
+  height: 100dvh;
   min-height: 100svh;
   min-height: 100dvh;
-  padding: 0 0 max(18px, env(safe-area-inset-bottom));
+  padding: 0;
   overflow: hidden;
   overscroll-behavior-y: contain;
   background: #2f641f;
@@ -4598,10 +4600,10 @@ img {
 .final-home-page {
   position: relative;
   --final-home-grass-extension: 60px;
-  width: 100vw;
-  height: calc(100vw * 441 / 323);
-  min-height: 437px;
-  max-height: 680px;
+  flex: 1;
+  width: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
   overflow: hidden;
   color: #ffffff;
   background:
