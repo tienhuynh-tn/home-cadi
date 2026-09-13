@@ -4034,7 +4034,7 @@ img {
   min-height: 100svh;
   min-height: 100dvh;
   margin: 0 -14px;
-  padding: 48px 24px max(48px, env(safe-area-inset-bottom));
+  padding: 48px 12px max(48px, env(safe-area-inset-bottom));
   place-items: center;
   background:
     url("../assets/subtle-noise.png") center / 460px auto,
@@ -4906,15 +4906,16 @@ img {
   position: relative;
   z-index: 1;
   color: var(--ink);
-  width: min(100%, 26ch);
+  width: min(100%, 42ch);
   max-height: none;
   padding-block: 0.12em;
   overflow-wrap: anywhere;
+  white-space: pre-line;
   font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
   font-size: clamp(0.94rem, 4.9vw, 1.4rem);
   font-weight: 400;
   line-height: 1.32;
-  text-align: center;
+  text-align: justify;
 }
 
 .wish-author {
