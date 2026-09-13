@@ -3479,6 +3479,8 @@ img {
   align-items: baseline;
   gap: clamp(8px, 2vw, 12px);
   justify-self: end;
+  max-width: 100%;
+  min-width: 0;
   font-size: clamp(0.8rem, 2.6vw, 0.8rem);
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -3487,7 +3489,9 @@ img {
 
 .family-invitation-role::before {
   content: "";
-  flex: 0 0 clamp(48px, 15vw, 70px);
+  flex: 1 1 clamp(32px, 12vw, 70px);
+  min-width: 28px;
+  max-width: 70px;
   height: 1px;
   background: #111111;
 }
