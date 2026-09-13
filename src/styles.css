@@ -3964,6 +3964,14 @@ img {
   padding: 10px 11px;
 }
 
+.character-count {
+  justify-self: end;
+  color: rgba(61, 45, 34, 0.68);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
 .field input:focus,
 .field textarea:focus,
 .field select:focus {

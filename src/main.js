@@ -57,6 +57,7 @@ const rsvpSubmit = document.querySelector(".rsvp-submit");
 const rsvpEventSelect = document.querySelector("#rsvp-events");
 const rsvpGuestCount = document.querySelector("#rsvp-guest-count");
 const rsvpNote = document.querySelector("#rsvp-note");
+const rsvpWish = document.querySelector("#rsvp-wish");
 const rsvpWishesPage = document.querySelector(".rsvp-wishes-page");
 const storyYears = document.querySelector("#story-years");
 const storyMonths = document.querySelector("#story-months");
@@ -105,6 +106,8 @@ const splitGraphemes = (text) => {
 
   return Array.from(text);
 };
+
+const getCharacterCount = (text) => splitGraphemes(text).length;
 
 const showRevealElement = (element) => {
   element.classList.add("is-visible");
@@ -609,11 +612,11 @@ const getValidatedRsvp = (formData) => {
     throw new Error("Thông tin xác nhận chưa hợp lệ, bạn chọn lại giúp tụi mình nha.");
   }
 
-  if (note.length > RSVP_NOTE_LIMIT) {
+  if (getCharacterCount(note) > RSVP_NOTE_LIMIT) {
     throw new Error(`Lời nhắn không vượt quá ${RSVP_NOTE_LIMIT} ký tự.`);
   }
 
-  if (wishMessage.length > RSVP_WISH_LIMIT) {
+  if (getCharacterCount(wishMessage) > RSVP_WISH_LIMIT) {
     throw new Error(`Lời chúc không vượt quá ${RSVP_WISH_LIMIT} ký tự.`);
   }
 
@@ -668,6 +671,51 @@ const updateRsvpRequirementState = () => {
   }
 };
 
+const enforceCharacterLimit = (textarea, counter) => {
+  if (!(textarea instanceof HTMLTextAreaElement) || !(counter instanceof HTMLElement)) {
+    return;
+  }
+
+  const maxLength = Number.parseInt(textarea.getAttribute("maxlength") ?? "", 10);
+  if (!Number.isInteger(maxLength) || maxLength <= 0) {
+    return;
+  }
+
+  const characters = splitGraphemes(textarea.value);
+  if (characters.length > maxLength) {
+    textarea.value = characters.slice(0, maxLength).join("");
+  }
+
+  counter.textContent = `${getCharacterCount(textarea.value)}/${maxLength}`;
+};
+
+const setupCharacterCounter = (textarea) => {
+  if (!(textarea instanceof HTMLTextAreaElement)) {
+    return;
+  }
+
+  const counter = document.querySelector(`[data-character-count-for="${textarea.id}"]`);
+  if (!(counter instanceof HTMLElement)) {
+    return;
+  }
+
+  textarea.addEventListener("input", () => {
+    enforceCharacterLimit(textarea, counter);
+  });
+  enforceCharacterLimit(textarea, counter);
+};
+
+const updateRsvpCharacterCounters = () => {
+  [rsvpNote, rsvpWish].forEach((textarea) => {
+    if (!(textarea instanceof HTMLTextAreaElement)) {
+      return;
+    }
+
+    const counter = document.querySelector(`[data-character-count-for="${textarea.id}"]`);
+    enforceCharacterLimit(textarea, counter);
+  });
+};
+
 rsvpForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -711,6 +759,7 @@ rsvpForm?.addEventListener("submit", async (event) => {
 
   rsvpForm.reset();
   updateRsvpRequirementState();
+  updateRsvpCharacterCounters();
   setRsvpSubmitting(false);
   await loadWishes();
   setRsvpStatus("Cảm ơn bạn đã xác nhận tham dự!", "success");
@@ -730,6 +779,8 @@ rsvpForm?.addEventListener("change", (event) => {
 });
 
 updateRsvpRequirementState();
+setupCharacterCounter(rsvpNote);
+setupCharacterCounter(rsvpWish);
 
 setupHandwritingTitle();
 setupScrollReveal();
