@@ -4043,6 +4043,7 @@ img {
 
 .wishes-list-wrap {
   width: 100%;
+  min-width: 0;
 }
 
 .reveal-ready .wishes-section .wishes-list-wrap {
@@ -4731,15 +4732,18 @@ img {
 
 .wishes-carousel {
   display: grid;
-  min-height: 220px;
+  width: 100%;
+  min-height: min(360px, calc(100dvh - 96px));
   align-items: center;
 }
 
 .wish-card {
   position: relative;
   display: grid;
-  gap: 18px;
-  min-height: 220px;
+  gap: clamp(10px, 2.8dvh, 18px);
+  width: 100%;
+  min-width: 0;
+  max-height: calc(100dvh - 96px);
   align-content: center;
   justify-items: center;
   margin: 0;
@@ -4902,11 +4906,14 @@ img {
   position: relative;
   z-index: 1;
   color: var(--ink);
-  max-width: 24ch;
+  width: min(100%, 26ch);
+  max-height: none;
+  padding-block: 0.12em;
+  overflow-wrap: anywhere;
   font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
-  font-size: clamp(1.26rem, 6.2vw, 1.72rem);
+  font-size: clamp(0.94rem, 4.9vw, 1.4rem);
   font-weight: 400;
-  line-height: 1.18;
+  line-height: 1.32;
   text-align: center;
 }
 
