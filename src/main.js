@@ -358,6 +358,10 @@ const setupWeddingSong = () => {
     "click",
     "keydown",
   ];
+  const gestureListenerOptions = {
+    capture: true,
+    passive: true,
+  };
 
   const stopGestureAutoplay = () => {
     gestureEvents.forEach((eventName) => {
@@ -389,8 +393,8 @@ const setupWeddingSong = () => {
     }
   });
   gestureEvents.forEach((eventName) => {
-    document.addEventListener(eventName, startAfterGesture, true);
-    window.addEventListener(eventName, startAfterGesture, true);
+    document.addEventListener(eventName, startAfterGesture, gestureListenerOptions);
+    window.addEventListener(eventName, startAfterGesture, gestureListenerOptions);
   });
 
   musicToggle.addEventListener("click", async () => {
