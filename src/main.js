@@ -1,6 +1,5 @@
 import "./styles.css";
 
-const WISH_LIMIT = 30;
 const RSVP_NAME_LIMIT = 60;
 const RSVP_NOTE_LIMIT = 240;
 const RSVP_WISH_LIMIT = 500;
@@ -622,8 +621,7 @@ const loadWishes = async () => {
     return;
   }
 
-  const { data, error } = await supabase
-    .rpc("get_public_rsvp_wishes", { wish_limit: WISH_LIMIT });
+  const { data, error } = await supabase.rpc("get_public_rsvp_wishes");
 
   if (error) {
     console.error("Wish load failed", error);

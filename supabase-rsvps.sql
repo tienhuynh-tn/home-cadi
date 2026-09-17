@@ -101,8 +101,7 @@ as $$
   from public.rsvps
   where rsvps.wish_message is not null
     and length(trim(rsvps.wish_message)) > 0
-  order by rsvps.created_at desc
-  limit least(greatest(coalesce(wish_limit, 30), 0), 30);
+  order by rsvps.created_at desc;
 $$;
 
 grant execute on function public.get_public_rsvp_wishes(integer) to anon, authenticated;
