@@ -4912,12 +4912,14 @@ img {
   position: relative;
   z-index: 1;
   color: var(--ink);
+  box-sizing: border-box;
   width: min(100%, 42ch);
   max-height: none;
   padding-block: 0.12em;
+  padding-inline: clamp(8px, 3vw, 12px);
   overflow-wrap: anywhere;
   white-space: pre-line;
-  font-family: "1FTV VIP Handstand", "Segoe Script", cursive;
+  font-family: "Mynerve", "Montserrat", "Segoe UI", sans-serif;
   font-size: clamp(0.94rem, 4.9vw, 1.4rem);
   font-weight: 400;
   line-height: 1.32;
