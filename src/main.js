@@ -4,7 +4,10 @@ const WISH_LIMIT = 30;
 const RSVP_NAME_LIMIT = 60;
 const RSVP_NOTE_LIMIT = 240;
 const RSVP_WISH_LIMIT = 500;
-const WISH_ROTATION_MS = 5000;
+const WISH_ROTATION_MIN_MS = 4500;
+const WISH_ROTATION_MAX_MS = 16000;
+const WISH_ROTATION_BASE_MS = 3600;
+const WISH_ROTATION_MS_PER_CHARACTER = 28;
 const TITLE_CHARACTER_DELAY_MS = 145;
 const TITLE_LINE_DELAY_MS = 650;
 const SENSITIVE_WORDS = new Set([
@@ -73,6 +76,7 @@ let songWasStarted = false;
 let songWasPausedByUser = false;
 let currentWishIndex = 0;
 let wishRotationTimer;
+let wishRotationIsPaused = false;
 
 const getSupabaseClient = async () => {
   if (!supabaseUrl || !supabaseAnonKey) {
@@ -476,8 +480,38 @@ const hasSensitiveContent = (...values) => {
 };
 
 const stopWishRotation = () => {
-  window.clearInterval(wishRotationTimer);
+  window.clearTimeout(wishRotationTimer);
   wishRotationTimer = undefined;
+};
+
+const getActiveWishRotationMs = () => {
+  const activeWish = wishesList?.querySelector(".wish-card.is-active .wish-message");
+  const messageLength = getCharacterCount(activeWish?.textContent ?? "");
+  const duration = WISH_ROTATION_BASE_MS + (messageLength * WISH_ROTATION_MS_PER_CHARACTER);
+  const clampedDuration = Math.min(
+    Math.max(duration, WISH_ROTATION_MIN_MS),
+    WISH_ROTATION_MAX_MS,
+  );
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return clampedDuration * 1.5;
+  }
+
+  return clampedDuration;
+};
+
+const scheduleWishRotation = () => {
+  stopWishRotation();
+
+  const wishCount = wishesList?.querySelectorAll(".wish-card").length ?? 0;
+  if (wishRotationIsPaused || wishCount <= 1) {
+    return;
+  }
+
+  wishRotationTimer = window.setTimeout(() => {
+    setActiveWish(currentWishIndex + 1);
+    scheduleWishRotation();
+  }, getActiveWishRotationMs());
 };
 
 const setActiveWish = (nextIndex) => {
@@ -501,16 +535,43 @@ const setActiveWish = (nextIndex) => {
 };
 
 const startWishRotation = () => {
-  stopWishRotation();
+  wishRotationIsPaused = false;
+  scheduleWishRotation();
+};
 
-  const wishCount = wishesList?.querySelectorAll(".wish-card").length ?? 0;
-  if (wishCount <= 1) {
+const pauseWishRotation = () => {
+  wishRotationIsPaused = true;
+  stopWishRotation();
+};
+
+const resumeWishRotation = () => {
+  if (!wishRotationIsPaused) {
     return;
   }
 
-  wishRotationTimer = window.setInterval(() => {
-    setActiveWish(currentWishIndex + 1);
-  }, WISH_ROTATION_MS);
+  wishRotationIsPaused = false;
+  scheduleWishRotation();
+};
+
+const setupWishRotationControls = () => {
+  if (!rsvpWishesPage) {
+    return;
+  }
+
+  if ("PointerEvent" in window) {
+    rsvpWishesPage.addEventListener("pointerdown", pauseWishRotation, { passive: true });
+    rsvpWishesPage.addEventListener("pointerup", resumeWishRotation, { passive: true });
+    rsvpWishesPage.addEventListener("pointercancel", resumeWishRotation, { passive: true });
+    rsvpWishesPage.addEventListener("pointerleave", resumeWishRotation, { passive: true });
+    return;
+  }
+
+  rsvpWishesPage.addEventListener("touchstart", pauseWishRotation, { passive: true });
+  rsvpWishesPage.addEventListener("touchend", resumeWishRotation, { passive: true });
+  rsvpWishesPage.addEventListener("touchcancel", resumeWishRotation, { passive: true });
+  rsvpWishesPage.addEventListener("mousedown", pauseWishRotation);
+  rsvpWishesPage.addEventListener("mouseup", resumeWishRotation);
+  rsvpWishesPage.addEventListener("mouseleave", resumeWishRotation);
 };
 
 const renderWishes = (wishes) => {
@@ -785,6 +846,7 @@ setupCharacterCounter(rsvpWish);
 setupHandwritingTitle();
 setupScrollReveal();
 setupWeddingSong();
+setupWishRotationControls();
 updateStoryTimer();
 window.setInterval(updateStoryTimer, SECOND_IN_MS);
 scheduleNonCriticalWork(loadWishes);
