@@ -5,7 +5,7 @@ Mobile-first wedding invitation for Duy and Thao, built with Vite.
 ## What The Site Includes
 
 - Phone-first invitation layout with a desktop warning at wider widths.
-- Responsive cover image variants in `public/assets`.
+- Browser-served wedding images and audio in `public/assets`.
 - Story sections with decorative signature icons for camera, teacher/book, pencil, film, and Coca-Cola can.
 - Wedding song audio with a bottom-right music toggle.
 - RSVP form backed by Supabase, with an optional wish saved on the RSVP row.
@@ -19,8 +19,7 @@ Mobile-first wedding invitation for Duy and Thao, built with Vite.
 - `src/main.js`: scroll reveal, story timer, music control, RSVP submission, public wish loading, and form validation.
 - `supabase-rsvps.sql`: Supabase table, row-level security policies, admin access, and public RSVP wishes function.
 - `public/assets`: browser-served images and song.
-- `source-images`: source images used to regenerate public image variants.
-- `scripts/generate-cover-variants.sh`: cover image variant generator.
+- `source-images`: archival source images used to create optimized public assets.
 
 ## Local Development
 
@@ -67,31 +66,15 @@ Current client limits:
 
 - Name: `60` characters.
 - RSVP note: `240` characters.
-- Optional wish: `240` characters.
+- Optional wish: `500` characters.
 - Required RSVP values are rejected when empty; the wish can be left blank.
 - Common sensitive words and phrases in English and Vietnamese are rejected.
 
-The SQL policy has broader length checks than the client so the browser remains the stricter user-facing validation layer.
+The SQL policy mirrors the client-facing length checks for RSVP inserts.
 
 ## Image Workflow
 
-To update the cover image:
-
-1. Replace `source-images/cover.jpeg`.
-2. Run:
-
-```sh
-npm run images:cover
-```
-
-This regenerates:
-
-- `public/assets/cover.jpeg`
-- `public/assets/cover-480.jpg`
-- `public/assets/cover-720.jpg`
-- `public/assets/cover-1080.jpg`
-
-The script requires `sips` and `jpegtran`.
+To update the cover image, keep the archival original in `source-images/cover.jpg` and the browser-served copy at `public/assets/cover.jpeg`. The cover is served directly; there is no generated cover-variant script in this project.
 
 ## Deployment
 
