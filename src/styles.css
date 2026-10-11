@@ -833,7 +833,6 @@ img {
 .appreciation-section > :not(.signature-elements),
 .family-invitation-section > :not(.signature-elements),
 .mountain-section > :not(.signature-elements),
-.rsvp-section > :not(.signature-elements),
 .wishes-section > :not(.signature-elements) {
   position: relative;
   z-index: 1;
@@ -3803,116 +3802,6 @@ img {
   transition-delay: 580ms;
 }
 
-.rsvp-section {
-  position: relative;
-  display: grid;
-  gap: 18px;
-  margin: 0px -14px 0;
-  padding: 18px 18px;
-  overflow: hidden;
-  background:
-    url("../assets/subtle-noise.png") center / 460px auto,
-    var(--soft-section-bg-alt);
-}
-
-.rsvp-copy {
-  display: grid;
-  gap: 14px;
-  max-width: 32ch;
-  margin: 0 auto;
-  color: rgba(32, 23, 16, 0.84);
-  font-family: "Montserrat", "Segoe UI", sans-serif;
-  font-size: clamp(0.84rem, 3.6vw, 0.98rem);
-  font-weight: 400;
-  line-height: 1.44;
-  text-align: center;
-}
-
-.rsvp-copy h2 {
-  margin: 0;
-  color: var(--red);
-  font-family: "1FTV VIP Scartoon", Georgia, serif;
-  font-size: clamp(1.6rem, 7.4vw, 2.1rem);
-  line-height: 1.05;
-  letter-spacing: 0;
-}
-
-.rsvp-copy p {
-  margin: 0;
-  font-size: clamp(0.8rem, 3.35vw, 0.92rem);
-  text-align: justify;
-}
-
-.rsvp-events {
-  display: grid;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  color: rgba(93, 69, 50, 0.9);
-  list-style: none;
-}
-
-.rsvp-form {
-  display: grid;
-  gap: 14px;
-  padding: 18px 16px 20px;
-  border: 1px solid rgba(93, 69, 50, 0.16);
-  background: rgba(255, 255, 255, 0.48);
-  box-shadow: 0 12px 22px rgba(93, 69, 50, 0.1);
-}
-
-.rsvp-choice-group {
-  display: grid;
-  gap: 9px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.rsvp-choice-group legend {
-  margin: 0 0 2px;
-  color: var(--soft-ink);
-  font-size: 0.78rem;
-  font-weight: 600;
-}
-
-.rsvp-choice-group label {
-  display: grid;
-  grid-template-columns: 18px 1fr;
-  gap: 9px;
-  align-items: start;
-  color: rgba(32, 23, 16, 0.86);
-  font-size: 0.86rem;
-  line-height: 1.35;
-}
-
-.rsvp-choice-group input {
-  width: 16px;
-  height: 16px;
-  margin: 1px 0 0;
-  accent-color: var(--red);
-}
-
-.reveal-ready .rsvp-section .rsvp-copy,
-.reveal-ready .rsvp-section .rsvp-form {
-  opacity: 0;
-  translate: 0 0;
-  transform: translateY(20px);
-  transition:
-    opacity 860ms var(--reveal-ease),
-    transform 860ms var(--reveal-ease);
-}
-
-.reveal-ready .rsvp-section.is-visible .rsvp-copy,
-.reveal-ready .rsvp-section.is-visible .rsvp-form {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-ready .rsvp-section.is-visible .rsvp-form {
-  transition-delay: 190ms;
-}
-
 .wishes-section {
   position: relative;
   padding: 32px 18px 28px;
@@ -5059,10 +4948,6 @@ img {
   .reveal-ready .mountain-section.is-visible .mountain-photo,
   .reveal-ready .mountain-section.is-visible .mountain-copy,
   .reveal-ready .mountain-section.is-visible .mountain-image,
-  .reveal-ready .rsvp-section .rsvp-copy,
-  .reveal-ready .rsvp-section .rsvp-form,
-  .reveal-ready .rsvp-section.is-visible .rsvp-copy,
-  .reveal-ready .rsvp-section.is-visible .rsvp-form,
   .reveal-ready .travel-collage-section .travel-collage-title,
   .reveal-ready .travel-collage-section .travel-collage-marker,
   .reveal-ready .travel-collage-section .travel-collage-photo,
@@ -5123,10 +5008,6 @@ img {
   .reveal-ready .mountain-section.is-visible .mountain-photo,
   .reveal-ready .mountain-section.is-visible .mountain-copy,
   .reveal-ready .mountain-section.is-visible .mountain-image,
-  .reveal-ready .rsvp-section .rsvp-copy,
-  .reveal-ready .rsvp-section .rsvp-form,
-  .reveal-ready .rsvp-section.is-visible .rsvp-copy,
-  .reveal-ready .rsvp-section.is-visible .rsvp-form,
   .reveal-ready .travel-collage-section .travel-collage-title,
   .reveal-ready .travel-collage-section .travel-collage-marker,
   .reveal-ready .travel-collage-section .travel-collage-photo,
