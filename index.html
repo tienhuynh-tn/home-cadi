@@ -1051,6 +1051,53 @@
           </p>
         </section>
 
+        <section class="rsvp-section scroll-reveal" aria-labelledby="rsvp-title">
+          <div class="rsvp-copy">
+            <h2 id="rsvp-title">Gửi lời chúc</h2>
+          </div>
+
+          <form class="rsvp-form" id="rsvp-form" novalidate>
+            <div class="field scroll-reveal">
+              <label for="rsvp-name">Tên của bạn</label>
+              <input
+                id="rsvp-name"
+                name="name"
+                type="text"
+                maxlength="60"
+                autocomplete="name"
+                required
+              />
+            </div>
+
+            <div class="field scroll-reveal">
+              <label for="rsvp-wish">Một lời chúc dành cho cô dâu chú rể 🤍</label>
+              <textarea
+                id="rsvp-wish"
+                name="wish_message"
+                maxlength="500"
+                aria-describedby="rsvp-wish-count"
+                rows="4"
+                required
+              ></textarea>
+              <span class="character-count" id="rsvp-wish-count" data-character-count-for="rsvp-wish">0/500</span>
+            </div>
+
+            <input
+              class="form-extra"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+
+            <p class="form-status" id="rsvp-status" role="status"></p>
+
+            <button class="form-submit rsvp-submit scroll-reveal" type="submit">
+              Gửi lời chúc
+            </button>
+          </form>
+        </section>
+
         <section class="wishes-section rsvp-wishes-page scroll-reveal" aria-label="Lời chúc gửi đến Duy và Thảo">
           <div class="wishes-list-wrap scroll-reveal">
             <div class="wishes-carousel" aria-live="polite">

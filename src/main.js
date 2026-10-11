@@ -1,11 +1,46 @@
 import "./styles.css";
 
+const RSVP_NAME_LIMIT = 60;
+const RSVP_WISH_LIMIT = 500;
 const WISH_ROTATION_MIN_MS = 4500;
 const WISH_ROTATION_MAX_MS = 16000;
 const WISH_ROTATION_BASE_MS = 3600;
 const WISH_ROTATION_MS_PER_CHARACTER = 28;
 const TITLE_CHARACTER_DELAY_MS = 145;
 const TITLE_LINE_DELAY_MS = 650;
+const SENSITIVE_WORDS = new Set([
+  "asshole",
+  "bastard",
+  "bitch",
+  "buoi",
+  "cunt",
+  "dick",
+  "dit",
+  "fuck",
+  "fucker",
+  "fucking",
+  "lon",
+  "nude",
+  "porn",
+  "pussy",
+  "sex",
+  "shit",
+  "slut",
+  "whore",
+  "xxx",
+]);
+const SENSITIVE_PHRASES = [
+  "cho chet",
+  "con me may",
+  "dcm",
+  "dit me",
+  "dm",
+  "dmm",
+  "do khon",
+  "du ma",
+  "mat day",
+  "oc cho",
+];
 const STORY_START_DATE = new Date("2006-09-05T00:00:00+07:00");
 const SECOND_IN_MS = 1000;
 const MINUTE_IN_MS = 60 * SECOND_IN_MS;
@@ -17,6 +52,10 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 let supabaseClientPromise;
 
 const wishesList = document.querySelector("#wishes-list");
+const rsvpForm = document.querySelector("#rsvp-form");
+const rsvpStatus = document.querySelector("#rsvp-status");
+const rsvpSubmit = document.querySelector(".rsvp-submit");
+const rsvpWish = document.querySelector("#rsvp-wish");
 const rsvpWishesPage = document.querySelector(".rsvp-wishes-page");
 const storyYears = document.querySelector("#story-years");
 const storyMonths = document.querySelector("#story-months");
@@ -373,6 +412,68 @@ const setupWeddingSong = () => {
   weddingSong.addEventListener("pause", setMusicToggleState);
 };
 
+const setFormStatus = (statusElement, message, tone = "") => {
+  if (!statusElement) {
+    return;
+  }
+
+  statusElement.textContent = message;
+  if (tone) {
+    statusElement.dataset.tone = tone;
+  } else {
+    delete statusElement.dataset.tone;
+  }
+};
+
+const setRsvpStatus = (message, tone = "") => {
+  setFormStatus(rsvpStatus, message, tone);
+};
+
+const setSubmitState = (submitButton, isSubmitting, labels) => {
+  if (!submitButton) {
+    return;
+  }
+
+  submitButton.disabled = isSubmitting;
+  submitButton.textContent = isSubmitting ? labels.submitting : labels.idle;
+};
+
+const setRsvpSubmitting = (isSubmitting) => {
+  setSubmitState(rsvpSubmit, isSubmitting, {
+    idle: "Gửi lời chúc",
+    submitting: "Đang gửi...",
+  });
+};
+
+const normalizeWishText = (value) =>
+  value
+    .toLowerCase()
+    .replaceAll("đ", "d")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+const hasSensitiveContent = (...values) => {
+  const normalizedText = normalizeWishText(values.join(" "));
+  if (!normalizedText) {
+    return false;
+  }
+
+  const paddedText = ` ${normalizedText} `;
+  const hasSensitivePhrase = SENSITIVE_PHRASES.some((phrase) =>
+    paddedText.includes(` ${phrase} `),
+  );
+
+  if (hasSensitivePhrase) {
+    return true;
+  }
+
+  return normalizedText
+    .split(" ")
+    .some((word) => SENSITIVE_WORDS.has(word));
+};
+
 const stopWishRotation = () => {
   window.clearTimeout(wishRotationTimer);
   wishRotationTimer = undefined;
@@ -524,9 +625,147 @@ const loadWishes = async () => {
     return;
   }
 
-  renderWishes(data ?? []);
+  const wishes = (data ?? []).sort(
+    (first, second) => Date.parse(first.created_at) - Date.parse(second.created_at),
+  );
+  renderWishes(wishes);
 };
 
+const getValidatedRsvp = (formData) => {
+  const name = String(formData.get("name") ?? "").trim();
+  const wishMessage = String(formData.get("wish_message") ?? "").trim();
+  const website = String(formData.get("website") ?? "").trim();
+
+  if (website) {
+    return null;
+  }
+
+  if (!name || !wishMessage) {
+    throw new Error("Bạn nhập tên và lời chúc giúp tụi mình nha.");
+  }
+
+  if (name.length > RSVP_NAME_LIMIT) {
+    throw new Error(`Tên không vượt quá ${RSVP_NAME_LIMIT} ký tự.`);
+  }
+
+  if (getCharacterCount(wishMessage) > RSVP_WISH_LIMIT) {
+    throw new Error(`Lời chúc không vượt quá ${RSVP_WISH_LIMIT} ký tự.`);
+  }
+
+  if (hasSensitiveContent(name, wishMessage)) {
+    throw new Error("Nội dung có từ chưa phù hợp, bạn chỉnh lại giúp tụi mình nha.");
+  }
+
+  return {
+    name,
+    friend_side: "ca_hai",
+    attendance: "chua_chac",
+    events: "chua_chac",
+    guest_count: null,
+    note: null,
+    wish_message: wishMessage,
+  };
+};
+
+const enforceCharacterLimit = (textarea, counter) => {
+  if (!(textarea instanceof HTMLTextAreaElement) || !(counter instanceof HTMLElement)) {
+    return;
+  }
+
+  const maxLength = Number.parseInt(textarea.getAttribute("maxlength") ?? "", 10);
+  if (!Number.isInteger(maxLength) || maxLength <= 0) {
+    return;
+  }
+
+  const characters = splitGraphemes(textarea.value);
+  if (characters.length > maxLength) {
+    textarea.value = characters.slice(0, maxLength).join("");
+  }
+
+  counter.textContent = `${getCharacterCount(textarea.value)}/${maxLength}`;
+};
+
+const setupCharacterCounter = (textarea) => {
+  if (!(textarea instanceof HTMLTextAreaElement)) {
+    return;
+  }
+
+  const counter = document.querySelector(`[data-character-count-for="${textarea.id}"]`);
+  if (!(counter instanceof HTMLElement)) {
+    return;
+  }
+
+  textarea.addEventListener("input", () => {
+    enforceCharacterLimit(textarea, counter);
+  });
+  enforceCharacterLimit(textarea, counter);
+};
+
+const updateRsvpCharacterCounter = () => {
+  if (!(rsvpWish instanceof HTMLTextAreaElement)) {
+    return;
+  }
+
+  const counter = document.querySelector(`[data-character-count-for="${rsvpWish.id}"]`);
+  enforceCharacterLimit(rsvpWish, counter);
+};
+
+rsvpForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    setRsvpStatus("Chưa cấu hình Supabase nên chưa thể gửi lời chúc.", "error");
+    return;
+  }
+
+  let rsvp;
+  try {
+    rsvp = getValidatedRsvp(new FormData(rsvpForm));
+  } catch (error) {
+    setRsvpStatus(error.message, "error");
+    return;
+  }
+
+  if (!rsvp) {
+    return;
+  }
+
+  setRsvpSubmitting(true);
+  setRsvpStatus("Đang gửi lời chúc...");
+
+  let supabase;
+  try {
+    supabase = await getSupabaseClient();
+  } catch (error) {
+    console.error("Supabase client load failed", error);
+    setRsvpStatus("Chưa thể gửi lời chúc. Vui lòng thử lại sau.", "error");
+    setRsvpSubmitting(false);
+    return;
+  }
+
+  const { error } = await supabase.from("rsvps").insert(rsvp);
+
+  if (error) {
+    setRsvpStatus("Chưa thể gửi lời chúc. Vui lòng thử lại sau.", "error");
+    setRsvpSubmitting(false);
+    return;
+  }
+
+  rsvpForm.reset();
+  updateRsvpCharacterCounter();
+  setRsvpSubmitting(false);
+  await loadWishes();
+  setRsvpStatus("Cảm ơn bạn đã gửi lời chúc!", "success");
+
+  if (rsvpWishesPage) {
+    rsvpWishesPage.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start",
+    });
+  }
+});
+
+setupCharacterCounter(rsvpWish);
 setupHandwritingTitle();
 setupScrollReveal();
 setupWeddingSong();
